@@ -447,9 +447,9 @@ int llread(int fd, char * buffer)
 		return -1;
 	}
 
-	for (i = 8; i < packageSize + 8; i++) // Extracts data package to buffer
+	for (i = 0; i < packageSize; i++) // Extracts data package to buffer
 	{
-		buffer[i-8] = received[i];
+		buffer[i] = received[8 + i];
 	}
 
 
