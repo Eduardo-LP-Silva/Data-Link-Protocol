@@ -36,6 +36,15 @@ void sigalrm_handler(int signal)
 		exit(1);
 }
 
+void printArray(char* arr, int length)
+{
+	int i;
+	for (i = 0; i < length; i++)
+	{
+		printf("%i\n", arr[i]);
+	}
+}
+
 int stateMachine(char received[], int C)
 {
 	int state = 0;
@@ -95,6 +104,52 @@ int stateMachine(char received[], int C)
 
 	return 1;
 } 
+
+int dataCheck(char received[], int size, char *package)
+{
+	char control, bcc1, bcc2;
+	int i;
+
+	if (received[0] == FLAG && received[1] == ADDR && received[size-1] == FLAG)
+	{
+		control = received[2];
+		bcc1 = received[4];
+
+		if (bcc1 != received[1] ^ control)
+			return -1;
+
+		
+		for (i = 4; i < size-1; i++)
+		{
+			package[i-4] = received[i];
+
+			if (i == 4)
+				bcc2 = received[4];
+			else
+				bcc2 = bcc2 ^ received[i];
+		}
+	}
+
+	return -1; //Error
+}
+
+
+int messageCheck(char received[])
+{
+	char control, bcc1, bcc2;
+	int i;
+
+	if (received[0] == FLAG && received[1] == ADDR && received[size-1] == FLAG)
+	{
+		control = received[2];
+		bcc1 = received[4];
+
+		if (bcc1 == received[1] ^ control)
+			return control;
+	}
+
+	return -1; //Error
+}
 
 int llopen(int fd, int flag)
 {
@@ -195,23 +250,48 @@ void swap(char* a, char*b)
 	*b = temp;
 }
 
+int abs(int a)
+{
+	if (a < 0)
+		return -a;
+	return a;
+}
+
 void shiftRight(char* buffer, int size, int position, int shift)
 {
 	int i, j;
-	char temp;
+
 	for (j = 0; j < shift; j++)
 	{
-		for (i = position; i < size; i++)
+		size++;
+		buffer[size-1] = 0;
+
+		for (i = size-2; i >= position; i--)
 		{
-			if (i != position)
-				swap(&buffer[i], &temp);
-			else
-				temp = buffer[i];
+			swap(&buffer[i], &buffer[i+1]);
 		}
 
 		position++;
 	}
 }
+
+void shiftLeft(char* buffer, int size, int position, int shift)
+{
+	int i, j;
+
+	for (j = 0; j < shift; j++)
+	{
+
+		for (i = position-1; i < size; i++)
+		{
+			swap(&buffer[i], &buffer[i+1]);
+		}
+
+		size--;
+		position--;
+	}
+}
+
 
 int llwrite(int fd, char * buffer, int length)
 {
@@ -235,6 +315,8 @@ int llwrite(int fd, char * buffer, int length)
 
 	package[5+length] = FLAG;
 
+	printArray(package, packageSize);
+
 	for (i = 4; i < 4+length; i++)
 	{
 		if (package[i] == FLAG)
@@ -257,10 +339,7 @@ int llwrite(int fd, char * buffer, int length)
 	}
 
 
-	for (j = 0; j < packageSize; j++)
-	{
-		printf("package[%i] = %i\n", j, package[j]);
-	}
+	printArray(package, packageSize);
 
 	if (write(fd, package, packageSize) < 0)
 	{
@@ -270,17 +349,13 @@ int llwrite(int fd, char * buffer, int length)
 
 	printf("Message sent!\n");
 
-
 	alarm(timeoutSize);
 
 	received = read(fd, awns, 5);
 
 	alarm(0);
 
-	for (j = 0; j < 5; j++)
-	{
-		printf("Received[%i] = 0x%x\n", j, awns[j]);
-	}
+	printArray(awns, 5);
 
 	if(received < 0)
 	{
@@ -298,22 +373,83 @@ int llwrite(int fd, char * buffer, int length)
 	return 0;
 }
 
-void printArray(char* arr)
+int llread(int fd, char * buffer)
 {
-	int i;
-	for (i = 0; i < 5; i++)
+	int receivedSize = 128;
+	char received[receivedSize], awns[5];
+	int i, j, numBytes = 1;
+
+	for (i = 0; numBytes < 1; i++)
 	{
-		printf("%i\n", arr[i]);
+		numBytes = read(fd, received+i, 1);
 	}
+
+	int bytesReceived = i;
+	printArray(received, bytesReceived);
+
+	/*if (package[i] == FLAG)
+	{
+		shiftRight(package, packageSize+1, i+1, 1);
+		packageSize++;
+
+		package[i] = ESCAPE;
+		package[i+1] = 0x5e;
+	}
+	else if (package[i] == ESCAPE)
+	{
+		shiftRight(package, packageSize+1, i+1, 1);
+		packageSize++;
+
+		package[i] = ESCAPE;
+		package[i+1] = 0x5d;
+	}*/
+
+
+
+	if (write(fd, package, packageSize) < 0)
+	{
+		printf("Error in transmission\n");
+		return -1;
+	}
+
+	printf("Message sent!\n");
+
+	if(received < 0)
+	{
+		printf("Error in receiving end\n");
+		return -1;
+	}
+
+	int status = stateMachine(awns, UA_C);
+
+	if (!status)
+		printf("Received UA\n");
+	else
+		printf("Unknown message\n");
+
+	return 0;
 }
 
 
 int main(int argc, char** argv)
 {
 
-	char temp[5] = {1,2,FLAG,4,5};
+	int size = 7;
+	char temp[7] = {1, 2, 0, 0, 4, 5, 6};
+	int position = 4;
+	int shiftValue = 2;
 
-	llwrite(0, temp, 5);
+	// llwrite(0, temp, 5);
+	
+	printArray(temp, size);
+	printf("\n");
+
+	shiftLeft(temp, size, position, shiftValue);
+	size -= shiftValue;
+/*	temp[position] = 69;
+	temp[position+1] = -1;
+*/
+	printArray(temp, size);
 
     return 0;
 }
