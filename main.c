@@ -106,12 +106,12 @@ int stateMachine(char received[], int C)
 	return 1;
 } 
 
-int dataCheck(char received[], int size)
+int headerCheck(char received[], int size)
 {
 	char control, bcc1, bcc2;
 	int i;
 
-	if (received[0] == FLAG && received[1] == ADDR && received[size-1] == FLAG)
+	if (received[0] == FLAG && received[1] == ADDR)
 	{
 		control = received[2];
 		bcc1 = received[3];
@@ -119,15 +119,6 @@ int dataCheck(char received[], int size)
 		if (bcc1 != received[1] ^ control)
 			return -1;
 
-		
-		for (i = 4; i < size-2; i++)
-		{
-			if (i == 4)
-				bcc2 = received[4];
-			else
-				bcc2 = bcc2 ^ received[i];
-		}
-		
 		if (bcc2 != received[size-2])
 			return -1;
 		else
@@ -136,6 +127,26 @@ int dataCheck(char received[], int size)
 	}
 
 	return -1; //Error
+}
+
+
+int dataCheck(char received[], int size)
+{
+	char bcc2;
+	int i;
+
+	for (i = 0; i < size-1; i++)
+	{
+		if (i == 0)
+			bcc2 = received[i];
+		else
+			bcc2 ^= receved[i];
+	}
+
+	if (bcc2 == received[size-1])
+		return 0;
+
+	return -1;	//Error
 }
 
 
@@ -301,28 +312,37 @@ void shiftLeft(char* buffer, int size, int position, int shift)
 int llwrite(int fd, char * buffer, int length)
 {
 	char package[6 + length + 200], awns[5];
-	int i, j, received, packageSize = 6 + length;
+	int i, j, received, packageSize = 10 + length;
 
 	package[0] = FLAG;
 	package[1] = ADDR;
 	package[2] = 0;
 	package[3] = package[1] ^ package[2];
-	package[4+length] = buffer[0];
+	package[4] = 1; /* 1 - dados ??*/
+	package[5] = 0 % 255;
+	package[6] = length / 256;
+	package[7] = length % 256;
+
+	for (i = 4; i < 8; i++)						// Calculates BCC2 using the first part of the data packet
+	{
+		if (i == 4)
+			package[packageSize-2] = package[i];
+		else
+			package[packageSize-2] ^= package[i];
+	}
 
 	for (i = 0; i < length; i++)
 	{
+		package[8+i] = buffer[i];
 
-		package[4+i] = buffer[i];
-
-		if (i != 0)
-			package[4+length] = package[4+length] ^ buffer[i];   //BCC2
+		package[packageSize-2] ^= buffer[i];	// Continues to calculate BCC2 using the actual data package
 	}
 
-	package[5+length] = FLAG;
+	package[packageSize-1] = FLAG;
 
 	printArray(package, packageSize);
 
-	for (i = 4; i < packageSize - 1; i++)
+	for (i = 8; i < packageSize - 2; i++)
 	{
 		if (package[i] == FLAG)
 		{
@@ -345,9 +365,7 @@ int llwrite(int fd, char * buffer, int length)
 
 	}
 
-
 	printArray(package, packageSize);
-
 	
 	if (write(fd, package, packageSize) < 0)
 	{
@@ -365,17 +383,37 @@ int llread(int fd, char * buffer)
 	char received[128], awns[5];
 	int i, j, numBytes = 1, receivedSize;
 	
-	for (receivedSize = 0; numBytes < 1; receivedSize++)
+	for (receivedSize = 0; receivedSize < 8; receivedSize++)	// Reads the first 8 bytes of the data packet.
 	{
 		// printf("Before reading\n");
-		numBytes = read(fd, received+receivedSize, 1);
+		numBytes = read(fd, received[receivedSize], 1);
 		// printf("Read %i bytes\n", receivedSize);
 	}
-	
 	printArray(received, receivedSize);
 
+	if (headerCheck(received, receivedSize) != 0)
+	{
+		printf("Error on checked");
+		return -1;
+	}
+	
+	int packageSize = received[6]*256 + received[7];
 
-	for (i = 0; i < receivedSize; i++)
+	for (; receivedSize-8 < packageSize + 2; receivedSize++) // Reads data package plus bcc2 and flag ending the data packet.
+	{
+		// printf("Before reading\n");
+		numBytes = read(fd, received[receivedSize], 1);
+		// printf("Read %i bytes\n", receivedSize);
+	}
+	printArray(received, receivedSize);
+
+	if (received[receivedSize-1] != FLAG)
+	{
+		printf("Error retrieving FLAG at the end of the data packet");
+		return -1;
+	}
+
+	for (i = 8; i < packageSize; i++) // Destuffs the data package
 	{
 		if (received[i] == ESCAPE)
 		{
@@ -400,11 +438,20 @@ int llread(int fd, char * buffer)
 			
 		}
 	}
-	
-	
+	packageSize = receivedSize - 8;
 	printArray(received, receivedSize);
-	
-	return dataCheck(received, receivedSize);
+
+	if (dataCheck(received+8, packageSize+1) != 0)
+	{
+		printf("Error on the BCC2 component of the data packet");
+		return -1;
+	}
+
+	for (i = 8; i < packageSize + 8; i++) // Extracts data package to buffer
+	{
+		buffer[i-8] = received[i];
+	}
+
 
 	/*
 	if (write(fd, received, receivedSize) < 0)
