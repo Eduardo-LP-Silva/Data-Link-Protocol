@@ -348,35 +348,14 @@ int llwrite(int fd, char * buffer, int length)
 
 	printArray(package, packageSize);
 
+	/*
 	if (write(fd, package, packageSize) < 0)
 	{
 		printf("Error in transmission\n");
 		return -1;
 	}
-
+	*/
 	printf("Message sent!\n");
-
-	alarm(timeoutSize);
-
-	received = read(fd, awns, 5);
-
-	alarm(0);
-
-	printArray(awns, 5);
-
-	if(received < 0)
-	{
-		printf("Error in receiving end\n");
-		return -1;
-	}
-
-	int status = stateMachine(awns, UA_C);
-
-	if (!status)
-		printf("Received UA\n");
-	else
-		printf("Unknown message\n");
-		
 
 	return 0;
 }
@@ -388,24 +367,8 @@ int llread(int fd, char * buffer)
 	
 	for (receivedSize = 0; numBytes < 1; receivedSize++)
 	{
-		numBytes = read(fd, received+i, 1);
+		numBytes = read(fd, received+receivedSize, 1);
 	}
-	
-	/*
-	received[0] = FLAG;
-	received[1] = ADDR;
-	received[2] = 0;
-	received[3] = received[1] ^ received[2];
-	received[4] = 1;
-	received[5] = 2;
-	received[6] = 125;
-	received[7] = 94;
-	received[8] = 4;
-	received[9] = 5;
-	received[10] = 124;
-	received[11] = 126;
-	receivedSize = 12;
-	*/
 	
 	printArray(received, receivedSize);
 
@@ -436,11 +399,12 @@ int llread(int fd, char * buffer)
 		}
 	}
 	
+	
 	printArray(received, receivedSize);
 	
 	return dataCheck(received, receivedSize);
 
-	
+	/*
 	if (write(fd, received, receivedSize) < 0)
 	{
 		printf("Error in transmission\n");
@@ -462,6 +426,7 @@ int llread(int fd, char * buffer)
 	else
 		printf("Unknown message\n");
 	
+	*/
 	return 0;
 }
 
@@ -513,7 +478,6 @@ int main(int argc, char** argv)
   */
 
 
-
 	tcflush(fd, TCIOFLUSH);
 
 	if ( tcsetattr(fd,TCSANOW,&newtio) == -1) {
@@ -523,13 +487,31 @@ int main(int argc, char** argv)
 
 	printf("New termios structure set\n");
 	
+	if (strcmp(argv[2], "transmitter") == 0)
+	{
+		llopen(fd, TRANSMITTER);
 	
-	int size = 5;
-	char temp[5] = {1, 2, FLAG, 4, 5};
-	
-	char *received = calloc(100, 1);
+		int size = 5;
+		char temp[5] = {1, 2, FLAG, 4, 5};
 
-	printf("Return : %i\n", llread(0, received));
+		printf("Return : %i\n", llwrite(fd, temp, size));
+	
+	}
+	else if (strcmp(argv[2], "receiver") == 0)
+	{
+		llopen(fd, RECEIVER);
+	
+		char received[100];
+
+		printf("Return : %i\n", llread(fd, received));
+	}
+	else
+	{
+		printf("Must specify \"transmitter\" or \"receiver\" as second argument\n");
+		return -1;
+	}
+	
+	
 	
 
     tcsetattr(fd,TCSANOW,&oldtio);
