@@ -348,13 +348,13 @@ int llwrite(int fd, char * buffer, int length)
 
 	printArray(package, packageSize);
 
-	/*
+	
 	if (write(fd, package, packageSize) < 0)
 	{
 		printf("Error in transmission\n");
 		return -1;
 	}
-	*/
+	
 	printf("Message sent!\n");
 
 	return 0;
@@ -367,7 +367,9 @@ int llread(int fd, char * buffer)
 	
 	for (receivedSize = 0; numBytes < 1; receivedSize++)
 	{
+		// printf("Before reading\n");
 		numBytes = read(fd, received+receivedSize, 1);
+		// printf("Read %i bytes\n", receivedSize);
 	}
 	
 	printArray(received, receivedSize);
