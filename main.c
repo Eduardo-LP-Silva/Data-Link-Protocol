@@ -43,6 +43,7 @@ void printArray(char* arr, int length)
 	{
 		printf("%i\n", arr[i]);
 	}
+	printf("\n");
 }
 
 int stateMachine(char received[], int C)
@@ -105,7 +106,7 @@ int stateMachine(char received[], int C)
 	return 1;
 } 
 
-int dataCheck(char received[], int size, char *package)
+int dataCheck(char received[], int size)
 {
 	char control, bcc1, bcc2;
 	int i;
@@ -113,28 +114,32 @@ int dataCheck(char received[], int size, char *package)
 	if (received[0] == FLAG && received[1] == ADDR && received[size-1] == FLAG)
 	{
 		control = received[2];
-		bcc1 = received[4];
+		bcc1 = received[3];
 
 		if (bcc1 != received[1] ^ control)
 			return -1;
 
 		
-		for (i = 4; i < size-1; i++)
+		for (i = 4; i < size-2; i++)
 		{
-			package[i-4] = received[i];
-
 			if (i == 4)
 				bcc2 = received[4];
 			else
 				bcc2 = bcc2 ^ received[i];
 		}
+		
+		if (bcc2 != received[size-2])
+			return -1;
+		else
+			return 0;
+			
 	}
 
 	return -1; //Error
 }
 
 
-int messageCheck(char received[])
+int messageCheck(char received[], int size)
 {
 	char control, bcc1, bcc2;
 	int i;
@@ -304,7 +309,7 @@ int llwrite(int fd, char * buffer, int length)
 	package[3] = package[1] ^ package[2];
 	package[4+length] = buffer[0];
 
-	for (i = 0; i < packageSize; i++)
+	for (i = 0; i < length; i++)
 	{
 
 		package[4+i] = buffer[i];
@@ -317,7 +322,7 @@ int llwrite(int fd, char * buffer, int length)
 
 	printArray(package, packageSize);
 
-	for (i = 4; i < 4+length; i++)
+	for (i = 4; i < packageSize - 1; i++)
 	{
 		if (package[i] == FLAG)
 		{
@@ -326,6 +331,7 @@ int llwrite(int fd, char * buffer, int length)
 
 			package[i] = ESCAPE;
 			package[i+1] = 0x5e;
+			i++;
 		}
 		else if (package[i] == ESCAPE)
 		{
@@ -334,6 +340,7 @@ int llwrite(int fd, char * buffer, int length)
 
 			package[i] = ESCAPE;
 			package[i+1] = 0x5d;
+			i++;
 		}
 
 	}
@@ -369,44 +376,72 @@ int llwrite(int fd, char * buffer, int length)
 		printf("Received UA\n");
 	else
 		printf("Unknown message\n");
+		
 
 	return 0;
 }
 
 int llread(int fd, char * buffer)
 {
-	int receivedSize = 128;
-	char received[receivedSize], awns[5];
-	int i, j, numBytes = 1;
-
-	for (i = 0; numBytes < 1; i++)
+	char received[128], awns[5];
+	int i, j, numBytes = 1, receivedSize;
+	
+	for (receivedSize = 0; numBytes < 1; receivedSize++)
 	{
 		numBytes = read(fd, received+i, 1);
 	}
+	
+	/*
+	received[0] = FLAG;
+	received[1] = ADDR;
+	received[2] = 0;
+	received[3] = received[1] ^ received[2];
+	received[4] = 1;
+	received[5] = 2;
+	received[6] = 125;
+	received[7] = 94;
+	received[8] = 4;
+	received[9] = 5;
+	received[10] = 124;
+	received[11] = 126;
+	receivedSize = 12;
+	*/
+	
+	printArray(received, receivedSize);
 
-	int bytesReceived = i;
-	printArray(received, bytesReceived);
 
-	/*if (package[i] == FLAG)
+	for (i = 0; i < receivedSize; i++)
 	{
-		shiftRight(package, packageSize+1, i+1, 1);
-		packageSize++;
+		if (received[i] == ESCAPE)
+		{
+			if (received[i+1] == 0x5e)
+			{
+				shiftLeft(received, receivedSize, i+1, 1);
+				receivedSize--;
 
-		package[i] = ESCAPE;
-		package[i+1] = 0x5e;
+				received[i] = FLAG;
+			}
+			else if (received[i+1] == 0x5d)
+			{
+				shiftLeft(received, receivedSize, i+1, 1);
+				receivedSize--;
+
+				received[i] = ESCAPE;
+			}
+			else
+			{
+				return -1;
+			}
+			
+		}
 	}
-	else if (package[i] == ESCAPE)
-	{
-		shiftRight(package, packageSize+1, i+1, 1);
-		packageSize++;
+	
+	printArray(received, receivedSize);
+	
+	return dataCheck(received, receivedSize);
 
-		package[i] = ESCAPE;
-		package[i+1] = 0x5d;
-	}*/
-
-
-
-	if (write(fd, package, packageSize) < 0)
+	
+	if (write(fd, received, receivedSize) < 0)
 	{
 		printf("Error in transmission\n");
 		return -1;
@@ -426,7 +461,7 @@ int llread(int fd, char * buffer)
 		printf("Received UA\n");
 	else
 		printf("Unknown message\n");
-
+	
 	return 0;
 }
 
@@ -434,22 +469,13 @@ int llread(int fd, char * buffer)
 int main(int argc, char** argv)
 {
 
-	int size = 7;
-	char temp[7] = {1, 2, 0, 0, 4, 5, 6};
-	int position = 4;
-	int shiftValue = 2;
-
-	// llwrite(0, temp, 5);
+	int size = 5;
+	char temp[5] = {1, 2, FLAG, 4, 5};
 	
-	printArray(temp, size);
-	printf("\n");
+	char *received = calloc(100, 1);
 
-	shiftLeft(temp, size, position, shiftValue);
-	size -= shiftValue;
-/*	temp[position] = 69;
-	temp[position+1] = -1;
-*/
-	printArray(temp, size);
+	printf("Return : %i\n", llread(0, received));
+	
 
     return 0;
 }
