@@ -1,34 +1,8 @@
 /*Non-Canonical Input Processing*/
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <termios.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-
-#define BAUDRATE B38400 /* bit rate*/
-#define MODEMDEVICE "/dev/ttyS1"
-#define _POSIX_SOURCE 1 /* POSIX compliant source */
-#define FALSE 0
-#define TRUE 1
-#define BUFFER 255
-#define FLAG 0x7E
-#define ADDR 0x03
-#define SET_C 0x03
-#define BCC1 ADDR ^ SET_C
-#define UA_C 0x07
-#define BCC2 ADDR ^ UA_C
-#define ESCAPE 0x7d
-#define TRANSMITTER 0
-#define RECEIVER 1
+#include "main.h"
 
 volatile int STOP=FALSE;
-
-int timeoutSize = 3;
 
 void sigalrm_handler(int signal)
 {
@@ -155,7 +129,7 @@ int messageCheck(char received[])
 	char control, bcc1, bcc2;
 	int i;
 
-	if (received[0] == FLAG && received[1] == ADDR && received[size-1] == FLAG)
+	if (received[0] == FLAG && received[1] == ADDR && received[4] == FLAG)
 	{
 		control = received[2];
 		bcc1 = received[4];
@@ -312,7 +286,7 @@ int sendAnswer(int fd, char control)
 	if (written < 0)
 		printf("Error sending RR!\n");
 
-	return writen;
+	return written;
 }
 
 
