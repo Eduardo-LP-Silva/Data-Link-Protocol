@@ -351,8 +351,10 @@ int llwrite(int fd, char * buffer, int length)
 	package[packageSize-1] = FLAG;
 
 	printArray(package, packageSize);
+
+	int written = write(fd, package, packageSize);
 	
-	if (write(fd, package, packageSize) < 0)
+	if (written < 0)
 	{
 		printf("Error in transmission\n");
 		return -1;
@@ -360,7 +362,7 @@ int llwrite(int fd, char * buffer, int length)
 	
 	printf("Message sent!\n");
 
-	return 0;
+	return written;
 }
 
 int llread(int fd, char * buffer)
