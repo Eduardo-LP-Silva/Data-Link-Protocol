@@ -194,14 +194,7 @@ int llopen(int fd, int flag)
 		received = read(fd, awns, 5);
 	
 		alarm(0);
-
-		int j;
-
-		for (j = 0; j < 5; j++)
-		{
-			printf("Received[%i] = 0x%x\n", j, awns[j]);
-		}
-
+		
 		if(received < 0)
 		{
 			printf("Error in receiving end\n");
@@ -222,11 +215,6 @@ int llopen(int fd, int flag)
 		received = read(fd, awns, 5);
 
 		alarm(0);
-	
-		for (i = 0; i < 5; i++)
-		{
-			printf("Received[%i] = 0x%x\n", i, awns[i]);
-		}
 
 		if(received < 0)
 		{
