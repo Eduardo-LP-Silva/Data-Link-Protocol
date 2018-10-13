@@ -437,10 +437,10 @@ int llread(int fd, char * buffer)
 			
 		}
 	}
-	packageSize = receivedSize - 8;
+	packageSize = receivedSize - 6;
 	printArray(received, receivedSize);
 
-	if (dataCheck(received+4, receivedSize-4) != 0)
+	if (dataCheck(received+4, packageSize+1) != 0)
 	{
 		printf("Error on the BCC2 component of the data packet");
 		return -1;
