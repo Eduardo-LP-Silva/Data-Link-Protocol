@@ -521,10 +521,6 @@ int main(int argc, char** argv)
 
 	printf("New termios structure set\n");
 	
-	char foo[10] = {1,0,0,6,1,2, FLAG, 4, 5, 123};
-	
-	printf("%i\n", dataCheck(foo, 10));
-	
 	if (strcmp(argv[2], "transmitter") == 0)
 	{
 		llopen(fd, TRANSMITTER);
