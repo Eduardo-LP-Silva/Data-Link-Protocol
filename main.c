@@ -150,7 +150,7 @@ int dataCheck(char received[], int size)
 }
 
 
-int messageCheck(char received[], int size)
+int messageCheck(char received[])
 {
 	char control, bcc1, bcc2;
 	int i;
@@ -297,10 +297,30 @@ void shiftLeft(char* buffer, int size, int position, int shift)
 }
 
 
+int sendAnswer(int fd, char control)
+{
+	char buffer[5];
+	
+	buffer[0] = FLAG;
+	buffer[1] = ADDR;
+	buffer[2] = control;
+	buffer[3] = buffer[1] ^ buffer[2];
+	buffer[4] = FLAG;
+	
+	int written = write(fd, buffer, 5);
+	
+	if (written < 0)
+		printf("Error sending RR!\n");
+
+	return writen;
+}
+
+
+
 int llwrite(int fd, char * buffer, int length)
 {
 	char package[6 + length + 200], awns[5];
-	int i, j, received, packageSize = 10 + length;
+	int i, j, packageSize = 10 + length;
 
 	package[0] = FLAG;
 	package[1] = ADDR;
@@ -361,6 +381,11 @@ int llwrite(int fd, char * buffer, int length)
 	}
 	
 	printf("Message sent!\n");
+	
+	char received[5];
+	
+	read(fd, received, 5);
+	
 
 	return written;
 }
@@ -438,32 +463,18 @@ int llread(int fd, char * buffer)
 	{
 		buffer[i] = received[8 + i];
 	}
-
-
-	/*
-	if (write(fd, received, receivedSize) < 0)
-	{
-		printf("Error in transmission\n");
-		return -1;
-	}
-
-	printf("Message sent!\n");
-
-	if(received < 0)
-	{
-		printf("Error in receiving end\n");
-		return -1;
-	}
-
-	int status = stateMachine(awns, UA_C);
-
-	if (!status)
-		printf("Received UA\n");
-	else
-		printf("Unknown message\n");
 	
-	*/
+	sendAnswer(fd, RR_C);
+
 	return 0;
+}
+
+
+int llclose(int fd)
+{
+	
+
+	return 1;
 }
 
 
