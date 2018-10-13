@@ -320,29 +320,13 @@ int llwrite(int fd, char * buffer, int length)
 	package[3] = package[1] ^ package[2];
 	package[4] = 1; /* 1 - dados ??*/
 	package[5] = 0 % 255;
-	package[6] = length / 256;
-	package[7] = length % 256;
-
-	for (i = 4; i < 8; i++)						// Calculates BCC2 using the first part of the data packet
-	{
-		if (i == 4)
-			package[packageSize-2] = package[i];
-		else
-			package[packageSize-2] ^= package[i];
-	}
 
 	for (i = 0; i < length; i++)
 	{
 		package[8+i] = buffer[i];
-
-		package[packageSize-2] ^= buffer[i];	// Continues to calculate BCC2 using the actual data package
 	}
 
-	package[packageSize-1] = FLAG;
-
-	printArray(package, packageSize);
-
-	for (i = 8; i < packageSize - 2; i++)
+	for (i = 8; i < packageSize - 2; i++) // Stuffing
 	{
 		if (package[i] == FLAG)
 		{
@@ -364,6 +348,19 @@ int llwrite(int fd, char * buffer, int length)
 		}
 
 	}
+	
+	package[6] = (packageSize-10) / 256;
+	package[7] = (packageSize-10) % 256;
+	
+	for (i = 4; i < packageSize - 2; i++)						// Calculates BCC2
+	{
+		if (i == 4)
+			package[packageSize-2] = package[i];
+		else
+			package[packageSize-2] ^= package[i];
+	}
+	
+	package[packageSize-1] = FLAG;
 
 	printArray(package, packageSize);
 	
@@ -441,7 +438,7 @@ int llread(int fd, char * buffer)
 	packageSize = receivedSize - 8;
 	printArray(received, receivedSize);
 
-	if (dataCheck(received+8, packageSize+1) != 0)
+	if (dataCheck(received+4, packageSize+1) != 0)
 	{
 		printf("Error on the BCC2 component of the data packet");
 		return -1;
@@ -541,7 +538,7 @@ int main(int argc, char** argv)
 		llopen(fd, TRANSMITTER);
 	
 		int size = 5;
-		char temp[5] = {1, 2, FLAG, 4, 5};
+		char temp[5] = {1, 2, 3, 4, 5};
 
 		printf("Return : %i\n", llwrite(fd, temp, size));
 	
