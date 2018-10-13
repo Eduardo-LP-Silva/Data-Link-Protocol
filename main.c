@@ -302,10 +302,31 @@ int llwrite(int fd, char * buffer, int length)
 	package[3] = package[1] ^ package[2];
 	package[4] = 1; /* 1 - dados ??*/
 	package[5] = 0 % 255;
-
+	
+	int packageLength = length;
+	
+	for (i = 0; i < length; i++) // Measures size of data
+	{
+		if (package[i] == FLAG || package[i] == ESCAPE)
+			packageLength++;
+	}
+	
+	package[6] = packageLength / 256;
+	package[7] = packageLength % 256;
+	
+	for (i = 4; i < 8; i++)								// Calculates BCC2
+	{
+		if (i == 4)
+			package[packageSize-2] = package[i];
+		else
+			package[packageSize-2] ^= package[i];
+	}
+	
 	for (i = 0; i < length; i++)
 	{
 		package[8+i] = buffer[i];
+		
+		package[packageSize-2] ^= buffer[i];
 	}
 
 	for (i = 8; i < packageSize - 2; i++) // Stuffing
@@ -331,17 +352,6 @@ int llwrite(int fd, char * buffer, int length)
 
 	}
 	
-	package[6] = (packageSize-10) / 256;
-	package[7] = (packageSize-10) % 256;
-	
-	for (i = 4; i < packageSize - 2; i++)						// Calculates BCC2
-	{
-		if (i == 4)
-			package[packageSize-2] = package[i];
-		else
-			package[packageSize-2] ^= package[i];
-	}
-	
 	package[packageSize-1] = FLAG;
 
 	printArray(package, packageSize);
@@ -355,11 +365,14 @@ int llwrite(int fd, char * buffer, int length)
 	}
 	
 	printf("Message sent!\n");
-	
+		
 	char received[5];
 	
-	read(fd, received, 5);
+	alarm(timeoutSize);
 	
+	read(fd, received, 5);
+
+	alarm(0);	
 
 	return written;
 }
@@ -399,7 +412,7 @@ int llread(int fd, char * buffer)
 		return -1;
 	}
 
-	for (i = 8; i < packageSize; i++) // Destuffs the data package
+	for (i = 8; i < packageSize + 8; i++) // Destuffs the data package
 	{
 		if (received[i] == ESCAPE)
 		{
@@ -427,7 +440,7 @@ int llread(int fd, char * buffer)
 	packageSize = receivedSize - 8;
 	printArray(received, receivedSize);
 
-	if (dataCheck(received+4, packageSize+1) != 0)
+	if (dataCheck(received+4, receivedSize-4) != 0)
 	{
 		printf("Error on the BCC2 component of the data packet");
 		return -1;
@@ -508,12 +521,16 @@ int main(int argc, char** argv)
 
 	printf("New termios structure set\n");
 	
+	char foo[10] = {1,0,0,6,1,2, FLAG, 4, 5, 123};
+	
+	printf("%i\n", dataCheck(foo, 10));
+	
 	if (strcmp(argv[2], "transmitter") == 0)
 	{
 		llopen(fd, TRANSMITTER);
 	
 		int size = 5;
-		char temp[5] = {1, 2, 3, 4, 5};
+		char temp[5] = {1, 2, FLAG, 4, 5};
 
 		printf("Return : %i\n", llwrite(fd, temp, size));
 	
