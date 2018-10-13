@@ -140,7 +140,7 @@ int dataCheck(char received[], int size)
 		if (i == 0)
 			bcc2 = received[i];
 		else
-			bcc2 ^= receved[i];
+			bcc2 ^= received[i];
 	}
 
 	if (bcc2 == received[size-1])
@@ -386,7 +386,7 @@ int llread(int fd, char * buffer)
 	for (receivedSize = 0; receivedSize < 8; receivedSize++)	// Reads the first 8 bytes of the data packet.
 	{
 		// printf("Before reading\n");
-		numBytes = read(fd, received[receivedSize], 1);
+		numBytes = read(fd, &received[receivedSize], 1);
 		// printf("Read %i bytes\n", receivedSize);
 	}
 	printArray(received, receivedSize);
@@ -402,7 +402,7 @@ int llread(int fd, char * buffer)
 	for (; receivedSize-8 < packageSize + 2; receivedSize++) // Reads data package plus bcc2 and flag ending the data packet.
 	{
 		// printf("Before reading\n");
-		numBytes = read(fd, received[receivedSize], 1);
+		numBytes = read(fd, &received[receivedSize], 1);
 		// printf("Read %i bytes\n", receivedSize);
 	}
 	printArray(received, receivedSize);
