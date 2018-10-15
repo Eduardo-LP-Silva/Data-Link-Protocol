@@ -3,7 +3,10 @@
 #include "constants.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <strings.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 void swap(char* a, char*b)
@@ -127,20 +130,73 @@ int stateMachine(char received[], int C)
 	return 1;
 }
 
+int openPort(char* device, int flag)
+{
+	int fd = open(device, O_RDWR | O_NOCTTY);
+
+	if (fd < 0)
+	{
+		perror(device);
+		exit(-1);
+	}
+	
+	return llopen(fd, flag);
+}
+
 int llopen(int fd, int flag)
 {
-	char setup[5], awns[5];
-	int i, received;
+	int c, res;
+
+  /*
+	Open serial port device for reading and writing and not as controlling tty
+	because we don't want to get killed if linenoise sends CTRL-C.
+  */
+
+	if ( tcgetattr(fd,&oldtio) == -1) { /* save current port settings */
+	  perror("tcgetattr");
+	  exit(-1);
+	}
+
+	bzero(&newtio, sizeof(newtio));
+	newtio.c_cflag = BAUDRATE | CS8 | CLOCAL | CREAD;
+	newtio.c_iflag = IGNPAR;
+	newtio.c_oflag = 0;
+
+	/* set input mode (non-canonical, no echo,...) */
+	newtio.c_lflag = 0;
+
+	newtio.c_cc[VTIME]	= 0;   /* inter-character timer unused */
+	newtio.c_cc[VMIN]	= 1;   /* blocking read until 1 chars received */
+
+
+
+  /* 
+	VTIME e VMIN devem ser alterados de forma a proteger com um temporizador a 
+	leitura do(s) próximo(s) caracter(es)
+  */
+
+
+	tcflush(fd, TCIOFLUSH);
+
+	if ( tcsetattr(fd,TCSANOW,&newtio) == -1) {
+	  perror("tcsetattr");
+	  exit(-1);
+	}
+
+	printf("New termios structure set\n");
+
+	char buf[5];
+	int received;
 
 	if (flag == TRANSMITTER)
 	{
-		setup[0] = FLAG;
-		setup[1] = ADDR;
-		setup[2] = SET_C;
-		setup[3] = setup[1] ^ setup[2];
-		setup[4] = FLAG;
+		buf[0] = FLAG;
+		buf[1] = ADDR;
+		buf[2] = SET_C;
+		buf[3] = buf[1] ^ buf[2];
+		buf[4] = FLAG;
 
-		if(write(fd, setup, 5) < 0)
+		if(write(fd, buf, 5) < 0)
 		{
 			printf("Error in transmission\n");
 			return -1;
@@ -151,7 +207,7 @@ int llopen(int fd, int flag)
 
 		alarm(TIMEOUT);
 	
-		received = read(fd, awns, 5);
+		received = read(fd, buf, 5);
 	
 		alarm(0);
 		
@@ -161,7 +217,7 @@ int llopen(int fd, int flag)
 			return -1;
 		}
 	
-		int status = stateMachine(awns, UA_C);
+		int status = stateMachine(buf, UA_C);
 
 		if (!status)
 			printf("Received UA\n");
@@ -172,7 +228,7 @@ int llopen(int fd, int flag)
 	{
 		alarm(TIMEOUT);
 	
-		received = read(fd, awns, 5);
+		received = read(fd, buf, 5);
 
 		alarm(0);
 
@@ -182,20 +238,20 @@ int llopen(int fd, int flag)
 			return -1;
 		}
 
-		int status = stateMachine(awns, SET_C);
+		int status = stateMachine(buf, SET_C);
 
 		if (!status)
 			printf("Received SET\n");
 		else
 			printf("Unknown message\n");
 
-		setup[0] = FLAG;
-		setup[1] = ADDR;
-		setup[2] = UA_C;
-		setup[3] = setup[1] ^ setup[2];
-		setup[4] = FLAG;
+		buf[0] = FLAG;
+		buf[1] = ADDR;
+		buf[2] = UA_C;
+		buf[3] = buf[1] ^ buf[2];
+		buf[4] = FLAG;
 
-		if(write(fd, setup, 5) < 0)
+		if(write(fd, buf, 5) < 0)
 		{
 			printf("Error in transmission\n");
 			return -1;
@@ -204,5 +260,12 @@ int llopen(int fd, int flag)
 		printf("Message sent!\n");
 	}	
 	
-	return 0;
+	return fd;
+}
+
+
+int llclose(int fd)
+{
+	tcsetattr(fd,TCSANOW,&oldtio); 
+	close(fd);
 }

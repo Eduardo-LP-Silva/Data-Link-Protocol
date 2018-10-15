@@ -3,13 +3,17 @@
 #include "constants.h"
 #include "utilities.h"
 
+#include <fcntl.h>
+#include <sys/stat.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-int sendFile(char* filename)
+int sendFile(char* filename, char* device)
 {
+	int portfd = openPort(device, TRANSMITTER);
+
 	int fd = open(filename, O_RDONLY);
 
 	struct stat st;
@@ -28,7 +32,7 @@ int sendFile(char* filename)
 
 	// Control package
 
-	package[packageSize++] = 2; // C (2 - start) 
+	package[packageSize++] = 2; // C (2 - start)
 	package[packageSize++] = 0; // field type (file size)
 	package[packageSize++] = 1; // Number of bytes of field
 	package[packageSize++] = numBytes;
@@ -38,30 +42,24 @@ int sendFile(char* filename)
 	memcpy(&package[packageSize], filename, strlen(filename) + 1);
 	packageSize += strlen(filename) + 1;
 	
-	while (numBytes == 128)
+	int i;
+	for (i = 0; numBytes == 128; i++)
 	{
-		numBytes = read(fd, &buffer[i], 128);
+		numBytes = read(fd, buffer, 128);
 		
-		
+		package[packageSize++] = 1; // C (1 - data) 
+		package[packageSize++] = i; // Sequence number
+		package[packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
+		package[packageSize++] = numBytes % 256;
+		memcpy(&package[packageSize], buffer, numBytes);
+		packageSize += numBytes;
 
-		
+		llwrite(fd, package, packageSize);
 
+		packageSize = 0;
 	}
 
-		
-
-	
-
-	// Data package
-
-	int numDataPackages = (size / 128)+1; // Number of data packages necessary
-	char sequenceNumber = 0;
-
-	package[packageSize++] = 1; // C (1 - data) 
-	package[packageSize++] = sequenceNumber;
-	package[packageSize++] = packageLength / 256; // The 8 most significant bits in the packageSize.
-
-	llwrite
+	llclose(portfd);
 
 	return 0;
 }
@@ -76,8 +74,6 @@ int llwrite(int fd, char * buffer, int length)
 	package[1] = ADDR;
 	package[2] = 0;
 	package[3] = package[1] ^ package[2];
-	package[4] = 1; /* 1 - dados ??*/
-	package[5] = 0 % 255;
 	
 	int packageLength = length;
 	
@@ -87,25 +83,17 @@ int llwrite(int fd, char * buffer, int length)
 			packageLength++;
 	}
 	
-	package[6] = packageLength / 256;
-	package[7] = packageLength % 256;
-	
-	for (i = 4; i < 8; i++)								// Calculates BCC2
+	for (i = 0; i < length; i++) // Calculates BCC2
 	{
-		if (i == 4)
-			package[packageSize-2] = package[i];
-		else
-			package[packageSize-2] ^= package[i];
-	}
-	
-	for (i = 0; i < length; i++)
-	{
-		package[8+i] = buffer[i];
+		package[4+i] = buffer[i];
 		
-		package[packageSize-2] ^= buffer[i];
+		if (i == 0)
+			package[packageSize-2] = buffer[i];
+		else
+			package[packageSize-2] ^= buffer[i];
 	}
 
-	for (i = 8; i < packageSize - 2; i++) // Stuffing
+	for (i = 4; i < packageSize - 2; i++) // Stuffing
 	{
 		if (package[i] == FLAG)
 		{
