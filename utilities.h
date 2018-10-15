@@ -8,7 +8,7 @@ typedef struct
 {
 	int fileDescriptor; /*Descritor correspondente à porta série*/
 	int status; /*TRANSMITTER | RECEIVER*/
-	char dataPacketIndex; //Data Packet Number
+	int dataPacketIndex; //Data Packet Number
 } applicationLayer;
 
 struct termios oldtio,newtio;

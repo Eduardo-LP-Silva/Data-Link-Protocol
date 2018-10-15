@@ -7,6 +7,29 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int receiveFile(char *device)
+{
+	int portfd = openPort(device, RECEIVER);
+	char dataRead[MAX_FILE_SIZE], dataPacket[132];
+
+	applicationLayer receiver;
+	receiver.fileDescriptor = portfd;
+	receiver.status = RECEIVER;
+	receiver.dataPacketIndex = 0;
+
+	char filename[30];
+	int fileSize = 0;
+
+	//Ciclo
+	llread(portfd, dataPacket);
+	readDataPacket(dataPacket, &receiver, dataRead, filename, &fileSize);
+
+
+	llclose(portfd);
+
+	return 0;
+}
+
 
 int llread(int fd, char * buffer)
 {
@@ -68,10 +91,9 @@ int llread(int fd, char * buffer)
 			
 		}
 	}
+
 	packageSize = receivedSize - 6;
 	printArray(received, receivedSize);
-
-	//TODO Call data packet check functions
 
 	if (dataCheck(received+4, packageSize+1) != 0)
 	{
@@ -149,7 +171,7 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int checkDataPacket(char *dataPacket, applicationLayer *app)
+int readDataPacket(char *dataPacket, applicationLayer *app, char *buffer, char *filename, int *fileSize)
 {
 	char controlByte = dataPacket[0];
 	int error = -1;
@@ -160,28 +182,27 @@ int checkDataPacket(char *dataPacket, applicationLayer *app)
 			break;
 
 		case 2:
-			if((error = checkControlDataPacket(dataPacket)) == -1)
+			if((error = checkControlDataPacket(dataPacket, filename, fileSize)) == -1)
 				return error;
 
 			//TODO UPDATE STATE MACHINE - START DATA PACKET TRANSFER
 
-			break;
+			return 0;
 
 		case 3:
-			if((error = checkControlDataPacket(dataPacket)) == -1)
+			if((error = checkControlDataPacket(dataPacket, filename, fileSize)) == -1)
 				return error;
 
 			//TODO UPDATE STATE MACHINE - END DATA PACKET TRANSFER
 			
-		
-			break;
+			return 0;
 
 		default:
 			return -1;
 			break;
 	}
 
-	char sequenceNumber = dataPacket[1];
+	int sequenceNumber = dataPacket[1] - '0' //Char to int conversion
 
 	if(sequenceNumber != app->dataPacketIndex + 1)
 	{
@@ -194,12 +215,29 @@ int checkDataPacket(char *dataPacket, applicationLayer *app)
 	char l1 = dataPacket[2], l2 = dataPacket[3];
 	char K = 256 * l2 + l1;
 	
-	
-	//TODO Complete
+	strcat(buffer, dataPacket + 4);
+	printArray(dataPacket + 4, K);
 }
 
-int checkControlDataPacket(char *controlDataPacket)
+int checkControlDataPacket(char *controlDataPacket, char *filename, int *fileSize)
 {
-	//TODO Complete
+	int i, j, T, L;
+
+	for(i = 1; i < strlen(controlDataPacket); i += 3)
+	{
+		T = controlDataPacket[i] - '0';
+		L = controlDataPacket[i + 1] - '0';
+		
+		switch(T)
+		{
+			case 0:
+				fileSize = &controlDataPacket[i + 2] - '0';
+				break;
+
+			case 1:
+				read(controlDataPacket[i + 2], filename, L);
+				break;
+		}
+	}
 }
 

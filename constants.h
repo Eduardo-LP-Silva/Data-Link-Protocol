@@ -20,6 +20,7 @@
 
 #define TIMEOUT 3
 #define BUFFERSIZE 128
+#define MAX_FILE_SIZE 12000
 
 
 #endif

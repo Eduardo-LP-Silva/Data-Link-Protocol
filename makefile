@@ -1,4 +1,4 @@
-cc		 = gcc
+CC		 = gcc
 CFLAGS	 = -g
 LDFLAGS  =
 DEPS	 = main.c main.h receiver.c receiver.h transmitter.c transmitter.h utilities.c utilities.h constants.h makefile
