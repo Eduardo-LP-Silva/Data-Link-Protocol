@@ -131,23 +131,6 @@ int dataCheck(char received[], int size)
 	return -1;	//Error
 }
 
-int messageCheck(char received[])
-{
-	char control, bcc1, bcc2;
-	int i;
-
-	if (received[0] == FLAG && received[1] == ADDR && received[4] == FLAG)
-	{
-		control = received[2];
-		bcc1 = received[4];
-
-		if (bcc1 == received[1] ^ control)
-			return control;
-	}
-
-	return -1; //Error
-}
-
 int sendAnswer(int fd, char control)
 {
 	char buffer[5];

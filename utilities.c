@@ -130,6 +130,23 @@ int stateMachine(char received[], int C)
 	return 1;
 }
 
+int messageCheck(char received[])
+{
+	char control, bcc1, bcc2;
+	int i;
+
+	if (received[0] == FLAG && received[1] == ADDR && received[4] == FLAG)
+	{
+		control = received[2];
+		bcc1 = received[4];
+
+		if (bcc1 == received[1] ^ control)
+			return control;
+	}
+
+	return -1; //Error
+}
+
 int openPort(char* device, int flag)
 {
 	int fd = open(device, O_RDWR | O_NOCTTY);

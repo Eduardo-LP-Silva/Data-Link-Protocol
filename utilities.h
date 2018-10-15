@@ -19,6 +19,7 @@ void shiftRight(char* buffer, int size, int position, int shift);
 void shiftLeft(char* buffer, int size, int position, int shift);
 void printArray(char* arr, int length);
 int stateMachine(char received[], int C);
+int messageCheck(char received[]);
 int openPort(char* device, int flag);
 int llopen(int fd, int flag);
 int llclose(int fd);
