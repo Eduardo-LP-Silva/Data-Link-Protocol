@@ -1,5 +1,4 @@
 #include "receiver.h"
-
 #include "constants.h"
 #include "utilities.h"
 
@@ -14,7 +13,7 @@ int llread(int fd, char * buffer)
 	char received[128], awns[5];
 	int i, j, numBytes = 1, receivedSize;
 	
-	for (receivedSize = 0; receivedSize < 8; receivedSize++)	// Reads the first 8 bytes of the data packet.
+	for (receivedSize = 0; receivedSize < 8; receivedSize++)	// Reads the first 8 bytes of the frame.
 	{
 		// printf("Before reading\n");
 		numBytes = read(fd, &received[receivedSize], 1);
@@ -71,6 +70,8 @@ int llread(int fd, char * buffer)
 	}
 	packageSize = receivedSize - 6;
 	printArray(received, receivedSize);
+
+	//TODO Call data packet check functions
 
 	if (dataCheck(received+4, packageSize+1) != 0)
 	{
@@ -164,3 +165,58 @@ int sendAnswer(int fd, char control)
 
 	return written;
 }
+
+int checkDataPacket(char *dataPacket, applicationLayer *app)
+{
+	char controlByte = dataPacket[0];
+	int error = -1;
+
+	switch(controlByte)
+	{
+		case 1:
+			break;
+
+		case 2:
+			if((error = checkControlDataPacket(dataPacket)) == -1)
+				return error;
+
+			//TODO UPDATE STATE MACHINE - START DATA PACKET TRANSFER
+
+			break;
+
+		case 3:
+			if((error = checkControlDataPacket(dataPacket)) == -1)
+				return error;
+
+			//TODO UPDATE STATE MACHINE - END DATA PACKET TRANSFER
+			
+		
+			break;
+
+		default:
+			return -1;
+			break;
+	}
+
+	char sequenceNumber = dataPacket[1];
+
+	if(sequenceNumber != app->dataPacketIndex + 1)
+	{
+		printf("Sequence error\n");
+		//TODO Error correction - Send signal to send this frame again (?)
+	}
+	else
+		app->dataPacketIndex++;
+
+	char l1 = dataPacket[2], l2 = dataPacket[3];
+	char K = 256 * l2 + l1;
+	
+	
+	//TODO Complete
+}
+
+int checkControlDataPacket(char *controlDataPacket)
+{
+	//TODO Complete
+}
+
