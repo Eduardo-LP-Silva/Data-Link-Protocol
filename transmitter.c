@@ -26,7 +26,7 @@ int sendFile(char* filename, char* device)
 
 	int size = st.st_size;
 	
-	char buffer[128], package[300];
+	char buffer[size], package[300];
 	int packageSize = 0;
 
 	// Constructs start control package
@@ -40,23 +40,28 @@ int sendFile(char* filename, char* device)
 	package[packageSize++] = strlen(filename)+1; // Number of bytes of field
 	memcpy(&package[packageSize], filename, strlen(filename) + 1);
 	packageSize += strlen(filename) + 1;
-	
+
 	int i, numBytes = 128;
 	for (i = 0; numBytes == 128; i++)
 	{
-		numBytes = read(fd, buffer, 128);
-		
+		numBytes = read(fd, buffer+i*1024, 1024);
+
 		if (numBytes < 0)
 		{
 			printf("Error reading file!\n");
 			return 1;
 		}
+	}
+	
+	for (i = 0; i < size/128 + 1; i++)
+	{
+		numBytes = (size  - 128*i)%128;
 
 		package[packageSize++] = 1; // C (1 - data) 
 		package[packageSize++] = i; // Sequence number
 		package[packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
 		package[packageSize++] = numBytes % 256;
-		memcpy(&package[packageSize], buffer, numBytes);
+		memcpy(&package[packageSize], buffer+i*128, numBytes);
 		packageSize += numBytes;
 
 		if (numBytes < 128) // Constructs end control package
@@ -87,7 +92,7 @@ int sendFile(char* filename, char* device)
 		if (control == REJ_C)
 		{
 			printf("Corrupt package sent, sending same package again!\n");
-			// return 1;
+			i--;
 		}
 		else if (control == RR_C)
 		{
