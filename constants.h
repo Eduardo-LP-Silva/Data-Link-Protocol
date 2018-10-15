@@ -19,6 +19,7 @@
 #define RECEIVER 1
 
 #define TIMEOUT 3
+#define BUFFERSIZE 128
 
 
 #endif

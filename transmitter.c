@@ -8,6 +8,65 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int sendFile(char* filename)
+{
+	int fd = open(filename, O_RDONLY);
+
+	struct stat st;
+
+	if (stat(filename, &st) != 0)
+	{
+		printf("Failed to get file size!\n");
+		return 1;
+	}
+
+	int size = st.st_size;
+	
+	char* buffer = malloc(128);
+	char* package = malloc(300);
+	int packageSize = 0, numBytes = 128;
+
+	// Control package
+
+	package[packageSize++] = 2; // C (2 - start) 
+	package[packageSize++] = 0; // field type (file size)
+	package[packageSize++] = 1; // Number of bytes of field
+	package[packageSize++] = numBytes;
+
+	package[packageSize++] = 1; // field type (file size)
+	package[packageSize++] = strlen(filename)+1; // Number of bytes of field
+	memcpy(&package[packageSize], filename, strlen(filename) + 1);
+	packageSize += strlen(filename) + 1;
+	
+	while (numBytes == 128)
+	{
+		numBytes = read(fd, &buffer[i], 128);
+		
+		
+
+		
+
+	}
+
+		
+
+	
+
+	// Data package
+
+	int numDataPackages = (size / 128)+1; // Number of data packages necessary
+	char sequenceNumber = 0;
+
+	package[packageSize++] = 1; // C (1 - data) 
+	package[packageSize++] = sequenceNumber;
+	package[packageSize++] = packageLength / 256; // The 8 most significant bits in the packageSize.
+
+	llwrite
+
+	return 0;
+}
+
+
 int llwrite(int fd, char * buffer, int length)
 {
 	char package[6 + length + 200], awns[5];
