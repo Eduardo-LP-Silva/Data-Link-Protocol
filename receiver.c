@@ -5,108 +5,118 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <unistd.h>
+
+int stateMachineReceiver(char* device, char* buffer, int *fileSize, char *filename)
+{
+	applicationLayer al;
+	al.status = 0;
+	al.flag = RECEIVER;
+	al.dataPacketIndex = 0;
+	char dataRead[132];
+	int packetSize;
+
+	while (1)
+	{
+		if (al.status == 0) // Closed
+		{
+			al.fileDescriptor = openPort(device, al.flag);
+
+			if (al.fileDescriptor > 0)
+			{
+				al.status = 1;
+				al.dataPacketIndex = 0;
+			}
+
+			printf("Open for connection\n");
+		}
+		else if (al.status == 1) // Transfering
+		{
+			
+			if(llread(al.fileDescriptor, dataRead) < 0)
+			{
+				sendAnswer(al.fileDescriptor, REJ_C);
+				printf("Error in llread\n");
+				continue;
+			}
+			
+
+			if(readDataPacket(&al, dataRead, filename, fileSize, &packetSize) < 0)
+			{
+				sendAnswer(al.fileDescriptor, REJ_C);
+				printf("Error in Data Packet\n");
+				continue;
+			}
+
+			printf("fileSize = %i\n", *fileSize);
+			printf("packetSize = %i\n", packetSize);
+
+			char bcc2, flag;
+
+			read(al.fileDescriptor, &bcc2, 1);
+			read(al.fileDescriptor, &flag, 1);
+
+			printf("BCC2 = %d\n", bcc2);
+			printf("Flag = %d\n", flag);
+				
+			sendAnswer(al.fileDescriptor, RR_C);
+
+			printf("al.dataPacketIndex = %i\n", al.dataPacketIndex);
+
+			memcpy(buffer + (al.dataPacketIndex-1) * 128, dataRead, packetSize);
+			al.dataPacketIndex++;
+			memset(dataRead, 0, packetSize);
+
+			printf("Received Packet\n");
+		}
+		else if (al.status == 2) // Closing
+		{
+			
+			break;
+		}
+	}
+}
 
 int receiveFile(char *device)
 {
-	int portfd = openPort(device, RECEIVER);
 	char dataRead[MAX_FILE_SIZE], dataPacket[132];
-
-	applicationLayer receiver;
-	receiver.fileDescriptor = portfd;
-	receiver.status = RECEIVER;
-	receiver.dataPacketIndex = 0;
 
 	char filename[30];
 	int fileSize = 0;
 
 	//Ciclo
-	llread(portfd, dataPacket);
-	readDataPacket(dataPacket, &receiver, dataRead, filename, &fileSize);
+	stateMachineReceiver(device, dataRead, &fileSize, filename);
 
+	int fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+	
+	printf("Size = %d\n", fileSize);
 
-	llclose(portfd);
+	write(fd, dataRead, fileSize);
 
-	return 0;
+	return 0;	
 }
 
 
 int llread(int fd, char * buffer)
 {
-	char received[128], awns[5];
 	int i, j, numBytes = 1, receivedSize;
 	
-	for (receivedSize = 0; receivedSize < 4; receivedSize++)	// Reads the first 8 bytes of the frame.
+	for (receivedSize = 0; receivedSize < 4; receivedSize++)	// Reads the first 4 bytes of the frame.
 	{
 		// printf("Before reading\n");
-		numBytes = read(fd, &received[receivedSize], 1);
+		numBytes = read(fd, &buffer[receivedSize], 1);
 		// printf("Read %i bytes\n", receivedSize);
 	}
-	printArray(received, receivedSize);
+	printArray(buffer, receivedSize);
 
-	if (headerCheck(received, receivedSize) < 0)
+	if (headerCheck(buffer, receivedSize) < 0)
 	{
-		printf("Error on checked");
+		printf("Error on header");
 		return -1;
 	}
-	
-	int packageSize = received[6]*256 + received[7];
-
-	for (; receivedSize-8 < packageSize + 2; receivedSize++) // Reads data package plus bcc2 and flag ending the data packet.
-	{
-		// printf("Before reading\n");
-		numBytes = read(fd, &received[receivedSize], 1);
-		// printf("Read %i bytes\n", receivedSize);
-	}
-	printArray(received, receivedSize);
-
-	if (received[receivedSize-1] != FLAG)
-	{
-		printf("Error retrieving FLAG at the end of the data packet");
-		return -1;
-	}
-
-	for (i = 8; i < packageSize + 8; i++) // Destuffs the data package
-	{
-		if (received[i] == ESCAPE)
-		{
-			if (received[i+1] == 0x5e)
-			{
-				shiftLeft(received, receivedSize, i+1, 1);
-				receivedSize--;
-
-				received[i] = FLAG;
-			}
-			else if (received[i+1] == 0x5d)
-			{
-				shiftLeft(received, receivedSize, i+1, 1);
-				receivedSize--;
-
-				received[i] = ESCAPE;
-			}
-			else
-			{
-				return -1;
-			}
-			
-		}
-	}
-
-	packageSize = receivedSize - 6;
-	printArray(received, receivedSize);
-
-	if (dataCheck(received+4, packageSize+1) != 0)
-	{
-		printf("Error on the BCC2 component of the data packet");
-		return -1;
-	}
-
-	for (i = 0; i < packageSize; i++) // Extracts data package to buffer
-	{
-		buffer[i] = received[8 + i];
-	}
-	
-	sendAnswer(fd, RR_C);
 
 	return 0;
 }
@@ -129,7 +139,7 @@ char headerCheck(char received[], int size)
 			
 	}
 
-	return control; //Error
+	return control;
 }
 
 int dataCheck(char received[], int size)
@@ -169,9 +179,12 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int readDataPacket(char *dataPacket, applicationLayer *app, char *buffer, char *filename, int *fileSize)
+int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fileSize, int* packetSize)
 {
-	char controlByte = dataPacket[0];
+	char controlByte;
+
+	read(app->fileDescriptor, &controlByte, 1);
+
 	int error = -1;
 
 	switch(controlByte)
@@ -180,18 +193,18 @@ int readDataPacket(char *dataPacket, applicationLayer *app, char *buffer, char *
 			break;
 
 		case 2:
-			if((error = checkControlDataPacket(dataPacket, filename, fileSize)) == -1)
+			if((error = checkControlDataPacket(app->fileDescriptor, filename, fileSize)) == -1)
 				return error;
-
-			//TODO UPDATE STATE MACHINE - START DATA PACKET TRANSFER
 
 			return 0;
 
 		case 3:
-			if((error = checkControlDataPacket(dataPacket, filename, fileSize)) == -1)
+			if((error = checkControlDataPacket(app->fileDescriptor, filename, fileSize)) == -1)
 				return error;
 
-			//TODO UPDATE STATE MACHINE - END DATA PACKET TRANSFER
+			//TODO SMT
+			
+			app->status = 2;
 			
 			return 0;
 
@@ -200,46 +213,66 @@ int readDataPacket(char *dataPacket, applicationLayer *app, char *buffer, char *
 			break;
 	}
 
-	int sequenceNumber = dataPacket[1] - '0'; //Char to int conversion
+	char sequenceNumber; 
+	read(app->fileDescriptor, &sequenceNumber, 1);
 
-	if(sequenceNumber != app->dataPacketIndex + 1)
+	printf("sequenceNumber = %i\n", sequenceNumber);
+	printf("app->dataPacketIndex = %i\n", app->dataPacketIndex);
+
+	if(sequenceNumber != app->dataPacketIndex - 1)
 	{
 		printf("Sequence error\n");
-		//TODO Error correction - Send signal to send this frame again (?)
-		sendAnswer(app->fileDescriptor, REJ_C);
-	}
-	else
-	{
-		sendAnswer(app->fileDescriptor, RR_C);
-		app->dataPacketIndex++;
+		return -1;
 	}
 
-	char l1 = dataPacket[2], l2 = dataPacket[3];
-	char K = 256 * l2 + l1;
 	
-	strcat(buffer, dataPacket + 4);
-	printArray(dataPacket + 4, K);
+	char l1, l2;
+	
+	read(app->fileDescriptor, &l2, 1);
+	read(app->fileDescriptor, &l1, 1);
+	
+	*packetSize = 256 * l2 + l1;
+	
+	printf("packetSize = %d\n", *packetSize);
+
+	read(app->fileDescriptor, buffer, *packetSize);
+	//printArray(buffer, *packetSize);
+
+	return 0;
 }
 
-int checkControlDataPacket(char *controlDataPacket, char *filename, int *fileSize)
+int checkControlDataPacket(int fd, char *filename, int *fileSize)
 {
-	int i, j, T, L;
+	int i;
+	char T, L;
+	int readBytes;
 
-	for(i = 1; i < strlen(controlDataPacket); i += 3)
+	for(i = 0; i < 2; i++)
 	{
-		T = controlDataPacket[i] - '0';
-		L = controlDataPacket[i + 1] - '0';
-		
-		switch(T)
-		{
-			case 0:
-				*fileSize = controlDataPacket[i + 2] - '0';
-				break;
+		read(fd, &T, 1);
+		read(fd, &L, 1);
 
-			case 1:
-				read(controlDataPacket[i + 2], filename, L);
-				break;
+		printf("T = %d\n", T);
+		printf("L = %d\n", L);
+
+		if(T == 0)
+		{
+			read(fd, fileSize, L);
+
+			//printf("Size = %i\n", *fileSize);
 		}
+		else
+			if(T == 1)
+			{
+				readBytes = read(fd, filename, L);
+			}
+			else
+				printf("Error in reading L. L = %d\n", L);
 	}
+
+	//printf("%s\n", filename);
+
+	return 0;	
 }
+
 
