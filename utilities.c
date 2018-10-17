@@ -70,66 +70,6 @@ void printArray(char* arr, int length)
 }
 
 
-int stateMachine(char received[], int C)
-{
-	int state = 0;
-	while (1)
-	{
-		if (state == 0)
-		{
-			if (received[0] == FLAG)
-				state = 1;
-			else
-				state = 0;
-
-		//	printf("state = 0 passed\n");
-		}
-		else if (state == 1)
-		{
-			if (received[1] == FLAG)
-				state = 1;
-			else if (received[1] == ADDR)
-				state = 2;
-			else
-				state = 0;
-			
-			//printf("state = 1 passed\n");
-		}
-		else if (state == 2)
-		{
-			if (received[2] == FLAG)
-				state = 1;
-			else if (received[2] == C)
-				state = 3;
-			else
-				state = 0;
-
-			//printf("state = 2 passed\n");
-		}
-		else if (state == 3)
-		{
-			if (received[3] == FLAG)
-				state = 1;
-			else if (received[3] == ADDR ^ C)
-				state = 4;
-			else
-				state = 0;
-
-		//	printf("state = 3 passed\n");
-			//printf("state = %i\n", state);
-		}
-		else if (state == 4)
-		{
-			if (received[4] == FLAG)
-				return 0;
-			else
-				state = 0;
-		}
-	}
-
-	return 1;
-}
-
 int messageCheck(char received[])
 {
 	char control, bcc1, bcc2;
@@ -153,7 +93,7 @@ int openPort(char* device, int flag)
 
 	if (fd < 0)
 	{
-		perror(device);
+		printf("Unable to open serial port\n");
 		exit(-1);
 	}
 	
@@ -234,12 +174,13 @@ int llopen(int fd, int flag)
 			return -1;
 		}
 	
-		int status = stateMachine(buf, UA_C);
+		int status = messageCheck(buf);
 
-		if (!status)
-			printf("Received UA\n");
-		else
+		if (status != UA_C)
+		{
 			printf("Unknown message\n");
+			return -1;
+		}
 	}
 	else if (flag == RECEIVER)
 	{
@@ -255,12 +196,13 @@ int llopen(int fd, int flag)
 			return -1;
 		}
 
-		int status = stateMachine(buf, SET_C);
+		int status = messageCheck(buf);
 
-		if (!status)
-			printf("Received SET\n");
-		else
+		if (status != SET_C)
+		{
 			printf("Unknown message\n");
+			return -1;
+		}
 
 		buf[0] = FLAG;
 		buf[1] = ADDR;

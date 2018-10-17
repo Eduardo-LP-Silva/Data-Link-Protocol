@@ -1,6 +1,6 @@
 #include "receiver.h"
+
 #include "constants.h"
-#include "utilities.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -36,7 +36,7 @@ int llread(int fd, char * buffer)
 	char received[128], awns[5];
 	int i, j, numBytes = 1, receivedSize;
 	
-	for (receivedSize = 0; receivedSize < 8; receivedSize++)	// Reads the first 8 bytes of the frame.
+	for (receivedSize = 0; receivedSize < 4; receivedSize++)	// Reads the first 8 bytes of the frame.
 	{
 		// printf("Before reading\n");
 		numBytes = read(fd, &received[receivedSize], 1);
@@ -44,7 +44,7 @@ int llread(int fd, char * buffer)
 	}
 	printArray(received, receivedSize);
 
-	if (headerCheck(received, receivedSize) != 0)
+	if (headerCheck(received, receivedSize) < 0)
 	{
 		printf("Error on checked");
 		return -1;
@@ -111,7 +111,7 @@ int llread(int fd, char * buffer)
 	return 0;
 }
 
-int headerCheck(char received[], int size)
+char headerCheck(char received[], int size)
 {
 	char control, bcc1, bcc2;
 	int i;
@@ -126,12 +126,10 @@ int headerCheck(char received[], int size)
 
 		if (bcc2 != received[size-2])
 			return -1;
-		else
-			return 0;
 			
 	}
 
-	return -1; //Error
+	return control; //Error
 }
 
 int dataCheck(char received[], int size)
@@ -202,15 +200,19 @@ int readDataPacket(char *dataPacket, applicationLayer *app, char *buffer, char *
 			break;
 	}
 
-	int sequenceNumber = dataPacket[1] - '0' //Char to int conversion
+	int sequenceNumber = dataPacket[1] - '0'; //Char to int conversion
 
 	if(sequenceNumber != app->dataPacketIndex + 1)
 	{
 		printf("Sequence error\n");
 		//TODO Error correction - Send signal to send this frame again (?)
+		sendAnswer(app->fileDescriptor, REJ_C);
 	}
 	else
+	{
+		sendAnswer(app->fileDescriptor, RR_C);
 		app->dataPacketIndex++;
+	}
 
 	char l1 = dataPacket[2], l2 = dataPacket[3];
 	char K = 256 * l2 + l1;
@@ -231,7 +233,7 @@ int checkControlDataPacket(char *controlDataPacket, char *filename, int *fileSiz
 		switch(T)
 		{
 			case 0:
-				fileSize = &controlDataPacket[i + 2] - '0';
+				*fileSize = controlDataPacket[i + 2] - '0';
 				break;
 
 			case 1:

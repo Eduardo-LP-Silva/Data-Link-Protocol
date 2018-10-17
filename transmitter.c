@@ -10,10 +10,124 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int sendFile(char* filename, char* device)
+void sigalrm_handler(int signal)
 {
-	int portfd = openPort(device, TRANSMITTER);
+	printf("Message timed out!\n");
 	
+}
+
+
+int stateMachine(char* device, char* buffer, int size, char* filename)
+{
+	applicationLayer al;
+	al.status = 0;
+	al.flag = TRANSMITTER;
+	al.dataPacketIndex = 0;
+
+	int packageSize = 0, numBytes;
+
+	char** tramaArray = calloc((size/128 + 1) + 2, sizeof(char));
+
+	while (1)
+	{
+		if (al.status == 0) // Closed
+		{
+			al.fileDescriptor = openPort(device, al.flag);
+
+			if (al.fileDescriptor > 0)
+			{
+				al.status = 1;
+				al.dataPacketIndex = 0;
+			}
+		}
+		else if (al.status == 1) // Transfering
+		{
+			if (tramaArray[al.dataPacketIndex] == NULL)
+			{
+				packageSize = 0;
+
+				tramaArray[al.dataPacketIndex] = malloc(128 + 6 + 1);
+
+				if (al.dataPacketIndex == 0) // Start
+				{
+					tramaArray[al.dataPacketIndex][packageSize++] = 2; // C (2 - start)
+					tramaArray[al.dataPacketIndex][packageSize++] = 0; // field type (file size)
+					tramaArray[al.dataPacketIndex][packageSize++] = 1; // Number of bytes of field
+					tramaArray[al.dataPacketIndex][packageSize++] = size;
+
+					tramaArray[al.dataPacketIndex][packageSize++] = 1; // field type (file size)
+					tramaArray[al.dataPacketIndex][packageSize++] = strlen(filename)+1; // Number of bytes of field
+					memcpy(&tramaArray[al.dataPacketIndex][packageSize], filename, strlen(filename) + 1);
+					packageSize += strlen(filename) + 1;
+				}
+				else if (al.dataPacketIndex == (size/128 + 1)) // Data Packages
+				{
+					numBytes = (size  - 128*al.dataPacketIndex)%128;
+
+					tramaArray[al.dataPacketIndex][packageSize++] = 1; // C (1 - data) 
+					tramaArray[al.dataPacketIndex][packageSize++] = al.dataPacketIndex; // Sequence number
+					tramaArray[al.dataPacketIndex][packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
+					tramaArray[al.dataPacketIndex][packageSize++] = numBytes % 256;
+					memcpy(&tramaArray[al.dataPacketIndex][packageSize], buffer+al.dataPacketIndex*128, numBytes);
+					packageSize += numBytes;
+				}
+				else // End
+				{
+					tramaArray[al.dataPacketIndex][packageSize++] = 3; // C (3 - end)
+					tramaArray[al.dataPacketIndex][packageSize++] = 0; // field type (file size)
+					tramaArray[al.dataPacketIndex][packageSize++] = 1; // Number of bytes of field
+					tramaArray[al.dataPacketIndex][packageSize++] = numBytes;
+
+					tramaArray[al.dataPacketIndex][packageSize++] = 1; // field type (file size)
+					tramaArray[al.dataPacketIndex][packageSize++] = strlen(filename)+1; // Number of bytes of field
+					memcpy(&tramaArray[al.dataPacketIndex][packageSize], filename, strlen(filename) + 1);
+					packageSize += strlen(filename) + 1;
+				}
+
+				tramaArray[al.dataPacketIndex][0] = packageSize;
+			}
+
+			llwrite(al.fileDescriptor, tramaArray[al.dataPacketIndex]+1, tramaArray[al.dataPacketIndex][0]);
+
+			char received[5];
+
+			alarm(TIMEOUT);
+			
+			read(al.fileDescriptor, received, 5);
+
+			alarm(0);
+
+			int control = messageCheck(received);
+
+			if (control == REJ_C)
+			{
+				printf("Corrupt package sent, sending same package again!\n");
+				al.dataPacketIndex--;
+			}
+			else if (control == RR_C)
+			{
+				printf("Package sent sucessfully\n");
+			}
+			else
+			{
+				printf("Unknown answer\n");
+			}
+
+			al.dataPacketIndex++;
+
+			if (al.dataPacketIndex > (size/128 + 1))
+				al.status = 2;
+		}
+		else if (al.status == 2) // Closing
+		{
+			
+			break;
+		}
+	}
+}
+
+int sendFile(char* filename, char* device)
+{	
 	int fd = open(filename, O_RDONLY);
 
 	struct stat st;
@@ -26,20 +140,7 @@ int sendFile(char* filename, char* device)
 
 	int size = st.st_size;
 	
-	char buffer[size], package[300];
-	int packageSize = 0;
-
-	// Constructs start control package
-
-	package[packageSize++] = 2; // C (2 - start)
-	package[packageSize++] = 0; // field type (file size)
-	package[packageSize++] = 1; // Number of bytes of field
-	package[packageSize++] = size;
-
-	package[packageSize++] = 1; // field type (file size)
-	package[packageSize++] = strlen(filename)+1; // Number of bytes of field
-	memcpy(&package[packageSize], filename, strlen(filename) + 1);
-	packageSize += strlen(filename) + 1;
+	char buffer[size];
 
 	int i, numBytes = 128;
 	for (i = 0; numBytes == 128; i++)
@@ -52,65 +153,9 @@ int sendFile(char* filename, char* device)
 			return 1;
 		}
 	}
-	
-	for (i = 0; i < size/128 + 1; i++)
-	{
-		numBytes = (size  - 128*i)%128;
-
-		package[packageSize++] = 1; // C (1 - data) 
-		package[packageSize++] = i; // Sequence number
-		package[packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
-		package[packageSize++] = numBytes % 256;
-		memcpy(&package[packageSize], buffer+i*128, numBytes);
-		packageSize += numBytes;
-
-		if (numBytes < 128) // Constructs end control package
-		{
-			package[packageSize++] = 3; // C (3 - end)
-			package[packageSize++] = 0; // field type (file size)
-			package[packageSize++] = 1; // Number of bytes of field
-			package[packageSize++] = numBytes;
-
-			package[packageSize++] = 1; // field type (file size)
-			package[packageSize++] = strlen(filename)+1; // Number of bytes of field
-			memcpy(&package[packageSize], filename, strlen(filename) + 1);
-			packageSize += strlen(filename) + 1;
-		}
-
-		llwrite(portfd, package, packageSize);
-
-		char received[5];
-
-		alarm(TIMEOUT);
-		
-		read(fd, received, 5);
-
-		alarm(0);
-
-		int control = messageCheck(received);
-
-		if (control == REJ_C)
-		{
-			printf("Corrupt package sent, sending same package again!\n");
-			i--;
-		}
-		else if (control == RR_C)
-		{
-			printf("Package sent sucessfully\n");
-		}
-		else
-		{
-			printf("Unknown answer\n");
-		}
-
-		packageSize = 0;
-	}
-
 	close(fd);
 
-	llclose(portfd);
-
-	return 0;
+	return stateMachine(device, buffer, size, filename);
 }
 
 

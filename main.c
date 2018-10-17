@@ -1,16 +1,11 @@
-#include "main.h"
-
 #include "constants.h"
 #include "transmitter.h"
 #include "receiver.h"
 #include "utilities.h"
 
-void sigalrm_handler(int signal)
-{
-	printf("Message timed out!\n");
-	exit(1);
-}
-
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char** argv)
 {	
