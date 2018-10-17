@@ -78,7 +78,7 @@ int messageCheck(char received[])
 	if (received[0] == FLAG && received[1] == ADDR && received[4] == FLAG)
 	{
 		control = received[2];
-		bcc1 = received[4];
+		bcc1 = received[3];
 
 		if (bcc1 == received[1] ^ control)
 			return control;
@@ -159,7 +159,7 @@ int llopen(int fd, int flag)
 			return -1;
 		}
 
-		printf("Message sent!\n");
+		printf("SET sent!\n");
 
 
 		alarm(TIMEOUT);
