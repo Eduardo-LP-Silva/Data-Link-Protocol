@@ -48,22 +48,17 @@ int stateMachineReceiver(char* device, int *fileSize, char *filename)
 	int packetSize;
 	int fd;
 
-	// r /dev/ttyS0 receiver
-
 	while (1)
 	{
 		if (al.status == 0) // Closed
 		{
-			// al.fileDescriptor = openPort(device, al.flag);
+			al.fileDescriptor = openPort(device, al.flag);
 			
-			al.fileDescriptor = open(device, O_RDONLY);
-			
-
-			// if (al.fileDescriptor > 0)
-			// {
+			if (al.fileDescriptor > 0)
+			{
 				al.status = 1;
 				al.dataPacketIndex = 0;
-			// }
+			}
 
 			printf("Open for connection\n");
 		}
@@ -98,7 +93,6 @@ int stateMachineReceiver(char* device, int *fileSize, char *filename)
 			printf("Flag = %d\n", flag);
 
 
-			// memcpy(buffer + (al.dataPacketIndex-1) * 128, dataRead, packetSize);
 			if (al.dataPacketIndex > 0)
 				write(fd, dataRead, packetSize);
 			else
@@ -120,20 +114,13 @@ int stateMachineReceiver(char* device, int *fileSize, char *filename)
 
 int receiveFile(char *device)
 {
-	// char dataRead[MAX_FILE_SIZE], dataPacket[132];
-
-	char filename[30];
+	char filename[100];
 	int fileSize = 0;
-
-	// int fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
 	//Ciclo
 	stateMachineReceiver(device, &fileSize, filename);
-
 	
 	printf("Size = %d\n", fileSize);
-
-	// write(fd, dataRead, fileSize);
 
 	return 0;	
 }

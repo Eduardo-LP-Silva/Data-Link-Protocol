@@ -27,24 +27,18 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 	int packageSize = 0, numBytes;
 
 	char** packageArray = calloc((size/128 + 1) + 2, sizeof(char*));
-	int i;
-
-	printf("size = %i\n", size);
-	printf("packageArray size = %i\n", (size/128 + 1) + 2);
 
 	while (1)
 	{
 		if (al.status == 0) // Closed
 		{
-			// al.fileDescriptor = openPort(device, al.flag);
+			al.fileDescriptor = openPort(device, al.flag);
 
-			al.fileDescriptor = open(device, O_WRONLY | O_TRUNC | O_CREAT, 0777);
-
-			// if (al.fileDescriptor > 0)
-			// {
+			if (al.fileDescriptor > 0)
+			{
 				al.status = 1;
 				al.dataPacketIndex = 0;
-			// }
+			}
 		}
 		else if (al.status == 1) // Transfering
 		{
@@ -63,8 +57,6 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], &size, sizeof(int));
 					packageSize += sizeof(int);
 
-					filename = "recebido";
-
 					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
 					packageArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
 					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], filename, strlen(filename) + 1);
@@ -78,8 +70,6 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 					packageArray[al.dataPacketIndex][1 + packageSize++] = sizeof(int); // Number of bytes of field
 					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], &size, sizeof(int));
 					packageSize += sizeof(int);
-
-					// filename = "recebido.gif";
 
 					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
 					packageArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
@@ -111,17 +101,15 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			if (llwrite(al.fileDescriptor, packageArray[al.dataPacketIndex]+1, (unsigned char)packageArray[al.dataPacketIndex][0]) < 0)
 				return -1;
 
-			/*char received[5];
+			char received[5];
 
 			alarm(TIMEOUT);
 			
 			read(al.fileDescriptor, received, 5);
 
-			alarm(0);*/
+			alarm(0);
 
-			// int control = messageCheck(received);
-
-			int control = RR_C;
+			int control = messageCheck(received);
 
 			if (control == REJ_C)
 			{
@@ -168,10 +156,11 @@ int sendFile(char* filename, char* device)
 	
 	char buffer[size];
 
-	int i, numBytes = 1024;
-	for (i = 0; numBytes == 1024; i++)
+	int i, bufferSize = 1024, numBytes = bufferSize;
+
+	for (i = 0; numBytes == bufferSize; i++)
 	{
-		numBytes = read(fd, buffer+i*1024, 1024);
+		numBytes = read(fd, buffer+i*bufferSize, bufferSize);
 
 		if (numBytes < 0)
 		{
@@ -180,8 +169,6 @@ int sendFile(char* filename, char* device)
 		}
 	}
 	close(fd);
-
-	// printf("size = %i\n", size);
 
 	return stateMachine(device, buffer, size, filename);
 }
