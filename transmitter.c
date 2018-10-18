@@ -153,6 +153,8 @@ int sendFile(char* filename, char* device)
 	}
 
 	int size = st.st_size;
+
+	printf("Size = %i\n", size);
 	
 	char buffer[size];
 
