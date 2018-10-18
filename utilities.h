@@ -22,6 +22,6 @@ void printArray(char* arr, int length);
 int messageCheck(char received[]);
 int openPort(char* device, int flag);
 int llopen(int fd, int flag);
-int llclose(int fd);
+int llclose(int fd, int flag);
 
 #endif

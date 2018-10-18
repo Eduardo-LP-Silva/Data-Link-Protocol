@@ -102,8 +102,10 @@ int openPort(char* device, int flag)
 
 int closePort(int fd, int flag)
 {
-	llclose(fd);
-	close(fd);
+	// llclose(fd);
+	// close(fd);
+	
+	return 1;
 }
 
 int llopen(int fd, int flag)
@@ -229,7 +231,7 @@ int llopen(int fd, int flag)
 }
 
 
-int llclose(int fd)
+int llclose(int fd, int flag)
 {
 	tcsetattr(fd,TCSANOW,&oldtio);
 
@@ -271,7 +273,7 @@ int llclose(int fd)
 			printf("Unknown message\n");
 			return -1;
 		}
-		printf("Received DISC\n", );
+		printf("Received DISC\n");
 
 		buf[2] = UA_C;
 		buf[3] = buf[1] ^ buf[2];
@@ -307,7 +309,7 @@ int llclose(int fd)
 			return -1;
 		}
 
-		printf("DISC received on receiver\n", );
+		printf("DISC received on receiver\n");
 
 		buf[0] = FLAG;
 		buf[1] = ADDR;
