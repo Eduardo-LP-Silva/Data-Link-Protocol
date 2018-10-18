@@ -96,8 +96,14 @@ int openPort(char* device, int flag)
 		printf("Unable to open serial port\n");
 		exit(-1);
 	}
-	
+
 	return llopen(fd, flag);
+}
+
+int closePort(int fd, int flag)
+{
+	llclose(fd);
+	close(fd);
 }
 
 int llopen(int fd, int flag)
@@ -127,8 +133,8 @@ int llopen(int fd, int flag)
 
 
 
-  /* 
-	VTIME e VMIN devem ser alterados de forma a proteger com um temporizador a 
+  /*
+	VTIME e VMIN devem ser alterados de forma a proteger com um temporizador a
 	leitura do(s) próximo(s) caracter(es)
   */
 
@@ -163,17 +169,17 @@ int llopen(int fd, int flag)
 
 
 		alarm(TIMEOUT);
-	
+
 		received = read(fd, buf, 5);
-	
+
 		alarm(0);
-		
+
 		if(received < 0)
 		{
 			printf("Error in receiving end\n");
 			return -1;
 		}
-	
+
 		int status = messageCheck(buf);
 
 		if (status != UA_C)
@@ -185,7 +191,7 @@ int llopen(int fd, int flag)
 	else if (flag == RECEIVER)
 	{
 		alarm(TIMEOUT);
-	
+
 		received = read(fd, buf, 5);
 
 		alarm(0);
@@ -217,14 +223,107 @@ int llopen(int fd, int flag)
 		}
 
 		printf("Message sent!\n");
-	}	
-	
+	}
+
 	return fd;
 }
 
 
 int llclose(int fd)
 {
-	tcsetattr(fd,TCSANOW,&oldtio); 
+	tcsetattr(fd,TCSANOW,&oldtio);
+
+	char buf[5];
+	int received;
+
+	if (flag == TRANSMITTER)
+	{
+		buf[0] = FLAG;
+		buf[1] = ADDR;
+		buf[2] = DISC_C;
+		buf[3] = buf[1] ^ buf[2];
+		buf[4] = FLAG;
+
+		if(write(fd, buf, 5) < 0)
+		{
+			printf("Error in transmission\n");
+			return -1;
+		}
+
+		printf("DISC sent by Transmitter!\n");
+
+		alarm(TIMEOUT);
+
+		received = read(fd, buf, 5);
+
+		alarm(0);
+
+		if(received < 0)
+		{
+			printf("Error in receiving end\n");
+			return -1;
+		}
+
+		int status = messageCheck(buf);
+
+		if (status != DISC_C)
+		{
+			printf("Unknown message\n");
+			return -1;
+		}
+		printf("Received DISC\n", );
+
+		buf[2] = UA_C;
+		buf[3] = buf[1] ^ buf[2];
+
+		if(write(fd, buf, 5) < 0)
+		{
+			printf("Error in transmission\n");
+			return -1;
+		}
+
+		printf("UA sent by Transmitter!\n");
+
+	}
+	else if (flag == RECEIVER)
+	{
+		alarm(TIMEOUT);
+
+		received = read(fd, buf, 5);
+
+		alarm(0);
+
+		if(received < 0)
+		{
+			printf("Error in receiving end\n");
+			return -1;
+		}
+
+		int status = messageCheck(buf);
+
+		if (status != DISC_C)
+		{
+			printf("Unknown message\n");
+			return -1;
+		}
+
+		printf("DISC received on receiver\n", );
+
+		buf[0] = FLAG;
+		buf[1] = ADDR;
+		buf[2] = DISC_C;
+		buf[3] = buf[1] ^ buf[2];
+		buf[4] = FLAG;
+
+		if(write(fd, buf, 5) < 0)
+		{
+			printf("Error in transmission\n");
+			return -1;
+		}
+
+		printf("DISC sent by receiver!\n");
+	}
+
+	return fd;
 	close(fd);
 }
