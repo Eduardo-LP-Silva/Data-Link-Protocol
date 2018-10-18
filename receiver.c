@@ -72,7 +72,7 @@ int stateMachineReceiver(char* device, int *fileSize, char *filename)
 				continue;
 			}
 			
-			if(readDataPacket(&al, dataRead, filename, fileSize, &packetSize) < 0)
+			if(readDataPacket2(&al, dataRead, filename, fileSize, &packetSize) < 0)
 			{
 				sendAnswer(al.fileDescriptor, REJ_C);
 				printf("Error in Data Packet\n");
@@ -119,8 +119,6 @@ int receiveFile(char *device)
 
 	//Ciclo
 	stateMachineReceiver(device, &fileSize, filename);
-	
-	printf("Size = %d\n", fileSize);
 
 	return 0;	
 }
@@ -128,17 +126,20 @@ int receiveFile(char *device)
 
 int llread(int fd, char * buffer)
 {
-	int i, j, numBytes = 1, receivedSize;
+	int i, j, numBytes = 1, receivedSize = 0;
 	
-	for (receivedSize = 0; receivedSize < 4; receivedSize++)	// Reads the first 4 bytes of the frame.
+	while(1)	// Reads the first 4 bytes of the frame.
 	{
-		// printf("Before reading\n");
-		numBytes = read(fd, &buffer[receivedSize], 1);
-		// printf("Read %i bytes\n", receivedSize);
+		numBytes = read(fd, &buffer[receivedSize++], 1);
+
+		if (receivedSize > 1 && buffer[receivedSize-1] == FLAG)
+			break;
+
 	}
+
 	printArray(buffer, receivedSize);
 
-	if (headerCheck(buffer, receivedSize) < 0)
+	if (headerCheck(buffer) < 0)
 	{
 		printf("Error on header");
 		return -1;
@@ -147,9 +148,9 @@ int llread(int fd, char * buffer)
 	return 0;
 }
 
-char headerCheck(char received[], int size)
+char headerCheck(char received[])
 {
-	char control, bcc1, bcc2;
+	char control, bcc1;
 	int i;
 
 	if (received[0] == FLAG && received[1] == ADDR)
@@ -159,10 +160,6 @@ char headerCheck(char received[], int size)
 
 		if (bcc1 != received[1] ^ control)
 			return -1;
-
-		if (bcc2 != received[size-2])
-			return -1;
-			
 	}
 
 	return control;
@@ -203,6 +200,69 @@ int sendAnswer(int fd, char control)
 		printf("Error sending RR!\n");
 
 	return written;
+}
+
+int readDataPacket2(applicationLayer *app, char *buffer, char *filename, int *fileSize, int* packetSize)
+{	
+	int i = 4;
+	char controlByte = buffer[i++];
+
+	if (controlByte == 2) // Start
+	{
+		if (buffer[i++] == 0) // File size
+		{
+			printf("i = %i\n", i);
+
+			memcpy(fileSize, buffer+i+1, buffer[i]);
+			i += buffer[i];
+		}
+
+		if (buffer[i++] == 1) // File name
+		{
+			printf("i = %i\n", i);
+
+			memcpy(fileSize, buffer+i+1, buffer[i]);
+			i += buffer[i];
+		}
+
+	}
+	else if (controlByte == 1) // Data
+	{
+		char sequenceNumber = buffer[i++];
+		printf("sequenceNumber = %i\n", sequenceNumber);
+		printf("app->dataPacketIndex = %i\n", app->dataPacketIndex);
+
+		if(sequenceNumber != app->dataPacketIndex - 1)
+		{
+			printf("Sequence error\n");
+			return -1;
+		}
+	
+		unsigned char l1 = buffer[i++], l2 = buffer[i++];
+	
+		*packetSize = 256 * l2 + l1;
+	
+		printf("packetSize = %d\n", *packetSize);
+
+		memcpy(buffer, buffer, *packetSize);
+
+	}
+	else if (controlByte == 3) // End
+	{
+		if (buffer[i] == 0) // File size
+		{
+			i++;
+			i += read(app->fileDescriptor, fileSize, buffer[i]);
+		}
+
+		if (buffer[i] == 1) // File name
+		{
+			i++;
+			i += read(app->fileDescriptor, filename, buffer[i]);
+		}
+	}
+
+	return 0;
 }
 
 int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fileSize, int* packetSize)
@@ -269,7 +329,7 @@ int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fil
 
 int checkControlDataPacket(int fd, char *filename, int *fileSize)
 {
-	int i;
+	int i, j;
 	char T, L;
 	int readBytes;
 
@@ -281,19 +341,25 @@ int checkControlDataPacket(int fd, char *filename, int *fileSize)
 		printf("T = %d\n", T);
 		printf("L = %d\n", L);
 
-		if(T == 0)
+		if (T == 0)
 		{
-			read(fd, fileSize, L);
+			for (j = 0; j < L; j++)
+			{
+				int coco = read(fd, fileSize+j, 1);;
+				printf("coco = %i\n", coco);
+			}
 
-			//printf("Size = %i\n", *fileSize);
+			printf("Size = %d\n", *fileSize);
 		}
 		else
+		{
 			if(T == 1)
 			{
 				readBytes = read(fd, filename, L);
 			}
 			else
 				printf("Error in reading L. L = %d\n", L);
+		}
 	}
 
 	printf("%s\n", filename);
