@@ -3,7 +3,7 @@
 
 #include "utilities.h"
 
-int stateMachineReceiver(char* device, char* buffer, int *size, char *filename);
+int stateMachineReceiver(char* device, int *fileSize, char *filename);
 int receiveFile(char *device);
 int llread(int fd, char * buffer);
 char headerCheck(char received[], int size);

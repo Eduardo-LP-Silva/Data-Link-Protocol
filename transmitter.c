@@ -26,87 +26,102 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 	int packageSize = 0, numBytes;
 
-	char** tramaArray = calloc((size/128 + 1) + 2, sizeof(char*));
+	char** packageArray = calloc((size/128 + 1) + 2, sizeof(char*));
 	int i;
+
+	printf("size = %i\n", size);
+	printf("packageArray size = %i\n", (size/128 + 1) + 2);
 
 	while (1)
 	{
 		if (al.status == 0) // Closed
 		{
-			al.fileDescriptor = openPort(device, al.flag);
+			// al.fileDescriptor = openPort(device, al.flag);
 
-			if (al.fileDescriptor > 0)
-			{
+			al.fileDescriptor = open(device, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+
+			// if (al.fileDescriptor > 0)
+			// {
 				al.status = 1;
 				al.dataPacketIndex = 0;
-			}
+			// }
 		}
 		else if (al.status == 1) // Transfering
 		{
-			if (tramaArray[al.dataPacketIndex] == NULL)
+			if (packageArray[al.dataPacketIndex] == NULL)
 			{
 				packageSize = 0;
 
-				tramaArray[al.dataPacketIndex] = malloc(128 + 4 + 1);
+				packageArray[al.dataPacketIndex] = malloc(128 + 4 + 1);
 
 				if (al.dataPacketIndex == 0) // Start
 				{
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 2; // C (2 - start)
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 2; // C (2 - start)
 
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 0; // field type (file size)
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = sizeof(int); // Number of bytes of field
-					memcpy(&tramaArray[al.dataPacketIndex][1 + packageSize], &size, sizeof(int));
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 0; // field type (file size)
+					packageArray[al.dataPacketIndex][1 + packageSize++] = sizeof(int); // Number of bytes of field
+					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], &size, sizeof(int));
 					packageSize += sizeof(int);
 
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
-					memcpy(&tramaArray[al.dataPacketIndex][1 + packageSize], filename, strlen(filename) + 1);
+					filename = "recebido";
+
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
+					packageArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
+					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], filename, strlen(filename) + 1);
 					packageSize += strlen(filename) + 1;
 				}
 				else if (al.dataPacketIndex == (size/128 + 1 + 1)) // End
 				{
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 3; // C (3 - end)
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 0; // field type (file size)
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 1; // Number of bytes of field
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = numBytes;
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 3; // C (3 - end)
 
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
-					memcpy(&tramaArray[al.dataPacketIndex][1 + packageSize], filename, strlen(filename) + 1);
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 0; // field type (file size)
+					packageArray[al.dataPacketIndex][1 + packageSize++] = sizeof(int); // Number of bytes of field
+					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], &size, sizeof(int));
+					packageSize += sizeof(int);
 
+					// filename = "recebido.gif";
+
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
+					packageArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
+					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], filename, strlen(filename) + 1);
 					packageSize += strlen(filename) + 1;
 				}
 				else // Data Packages
 				{
 					numBytes = (size  - 128*(al.dataPacketIndex-1));
+
+					printf("numBytes = %i\n", numBytes);
 					
 					if (numBytes > 128)
 						numBytes = 128;
 
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = 1; // C (1 - data) 
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = al.dataPacketIndex-1; // Sequence number
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
-					tramaArray[al.dataPacketIndex][1 + packageSize++] = numBytes % 256;
-					memcpy(&tramaArray[al.dataPacketIndex][1 + packageSize], buffer+(al.dataPacketIndex-1)*128, numBytes);
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // C (1 - data) 
+					packageArray[al.dataPacketIndex][1 + packageSize++] = (al.dataPacketIndex-1) % 256; // Sequence number
+					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
+					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes % 256;
+
+					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], buffer+(al.dataPacketIndex-1)*128, numBytes);
 
 					packageSize += numBytes;
 				}
 
-				tramaArray[al.dataPacketIndex][0] = packageSize;
+				packageArray[al.dataPacketIndex][0] = packageSize;
 			}
 
-			if (llwrite(al.fileDescriptor, tramaArray[al.dataPacketIndex]+1, tramaArray[al.dataPacketIndex][0]) < 0)
+			if (llwrite(al.fileDescriptor, packageArray[al.dataPacketIndex]+1, (unsigned char)packageArray[al.dataPacketIndex][0]) < 0)
 				return -1;
 
-			char received[5];
+			/*char received[5];
 
 			alarm(TIMEOUT);
 			
 			read(al.fileDescriptor, received, 5);
 
-			alarm(0);
+			alarm(0);*/
 
-			int control = messageCheck(received);
+			// int control = messageCheck(received);
+
+			int control = RR_C;
 
 			if (control == REJ_C)
 			{
@@ -153,8 +168,8 @@ int sendFile(char* filename, char* device)
 	
 	char buffer[size];
 
-	int i, numBytes = 128;
-	for (i = 0; numBytes == 128; i++)
+	int i, numBytes = 1024;
+	for (i = 0; numBytes == 1024; i++)
 	{
 		numBytes = read(fd, buffer+i*1024, 1024);
 
@@ -166,7 +181,7 @@ int sendFile(char* filename, char* device)
 	}
 	close(fd);
 
-	printf("size = %i\n", size);
+	// printf("size = %i\n", size);
 
 	return stateMachine(device, buffer, size, filename);
 }
@@ -210,6 +225,15 @@ int llwrite(int fd, char * buffer, int length)
 			package[i] = ESCAPE;
 			package[i+1] = 0x5e;
 			i++;
+
+			if (package[4] == 1) // Increses size in the data L2 and L2 fields
+			{
+				int size = 256* package[6] + package[7];
+				size++;
+
+				package[6] = size / 256;
+				package[7] = size % 256;
+			}
 		}
 		else if (package[i] == ESCAPE)
 		{
@@ -219,6 +243,15 @@ int llwrite(int fd, char * buffer, int length)
 			package[i] = ESCAPE;
 			package[i+1] = 0x5d;
 			i++;
+
+			if (package[4] == 1) // Increses size in the data L2 and L2 fields
+			{
+				int size = 256* package[6] + package[7];
+				size++;
+
+				package[6] = size / 256;
+				package[7] = size % 256;
+			}
 		}
 
 	}
@@ -235,7 +268,7 @@ int llwrite(int fd, char * buffer, int length)
 		return -1;
 	}
 	
-	printf("Frame sent!\n");
+	printf("Frame sent with %i bytes!\n", written);
 
 	return written;
 }

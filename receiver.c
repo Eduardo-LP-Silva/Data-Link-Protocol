@@ -1,6 +1,7 @@
 #include "receiver.h"
 
 #include "constants.h"
+#include "transmitter.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -10,26 +11,59 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int stateMachineReceiver(char* device, char* buffer, int *fileSize, char *filename)
+int destuff(char* buffer, int* size)
+{
+	int i;
+	for (i = 0; i < *size; i++) // Destuffs the data package
+	{
+		if (buffer[i] == ESCAPE)
+		{
+			if (buffer[i+1] == 0x5e)
+			{
+				shiftLeft(buffer, *size, i+1, 1);
+				(*size)--;
+
+				buffer[i] = FLAG;
+			}
+			else if (buffer[i+1] == 0x5d)
+			{
+				shiftLeft(buffer, *size, i+1, 1);
+				(*size)--;
+
+				buffer[i] = ESCAPE;
+			}
+		}
+	}
+
+	return 0;
+}
+
+int stateMachineReceiver(char* device, int *fileSize, char *filename)
 {
 	applicationLayer al;
 	al.status = 0;
 	al.flag = RECEIVER;
 	al.dataPacketIndex = 0;
-	char dataRead[132];
+	char dataRead[128*2 + 6];
 	int packetSize;
+	int fd;
+
+	// r /dev/ttyS0 receiver
 
 	while (1)
 	{
 		if (al.status == 0) // Closed
 		{
-			al.fileDescriptor = openPort(device, al.flag);
+			// al.fileDescriptor = openPort(device, al.flag);
+			
+			al.fileDescriptor = open(device, O_RDONLY);
+			
 
-			if (al.fileDescriptor > 0)
-			{
+			// if (al.fileDescriptor > 0)
+			// {
 				al.status = 1;
 				al.dataPacketIndex = 0;
-			}
+			// }
 
 			printf("Open for connection\n");
 		}
@@ -43,7 +77,6 @@ int stateMachineReceiver(char* device, char* buffer, int *fileSize, char *filena
 				continue;
 			}
 			
-
 			if(readDataPacket(&al, dataRead, filename, fileSize, &packetSize) < 0)
 			{
 				sendAnswer(al.fileDescriptor, REJ_C);
@@ -51,7 +84,9 @@ int stateMachineReceiver(char* device, char* buffer, int *fileSize, char *filena
 				continue;
 			}
 
-			printf("fileSize = %i\n", *fileSize);
+			destuff(dataRead, &packetSize);
+
+			// printf("fileSize = %i\n", *fileSize);
 			printf("packetSize = %i\n", packetSize);
 
 			char bcc2, flag;
@@ -61,14 +96,17 @@ int stateMachineReceiver(char* device, char* buffer, int *fileSize, char *filena
 
 			printf("BCC2 = %d\n", bcc2);
 			printf("Flag = %d\n", flag);
-				
-			sendAnswer(al.fileDescriptor, RR_C);
 
-			printf("al.dataPacketIndex = %i\n", al.dataPacketIndex);
 
-			memcpy(buffer + (al.dataPacketIndex-1) * 128, dataRead, packetSize);
+			// memcpy(buffer + (al.dataPacketIndex-1) * 128, dataRead, packetSize);
+			if (al.dataPacketIndex > 0)
+				write(fd, dataRead, packetSize);
+			else
+				fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+			
 			al.dataPacketIndex++;
-			memset(dataRead, 0, packetSize);
+			
+			packetSize = 0; // Clears dataRead array
 
 			printf("Received Packet\n");
 		}
@@ -82,19 +120,20 @@ int stateMachineReceiver(char* device, char* buffer, int *fileSize, char *filena
 
 int receiveFile(char *device)
 {
-	char dataRead[MAX_FILE_SIZE], dataPacket[132];
+	// char dataRead[MAX_FILE_SIZE], dataPacket[132];
 
 	char filename[30];
 	int fileSize = 0;
 
-	//Ciclo
-	stateMachineReceiver(device, dataRead, &fileSize, filename);
+	// int fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
-	int fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+	//Ciclo
+	stateMachineReceiver(device, &fileSize, filename);
+
 	
 	printf("Size = %d\n", fileSize);
 
-	write(fd, dataRead, fileSize);
+	// write(fd, dataRead, fileSize);
 
 	return 0;	
 }
@@ -226,7 +265,7 @@ int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fil
 	}
 
 	
-	char l1, l2;
+	unsigned char l1, l2;
 	
 	read(app->fileDescriptor, &l2, 1);
 	read(app->fileDescriptor, &l1, 1);
@@ -270,7 +309,7 @@ int checkControlDataPacket(int fd, char *filename, int *fileSize)
 				printf("Error in reading L. L = %d\n", L);
 	}
 
-	//printf("%s\n", filename);
+	printf("%s\n", filename);
 
 	return 0;	
 }
