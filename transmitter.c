@@ -32,7 +32,8 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 	{
 		if (al.status == 0) // Closed
 		{
-			al.fileDescriptor = openPort(device, al.flag);
+			//al.fileDescriptor = openPort(device, al.flag);
+			al.fileDescriptor = open(device, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
 			if (al.fileDescriptor > 0)
 			{
