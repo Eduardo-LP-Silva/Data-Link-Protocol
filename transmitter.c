@@ -215,15 +215,6 @@ int llwrite(int fd, char * buffer, int length)
 			package[i] = ESCAPE;
 			package[i+1] = 0x5e;
 			i++;
-
-			if (package[4] == 1) // Increses size in the data L2 and L2 fields
-			{
-				int size = 256* package[6] + package[7];
-				size++;
-
-				package[6] = size / 256;
-				package[7] = size % 256;
-			}
 		}
 		else if (package[i] == ESCAPE)
 		{
@@ -233,22 +224,13 @@ int llwrite(int fd, char * buffer, int length)
 			package[i] = ESCAPE;
 			package[i+1] = 0x5d;
 			i++;
-
-			if (package[4] == 1) // Increses size in the data L2 and L2 fields
-			{
-				int size = 256* package[6] + package[7];
-				size++;
-
-				package[6] = size / 256;
-				package[7] = size % 256;
-			}
 		}
 
 	}
 	
 	package[packageSize-1] = FLAG;
 
-	printArray(package, packageSize);
+	// printArray(package, packageSize);
 
 	int written = write(fd, package, packageSize);
 	
