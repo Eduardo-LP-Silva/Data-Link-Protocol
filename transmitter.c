@@ -16,7 +16,6 @@ void sigalrm_handler(int signal)
 	
 }
 
-
 int stateMachine(char* device, char* buffer, int size, char* filename)
 {
 	applicationLayer al;

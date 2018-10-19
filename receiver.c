@@ -129,7 +129,7 @@ int llread(int fd, char * buffer)
 	printArray(buffer, receivedSize);
 	printf("------------------------------------------------------------\n");
 
-	if (headerCheck(buffer) < 0)
+	if(headerCheck(buffer) < 0)
 	{
 		printf("Error on header");
 		return -1;
@@ -138,8 +138,16 @@ int llread(int fd, char * buffer)
 	char dataPackets[128 * 2];
 	int dataPacketsSize = receivedSize - 6;
 
+	if(receivedSize - 6 > 128 * 2)
+	{
+		printf("Too much data incoming\n");
+		return -1;
+	}
+
 	memcpy(dataPackets, buffer + 4, receivedSize - 6);
+	printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
 	destuff(dataPackets, &dataPacketsSize);
+	printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
 	//TODO Trailer Check
 	memcpy(buffer, dataPackets, dataPacketsSize); //ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
 
@@ -149,6 +157,7 @@ int llread(int fd, char * buffer)
 int trailerCheck(char *buffer, int size)
 {
 	
+
 	return 0;
 }
 
@@ -262,10 +271,10 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 				return -1;
 			}
 			else
-				memcpy(buffer, buffer + i + 4, K);
+				memcpy(buffer, buffer + i + 4, packetSize - 4);
 
 			
-			if(write(*fd, buffer, K) < 0)
+			if(write(*fd, buffer, packetSize - 4) < 0)
 			{
 				printf("Error in writting to local file\n");
 				return -1;
