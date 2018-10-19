@@ -61,7 +61,7 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 				al.dataPacketIndex = 0;
 			}
 
-			fd = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0777);
+			
 
 			printf("Open for connection\n");
 		}
@@ -78,15 +78,12 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 				continue;
 			}
 
-			if(readDataPacket2(fd, &al, dataRead, filename, fileSize, packetSize) < 0)
+			if(readDataPacket2(&fd, &al, dataRead, filename, fileSize, packetSize) < 0)
 			{
 				//sendAnswer(al.fileDescriptor, REJ_C);
 				printf("Error in Data Packet\n");
 				continue;
 			}
-
-			//read(al.fileDescriptor, &bcc2, 1);
-			//read(al.fileDescriptor, &flag, 1);
 
 			al.dataPacketIndex++;
 			
@@ -212,7 +209,7 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int readDataPacket2(int fd, applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize)
+int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize)
 {	
 	int i = 0;
 	char controlByte = buffer[i];
@@ -238,6 +235,8 @@ int readDataPacket2(int fd, applicationLayer *app, char *buffer, char *filename,
 			memcpy(fileSize, buffer+i+1, buffer[i]);
 			i += buffer[i];
 		}*/
+
+		*fd = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0777);
 
 	}
 	else 
@@ -265,7 +264,15 @@ int readDataPacket2(int fd, applicationLayer *app, char *buffer, char *filename,
 			else
 				memcpy(buffer, buffer + i + 4, K);
 
-			write(fd, buffer, packetSize);
+			
+			if(write(*fd, buffer, K) < 0)
+			{
+				printf("Error in writting to local file\n");
+				return -1;
+			}
+
+			printf("--------- Data Packets Read ---------------\n");
+			printArray(buffer, K);
 
 			/*
 			char sequenceNumber = buffer[i++];
