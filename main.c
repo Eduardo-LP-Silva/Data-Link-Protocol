@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	if (strcmp(argv[2], "transmitter") == 0)
 	{
 		//sendFile("pinguim.gif", argv[1]);
-		sendFile("pinguim2.gif", "file2");
+		sendFile("pinguim.gif", "file2");
 	}
 	else if (strcmp(argv[2], "receiver") == 0)
 	{

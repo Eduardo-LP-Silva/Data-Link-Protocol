@@ -78,19 +78,15 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 				continue;
 			}
 
-			if(readDataPacket2(&al, dataRead, filename, fileSize, packetSize) < 0)
+			if(readDataPacket2(fd, &al, dataRead, filename, fileSize, packetSize) < 0)
 			{
 				//sendAnswer(al.fileDescriptor, REJ_C);
 				printf("Error in Data Packet\n");
 				continue;
 			}
 
-			
-
 			//read(al.fileDescriptor, &bcc2, 1);
 			//read(al.fileDescriptor, &flag, 1);
-
-			write(fd, dataRead, packetSize);
 
 			al.dataPacketIndex++;
 			
@@ -216,7 +212,7 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int readDataPacket2(applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize)
+int readDataPacket2(int fd, applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize)
 {	
 	int i = 0;
 	char controlByte = buffer[i];
@@ -268,6 +264,8 @@ int readDataPacket2(applicationLayer *app, char *buffer, char *filename, char *f
 			}
 			else
 				memcpy(buffer, buffer + i + 4, K);
+
+			write(fd, buffer, packetSize);
 
 			/*
 			char sequenceNumber = buffer[i++];

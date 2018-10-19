@@ -10,7 +10,7 @@ char headerCheck(char received[]);
 int dataCheck(char received[], int size);
 int sendAnswer(int fd, char control);
 int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fileSize, int* packetSize);
-int readDataPacket2(applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize);
+int readDataPacket2(int fd, applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize);
 int checkControlDataPacket(int fd, char *filename, int *fileSize);
 int checkControlDataPacket2(int i, char *buffer, char *filename, char *fileSize, int packetSize);
 
