@@ -9,7 +9,7 @@
 
 int main(int argc, char** argv)
 {	
-	if ( (argc < 2) || ((strcmp("/dev/ttyS0", argv[1])!=0) && (strcmp("/dev/ttyS1", argv[1])!=0) )) {
+	if ( (argc != 3) || ((strcmp("/dev/ttyS0", argv[1])!=0) && (strcmp("/dev/ttyS1", argv[1])!=0) )) {
 	  printf("Usage:\tnserial SerialPort\n\tex: nserial /dev/ttyS1\n");
 	  exit(1);
 	}
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	}
 	else if (strcmp(argv[2], "receiver") == 0)
 	{
-		receiveFile("file2");
+		receiveFile(argv[1]);
 	}
 	else
 	{

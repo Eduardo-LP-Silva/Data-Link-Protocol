@@ -5,7 +5,7 @@
 
 int stateMachineReceiver(char* device, char *fileSize, char *filename);
 int receiveFile(char *device);
-int llread(int fd, char * buffer);
+int llread(int fd, char *buffer);
 char headerCheck(char received[]);
 int dataCheck(char received[], int size);
 int sendAnswer(int fd, char control);

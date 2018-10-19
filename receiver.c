@@ -70,6 +70,8 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 		{
 			packetSize = llread(al.fileDescriptor, dataRead);
 
+			//dataRead = &dataRead[4];
+
 			printf("packetSize = %i\n", packetSize);
 
 			if(packetSize < 0)
@@ -81,7 +83,7 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 
 			if(readDataPacket2(&fd, &al, dataRead, filename, fileSize, packetSize) < 0)
 			{
-				//sendAnswer(al.fileDescriptor, REJ_C);
+				sendAnswer(al.fileDescriptor, REJ_C);
 				printf("Error in Data Packet\n");
 				continue;
 			}
@@ -91,6 +93,8 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 			packetSize = 0; // Clears dataRead array
 
 			printf("Received Packet\n");
+
+			sendAnswer(al.fileDescriptor, RR_C);
 		}
 		else if (al.status == 2) // Closing
 		{
@@ -121,7 +125,7 @@ int llread(int fd, char * buffer)
 	while(1)
 	{
 		numBytes = read(fd, &buffer[receivedSize++], 1);
-
+		
 		if (receivedSize > 1 && buffer[receivedSize-1] == FLAG)
 			break;
 	}
@@ -146,9 +150,9 @@ int llread(int fd, char * buffer)
 	}
 
 	memcpy(dataPackets, buffer + 4, receivedSize - 6);
-	printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
-	destuff(dataPackets, &dataPacketsSize);
-	printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
+	//printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
+	//destuff(dataPackets, &dataPacketsSize);
+	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
 	//TODO Trailer Check
 	memcpy(buffer, dataPackets, dataPacketsSize); //ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
 
@@ -246,7 +250,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			i += buffer[i];
 		}*/
 
-		*fd = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0777);
+		*fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
 	}
 	else 
@@ -272,10 +276,10 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 				return -1;
 			}
 			else
-				memcpy(buffer, buffer + i + 4, packetSize - 4);
+				memcpy(buffer, buffer + i + 4, K);
 
 			
-			if(write(*fd, buffer, packetSize - 4) < 0)
+			if(write(*fd, buffer, K) < 0)
 			{
 				printf("Error in writting to local file\n");
 				return -1;
