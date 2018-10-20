@@ -52,9 +52,9 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 	{
 		if (al.status == 0) // Closed
 		{
-			// al.fileDescriptor = openPort(device, al.flag);
+			al.fileDescriptor = openPort(device, al.flag);
 			
-			al.fileDescriptor = open(device, O_RDONLY);
+			// al.fileDescriptor = open(device, O_RDONLY);
 			
 			if (al.fileDescriptor > 0)
 			{
@@ -279,11 +279,11 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 				printf("Error in packet size\n");
 				return -1;
 			}
-			else
-				memcpy(buffer, buffer + i + 4, K);
+			// else
+				//memcpy(buffer, buffer + i + 4, K);
 
 			
-			if(write(*fd, buffer, K) < 0)
+			if(write(*fd, buffer+4, K) < 0)
 			{
 				printf("Error in writting to local file\n");
 				return -1;
