@@ -44,7 +44,7 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 	al.status = 0;
 	al.flag = RECEIVER;
 	al.dataPacketIndex = 0;
-	char dataRead[128*2 + 6];
+	char* dataRead = malloc(128*2 + 6);
 	int packetSize;
 	int fd;
 
@@ -70,7 +70,7 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 		{
 			packetSize = llread(al.fileDescriptor, dataRead);
 
-			//dataRead = &dataRead[4];
+			dataRead = (dataRead+4);
 
 			printf("packetSize = %i\n", packetSize);
 
@@ -98,7 +98,8 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 		}
 		else if (al.status == 2) // Closing
 		{
-			
+			free(dataRead);
+
 			break;
 		}
 	}
@@ -169,12 +170,12 @@ int llread(int fd, char * buffer)
 		return -1;
 	}
 
-	memcpy(dataPackets, buffer + 4, dataPacketsSize);
+	// memcpy(dataPackets, buffer + 4, dataPacketsSize);
 	//printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
-	destuff(dataPackets, &dataPacketsSize);
+	destuff(buffer + 4, &dataPacketsSize);
 	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
 	//TODO Trailer Check
-	memcpy(buffer, dataPackets, dataPacketsSize); //ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
+	// memcpy(buffer, dataPackets, dataPacketsSize); //ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
 
 	return dataPacketsSize; //Application must not know frame structure, thus only the size of the data packets is needed
 }
