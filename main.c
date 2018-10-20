@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	}
 	else if (strcmp(argv[2], "receiver") == 0)
 	{
-		// receiveFile(argv[1]);
+		receiveFile(argv[1]);
 
 		// receiveFile("file2");
 	}
