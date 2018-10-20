@@ -13,6 +13,6 @@ int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fil
 int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize);
 int checkControlDataPacket(int fd, char *filename, int *fileSize);
 int checkControlDataPacket2(int i, char *buffer, char *filename, char *fileSize, int packetSize);
-
+int trailerCheck(char received[], int size);
 
 #endif
