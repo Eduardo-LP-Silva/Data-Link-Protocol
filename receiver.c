@@ -52,9 +52,9 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 	{
 		if (al.status == 0) // Closed
 		{
-			al.fileDescriptor = openPort(device, al.flag);
+			// al.fileDescriptor = openPort(device, al.flag);
 			
-			// al.fileDescriptor = open(device, O_RDONLY);
+			al.fileDescriptor = open(device, O_RDONLY);
 			
 			if (al.fileDescriptor > 0)
 			{
