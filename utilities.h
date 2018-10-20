@@ -12,6 +12,16 @@ typedef struct
 	int dataPacketIndex; //Data Packet Number
 } applicationLayer;
 
+typedef struct
+{
+	char port[20];
+	int baudRate;
+	unsigned int sequenceNumber;
+	unsigned int timeout;
+	unsigned int numTransmissions;
+	char frame[128 * 2 + 6];
+} linkLayer;
+
 struct termios oldtio,newtio;
 
 void swap(char* a, char*b);
