@@ -13,7 +13,7 @@
 void sigalrm_handler(int signal)
 {
 	printf("Message timed out!\n");
-	
+	exit(0);
 }
 
 int stateMachine(char* device, char* buffer, int size, char* filename)
@@ -87,7 +87,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 						numBytes = 128;
 
 					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // C (1 - data) 
-					packageArray[al.dataPacketIndex][1 + packageSize++] = (al.dataPacketIndex-1) % 255; // Sequence number
+					packageArray[al.dataPacketIndex][1 + packageSize++] = (al.dataPacketIndex-1) % 256; // Sequence number
 					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
 					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes % 256;
 

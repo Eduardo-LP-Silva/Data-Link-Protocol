@@ -233,8 +233,6 @@ int llopen(int fd, int flag)
 
 int llclose(int fd, int flag)
 {
-	tcsetattr(fd,TCSANOW,&oldtio);
-
 	char buf[5];
 	int received;
 
@@ -309,7 +307,7 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("DISC received on receiver\n");
+		printf("DISC received\n");
 
 		buf[0] = FLAG;
 		buf[1] = ADDR;
@@ -324,6 +322,20 @@ int llclose(int fd, int flag)
 		}
 
 		printf("DISC sent by receiver!\n");
+
+		alarm(TIMEOUT);
+
+		received = read(fd, buf, 5);
+
+		alarm(0);
+
+		status = messageCheck(buf);
+
+		if (status != UA_C)
+		{
+			printf("Unknown message\n");
+			return -1;
+		}
 	}
 
 	return fd;
