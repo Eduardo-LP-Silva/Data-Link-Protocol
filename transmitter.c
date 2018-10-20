@@ -31,9 +31,9 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 	{
 		if (al.status == 0) // Closed
 		{
-			al.fileDescriptor = openPort(device, al.flag);
+			// al.fileDescriptor = openPort(device, al.flag);
 			
-			// al.fileDescriptor = open(device, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+			al.fileDescriptor = open(device, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
 			if (al.fileDescriptor > 0)
 			{
@@ -57,6 +57,8 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 					packageArray[al.dataPacketIndex][1 + packageSize++] = sizeof(int); // Number of bytes of field
 					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], &size, sizeof(int));
 					packageSize += sizeof(int);
+
+					filename = "coco";
 
 					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // field type (file size)
 					packageArray[al.dataPacketIndex][1 + packageSize++] = strlen(filename)+1; // Number of bytes of field
@@ -230,7 +232,7 @@ int llwrite(int fd, char * buffer, int length)
 	
 	package[packageSize-1] = FLAG;
 
-	// printArray(package, packageSize);
+	printArray(package, packageSize);
 
 	int written = write(fd, package, packageSize);
 	

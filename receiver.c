@@ -52,9 +52,9 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 	{
 		if (al.status == 0) // Closed
 		{
-			al.fileDescriptor = openPort(device, al.flag);
+			// al.fileDescriptor = openPort(device, al.flag);
 			
-			// al.fileDescriptor = open(device, O_RDONLY);
+			al.fileDescriptor = open(device, O_RDONLY);
 			
 			if (al.fileDescriptor > 0)
 			{
@@ -125,9 +125,29 @@ int llread(int fd, char * buffer)
 	while(1)
 	{
 		numBytes = read(fd, &buffer[receivedSize++], 1);
-		
+
 		if (receivedSize > 1 && buffer[receivedSize-1] == FLAG)
 			break;
+
+		// if (buffer[receivedSize-1] == ESCAPE)
+		// {
+		// 	char foo;
+
+		// 	read(fd, &foo, 1);
+
+		// 	if (foo == 0x5e)
+		// 	{
+		// 		buffer[receivedSize-1] = FLAG;
+		// 	}
+		// 	else if (foo == 0x5d)
+		// 	{
+		// 		buffer[receivedSize-1] = ESCAPE;
+		// 	}
+		// 	else
+		// 	{
+		// 		buffer[receivedSize++] = foo;
+		// 	}
+		// }
 	}
 
 	printf("--------------- What was literally read -------------------\n");
@@ -149,9 +169,9 @@ int llread(int fd, char * buffer)
 		return -1;
 	}
 
-	memcpy(dataPackets, buffer + 4, receivedSize - 6);
+	memcpy(dataPackets, buffer + 4, dataPacketsSize);
 	//printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
-	//destuff(dataPackets, &dataPacketsSize);
+	destuff(dataPackets, &dataPacketsSize);
 	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
 	//TODO Trailer Check
 	memcpy(buffer, dataPackets, dataPacketsSize); //ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
@@ -174,10 +194,10 @@ char headerCheck(char received[])
 	if (received[0] == FLAG && received[1] == ADDR)
 	{
 		control = received[2];
-		printf("Control: %d\n", control);
+		// printf("Control: %d\n", control);
 
 		bcc1 = received[3];
-		printf("BCC1: %d\n", bcc1);
+		// printf("BCC1: %d\n", bcc1);
 
 		if (bcc1 != received[1] ^ control)
 			return -1;
@@ -233,22 +253,6 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 	if (controlByte == 2) // Start
 	{
 		checkControlDataPacket2(1, buffer, filename, fileSize, packetSize);
-		/*
-		if (buffer[i++] == 0) // File size
-		{
-			printf("i = %i\n", i);
-
-			memcpy(fileSize, buffer+i+1, buffer[i]);
-			i += buffer[i];
-		}
-
-		if (buffer[i++] == 1) // File name
-		{
-			printf("i = %i\n", i);
-
-			memcpy(fileSize, buffer+i+1, buffer[i]);
-			i += buffer[i];
-		}*/
 
 		*fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
@@ -288,43 +292,11 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			printf("--------- Data Packets Read ---------------\n");
 			printArray(buffer, K);
 
-			/*
-			char sequenceNumber = buffer[i++];
-			printf("sequenceNumber = %i\n", sequenceNumber);
-			printf("app->dataPacketIndex = %i\n", app->dataPacketIndex);
-
-			if(sequenceNumber != app->dataPacketIndex - 1)
-			{
-				printf("Sequence error\n");
-				return -1;
-			}
-		
-			unsigned char l1 = buffer[i++], l2 = buffer[i++];
-		
-			*packetSize = 256 * l2 + l1;
-		
-			printf("packetSize = %d\n", *packetSize);
-
-			memcpy(buffer, buffer, *packetSize); */
-
 		}
 		else 
 			if (controlByte == 3) // End
 			{
 				checkControlDataPacket2(packetSize - 3, buffer, filename, fileSize, packetSize);
-
-				/*
-				if (buffer[i] == 0) // File size
-				{
-					i++;
-					i += read(app->fileDescriptor, fileSize, buffer[i]);
-				}
-
-				if (buffer[i] == 1) // File name
-				{
-					i++;
-					i += read(app->fileDescriptor, filename, buffer[i]);
-				}*/
 
 				app->status = 2;
 			}
