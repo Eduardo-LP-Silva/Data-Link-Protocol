@@ -150,9 +150,11 @@ int llread(int fd, char * buffer)
 		return -1;
 	}
 
-	memcpy(buffer, temp + 4, dataPacketsSize);
+	dataPacketsSize++; 
+	destuff(temp + 4, &dataPacketsSize);
+	dataPacketsSize--;
 
-	destuff(buffer, &dataPacketsSize+1);
+	memcpy(buffer, temp + 4, dataPacketsSize);
 
 	
 	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
