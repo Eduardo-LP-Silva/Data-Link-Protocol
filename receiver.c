@@ -70,8 +70,6 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 		{
 			packetSize = llread(al.fileDescriptor, dataRead);
 
-			dataRead = (dataRead+4);
-
 			printf("packetSize = %i\n", packetSize);
 
 			if(packetSize < 0)
@@ -99,6 +97,8 @@ int stateMachineReceiver(char* device, char *fileSize, char *filename)
 		else if (al.status == 2) // Closing
 		{
 			free(dataRead);
+
+			close(fd);
 
 			break;
 		}
@@ -152,7 +152,7 @@ int llread(int fd, char * buffer)
 	}
 
 	printf("--------------- What was literally read -------------------\n");
-	printArray(buffer, receivedSize);
+	//printArray(buffer, receivedSize);
 	printf("------------------------------------------------------------\n");
 
 	if(headerCheck(buffer) < 0)
@@ -161,7 +161,6 @@ int llread(int fd, char * buffer)
 		return -1;
 	}
 
-	char dataPackets[128 * 2];
 	int dataPacketsSize = receivedSize - 6;
 
 	if(receivedSize - 6 > 128 * 2)
@@ -173,9 +172,11 @@ int llread(int fd, char * buffer)
 	// memcpy(dataPackets, buffer + 4, dataPacketsSize);
 	//printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
 	destuff(buffer + 4, &dataPacketsSize);
+
+	memmove(buffer, buffer + 4, dataPacketsSize);
 	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
 	//TODO Trailer Check
-	// memcpy(buffer, dataPackets, dataPacketsSize); //ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
+	//ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
 
 	return dataPacketsSize; //Application must not know frame structure, thus only the size of the data packets is needed
 }
@@ -261,12 +262,12 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 	else 
 		if (controlByte == 1) // Data
 		{
-			int N = buffer[i + 1];
+			unsigned char N = buffer[i + 1];
 			unsigned char L2 = buffer[i + 2], L1 = buffer[i + 3];
 
-			printf("N: %d\nL1: %d\nL2: %d\n", N, L1, L2);
+			printf("N: %u\nL1: %u\nL2: %u\n", N, L1, L2);
 
-			if(N != app->dataPacketIndex - 1)
+			if(N != (app->dataPacketIndex - 1) % 255)
 			{
 				printf("Sequence error\n");
 				return -1;
@@ -291,7 +292,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			}
 
 			printf("--------- Data Packets Read ---------------\n");
-			printArray(buffer, K);
+			//printArray(buffer, K);
 
 		}
 		else 
