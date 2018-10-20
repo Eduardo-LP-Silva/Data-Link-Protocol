@@ -122,40 +122,21 @@ int receiveFile(char *device)
 int llread(int fd, char * buffer)
 {
 	int i, j, numBytes = 1, receivedSize = 0;
+	char temp[128*2 + 6];
 	
 	while(1)
 	{
-		numBytes = read(fd, &buffer[receivedSize++], 1);
+		numBytes = read(fd, &temp[receivedSize++], 1);
 
-		if (receivedSize > 1 && buffer[receivedSize-1] == FLAG)
+		if (receivedSize > 1 && temp[receivedSize-1] == FLAG)
 			break;
-
-		// if (buffer[receivedSize-1] == ESCAPE)
-		// {
-		// 	char foo;
-
-		// 	read(fd, &foo, 1);
-
-		// 	if (foo == 0x5e)
-		// 	{
-		// 		buffer[receivedSize-1] = FLAG;
-		// 	}
-		// 	else if (foo == 0x5d)
-		// 	{
-		// 		buffer[receivedSize-1] = ESCAPE;
-		// 	}
-		// 	else
-		// 	{
-		// 		buffer[receivedSize++] = foo;
-		// 	}
-		// }
 	}
 
 	printf("--------------- What was literally read -------------------\n");
 	//printArray(buffer, receivedSize);
 	printf("------------------------------------------------------------\n");
 
-	if(headerCheck(buffer) < 0)
+	if(headerCheck(temp) < 0)
 	{
 		printf("Error on header");
 		return -1;
@@ -163,17 +144,17 @@ int llread(int fd, char * buffer)
 
 	int dataPacketsSize = receivedSize - 6;
 
-	if(receivedSize - 6 > 128 * 2)
+	if(dataPacketsSize > 128 * 2)
 	{
 		printf("Too much data incoming\n");
 		return -1;
 	}
 
-	// memcpy(dataPackets, buffer + 4, dataPacketsSize);
-	//printf("Data Packet size before destuffing: %d\n", dataPacketsSize);
-	destuff(buffer + 4, &dataPacketsSize);
+	memcpy(buffer, temp + 4, dataPacketsSize);
 
-	memmove(buffer, buffer + 4, dataPacketsSize);
+	destuff(buffer, &dataPacketsSize+1);
+
+	
 	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
 	//TODO Trailer Check
 	//ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
