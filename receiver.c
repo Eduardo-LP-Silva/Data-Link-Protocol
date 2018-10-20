@@ -154,21 +154,39 @@ int llread(int fd, char * buffer)
 	destuff(temp + 4, &dataPacketsSize);
 	dataPacketsSize--;
 
+	if(trailerCheck(temp + 4, dataPacketsSize + 2) < 0)
+	{
+		printf("Error in Trailer\n");
+		return -1;
+	}
+
 	memcpy(buffer, temp + 4, dataPacketsSize);
 
 	
 	//printf("Data Packet size after destuffing: %d\n", dataPacketsSize);
-	//TODO Trailer Check
 	//ATTENTION: The information beyond dataPacketsSize will be untuched, remaining the same as when the buffer was first read
 
 	return dataPacketsSize; //Application must not know frame structure, thus only the size of the data packets is needed
 }
 
-int trailerCheck(char *buffer, int size)
+int trailerCheck(char received[], int size)
 {
-	
+	char bcc2;
+	int i;
 
-	return 0;
+	for (i = 0; i < size-2; i++) 
+	{		
+		if (i == 0)
+			bcc2 = received[i];
+		else
+			bcc2 ^= received[i];
+	}
+
+	if(bcc2 != received[size-2])
+		return -1;
+
+	if(received[size - 1] != FLAG)
+		return -1;
 }
 
 char headerCheck(char received[])
@@ -318,68 +336,6 @@ int checkControlDataPacket2(int i, char *buffer, char *filename, char *fileSize,
 		}
 			
 	}
-
-	return 0;
-}
-
-int readDataPacket(applicationLayer *app, char *buffer, char *filename, int *fileSize, int* packetSize)
-{
-	char controlByte;
-
-	read(app->fileDescriptor, &controlByte, 1);
-
-	int error = -1;
-
-	switch(controlByte)
-	{
-		case 1:
-			break;
-
-		case 2:
-			if((error = checkControlDataPacket(app->fileDescriptor, filename, fileSize)) == -1)
-				return error;
-
-			return 0;
-
-		case 3:
-			if((error = checkControlDataPacket(app->fileDescriptor, filename, fileSize)) == -1)
-				return error;
-
-			//TODO SMT
-			
-			app->status = 2;
-			
-			return 0;
-
-		default:
-			return -1;
-			break;
-	}
-
-	char sequenceNumber; 
-	read(app->fileDescriptor, &sequenceNumber, 1);
-
-	printf("sequenceNumber = %i\n", sequenceNumber);
-	printf("app->dataPacketIndex = %i\n", app->dataPacketIndex);
-
-	if(sequenceNumber != app->dataPacketIndex - 1)
-	{
-		printf("Sequence error\n");
-		return -1;
-	}
-
-	
-	unsigned char l1, l2;
-	
-	read(app->fileDescriptor, &l2, 1);
-	read(app->fileDescriptor, &l1, 1);
-	
-	*packetSize = 256 * l2 + l1;
-	
-	printf("packetSize = %d\n", *packetSize);
-
-	read(app->fileDescriptor, buffer, *packetSize);
-	//printArray(buffer, *packetSize);
 
 	return 0;
 }
