@@ -87,7 +87,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 						numBytes = 128;
 
 					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // C (1 - data) 
-					packageArray[al.dataPacketIndex][1 + packageSize++] = (al.dataPacketIndex-1) % 256; // Sequence number
+					packageArray[al.dataPacketIndex][1 + packageSize++] = (al.dataPacketIndex-1) % 255; // Sequence number
 					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
 					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes % 256;
 
@@ -138,6 +138,8 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 				free(packageArray);
 
+				free(buffer);
+
 				al.status = 2;
 			}
 		}
@@ -167,7 +169,7 @@ int sendFile(char* filename, char* device)
 
 	printf("Size = %i\n", size);
 	
-	char buffer[size];
+	char* buffer = malloc(size);
 
 	int i, bufferSize = 1024, numBytes = bufferSize;
 
@@ -189,7 +191,7 @@ int sendFile(char* filename, char* device)
 
 int llwrite(int fd, char * buffer, int length)
 {
-	char package[6 + 2*length], awns[5];
+	char package[6 + 2*length];
 	int i, j, packageSize = 6+length;
 
 	package[0] = FLAG;
@@ -215,7 +217,7 @@ int llwrite(int fd, char * buffer, int length)
 			package[packageSize-2] ^= buffer[i];
 	}
 
-	for (i = 4; i < packageSize - 2; i++) // Stuffing
+	for (i = 4; i < packageSize - 1; i++) // Stuffing
 	{
 		if (package[i] == FLAG)
 		{
@@ -240,7 +242,7 @@ int llwrite(int fd, char * buffer, int length)
 	
 	package[packageSize-1] = FLAG;
 
-	printArray(package, packageSize);
+	// printArray(package, packageSize);
 
 	int written = write(fd, package, packageSize);
 	
@@ -250,7 +252,7 @@ int llwrite(int fd, char * buffer, int length)
 		return -1;
 	}
 	
-	printf("Frame sent with %i bytes!\n", written);
+	// printf("Frame sent with %i bytes!\n", written);
 
 	return written;
 }

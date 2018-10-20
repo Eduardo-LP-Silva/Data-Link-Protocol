@@ -9,20 +9,20 @@
 
 int main(int argc, char** argv)
 {	
-	// if ( (argc != 3) || ((strcmp("/dev/ttyS0", argv[1])!=0) && (strcmp("/dev/ttyS1", argv[1])!=0) )) {
-	//   printf("Usage:\tnserial SerialPort\n\tex: nserial /dev/ttyS1\n");
-	//   exit(1);
-	// }
+	if ( (argc != 3) || ((strcmp("/dev/ttyS0", argv[1])!=0) && (strcmp("/dev/ttyS1", argv[1])!=0) )) {
+	  printf("Usage:\tnserial SerialPort\n\tex: nserial /dev/ttyS1\n");
+	  exit(1);
+	}
 
 	if (strcmp(argv[2], "transmitter") == 0)
 	{
-		sendFile("pinguim.gif", argv[1]);
+		sendFile("slides.pdf", argv[1]);
 
-		// sendFile("pinguim.gif", "file2");
+		// sendFile("heli.jpg", "file2");
 	}
 	else if (strcmp(argv[2], "receiver") == 0)
 	{
-		receiveFile(argv[1]);
+		// receiveFile(argv[1]);
 
 		// receiveFile("file2");
 	}
