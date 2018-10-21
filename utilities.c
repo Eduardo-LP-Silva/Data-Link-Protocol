@@ -170,11 +170,11 @@ int llopen(int fd, int flag)
 		printf("SET sent!\n");
 
 
-		alarm(TIMEOUT);
+		// alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		alarm(0);
+		// alarm(0);
 
 		if(received < 0)
 		{
@@ -192,11 +192,11 @@ int llopen(int fd, int flag)
 	}
 	else if (flag == RECEIVER)
 	{
-		alarm(TIMEOUT);
+		// alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		alarm(0);
+		// alarm(0);
 
 		if(received < 0)
 		{

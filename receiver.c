@@ -9,6 +9,17 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <signal.h>
+
+int flag = 0;
+
+void sigalrm_handlerR(int signal)
+{
+	printf("Message timed out!\n");
+	flag = 1;
+	
+}
+
 
 int receiveFile(char *device)
 {
@@ -19,6 +30,18 @@ int receiveFile(char *device)
 	ll.baudRate = BAUDRATE;
 	ll.sequenceNumber = 0;
 	ll.numTransmissions = 0;
+
+	struct sigaction sigalrmaction;
+
+	sigalrmaction.sa_handler = sigalrm_handlerR;
+	sigemptyset(&sigalrmaction.sa_mask);
+	sigalrmaction.sa_flags = 0;
+
+	if (sigaction(SIGALRM, &sigalrmaction, NULL) < 0)
+	{
+		fprintf(stderr,"Unable to install SIGALRM handler\n");
+		return 1;
+	}
 
 	//Ciclo
 	stateMachineReceiver(&al, device, fileSize, filename);
@@ -58,16 +81,27 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 
 			printf("packetSize = %i\n", packetSize);
 
-			if(packetSize < 0)
+			if(packetSize == -1)
 			{
-				sendAnswer(al->fileDescriptor, REJ_C);
+				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
 				printf("Error in llread\n");
 				continue;
 			}
+			else
+			if(packetSize == -2)
+			{
+				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
+				//printf("Error in llread\n");
+				continue;
+			}
+			else
+			if(packetSize == -3)
+				continue;
+			
 
 			if(readDataPacket2(&fd, al, dataRead, filename, fileSize, packetSize) < 0)
 			{
-				sendAnswer(al->fileDescriptor, REJ_C);
+				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
 				printf("Error in Data Packet\n");
 				continue;
 			}
@@ -78,12 +112,18 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 
 			printf("Received Packet\n");
 
-			sendAnswer(al->fileDescriptor, RR_C);
+			if(ll.sequenceNumber == 0)
+				ll.sequenceNumber = 1;
+			else
+				ll.sequenceNumber = 0;
+
+			sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
+					
 		}
 		else if (al->status == 2) // Closing
 		{
+			
 			free(dataRead);
-
 			close(fd);
 
 			break;
@@ -100,7 +140,15 @@ int llread(int fd, char * buffer)
 	
 	while(1)
 	{
+		// alarm(TIMEOUT);
 		numBytes = read(fd, &temp[receivedSize++], 1);
+		// alarm(0);
+
+		if (flag)
+		{
+			flag= 0;
+			return -3;
+		}
 
 		if (receivedSize > 1 && temp[receivedSize-1] == FLAG)
 			break;
@@ -110,11 +158,14 @@ int llread(int fd, char * buffer)
 	//printArray(buffer, receivedSize);
 	printf("------------------------------------------------------------\n");
 
-	if(headerCheck(temp) < 0)
+	int error = headerCheck(temp);
+
+	if(error < 0)
 	{
-		printf("Error on header");
-		return -1;
+		printf("Error on header\n");
+		return error;
 	}
+		
 
 	int dataPacketsSize = receivedSize - 6;
 
@@ -198,16 +249,18 @@ char headerCheck(char received[])
 	if (received[0] == FLAG && received[1] == ADDR)
 	{
 		control = received[2];
+	
+		control = control >> 6;
 
-		if(control == ll.sequenceNumber)
-			return -1;
-		
-		if(ll.sequenceNumber == 0)
-			ll.sequenceNumber = 1;
-		else
-			ll.sequenceNumber = 0;
+		printf("Control: %d\n", control);
+		printf("Sequence Number: %u \n", ll.sequenceNumber);
+
+		if(control != ll.sequenceNumber)
+		{
+			printf("Sequence error\n");			
+			return -2;
+		}
 			
-		// printf("Control: %d\n", control);
 
 		bcc1 = received[3];
 		// printf("BCC1: %d\n", bcc1);
@@ -231,8 +284,8 @@ int sendAnswer(int fd, char control)
 	
 	int written = write(fd, buffer, 5);
 	
-	if (written < 0)
-		printf("Error sending RR!\n");
+	if (written < 5)
+		printf("Error sending anwser!\n");
 
 	return written;
 }
@@ -283,7 +336,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 				return -1;
 			}
 
-			printf("--------- Data Packets Read ---------------\n");
+			//printf("--------- Data Packets Read ---------------\n");
 			//printArray(buffer, K);
 
 		}
