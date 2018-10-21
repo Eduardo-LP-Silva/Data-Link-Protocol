@@ -4,28 +4,43 @@
 #include "utilities.h"
 
 #include <fcntl.h>
+#include <signal.h>
 #include <sys/stat.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+int flag = 1;
+int interruptCounter = 0;
+
 void sigalrm_handler(int signal)
 {
 	printf("Message timed out!\n");
-	exit(0);
+
+	interruptCounter++;	
+
+	al.dataPacketIndex--;
+	
+	int i;
+	for (i = 0; i < interruptCounter; i++)
+		al.dataPacketIndex--;
+
+
+	// exit(0);
 }
 
 int stateMachine(char* device, char* buffer, int size, char* filename)
 {
-	applicationLayer al;
 	al.status = 0;
 	al.flag = TRANSMITTER;
 	al.dataPacketIndex = 0;
 
+	ll.sequenceNumber = 0;
+
 	int packageSize = 0, numBytes;
 
-	char** packageArray = calloc((size/128 + 1) + 2, sizeof(char*));
+	char** packageArray = calloc((size/DATASIZE + 1) + 2, sizeof(char*));
 
 	while (1)
 	{
@@ -38,7 +53,6 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			if (al.fileDescriptor > 0)
 			{
 				al.status = 1;
-				al.dataPacketIndex = 0;
 			}
 		}
 		else if (al.status == 1) // Transfering
@@ -47,7 +61,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			{
 				packageSize = 0;
 
-				packageArray[al.dataPacketIndex] = malloc(128 + 4 + 1);
+				packageArray[al.dataPacketIndex] = malloc(DATASIZE + 4 + 1);
 
 				if (al.dataPacketIndex == 0) // Start
 				{
@@ -63,7 +77,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], filename, strlen(filename) + 1);
 					packageSize += strlen(filename) + 1;
 				}
-				else if (al.dataPacketIndex == (size/128 + 1 + 1)) // End
+				else if (al.dataPacketIndex == (size/DATASIZE + 1 + 1)) // End
 				{
 					packageArray[al.dataPacketIndex][1 + packageSize++] = 3; // C (3 - end)
 
@@ -79,19 +93,19 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 				}
 				else // Data Packages
 				{
-					numBytes = (size  - 128*(al.dataPacketIndex-1));
+					numBytes = (size  - DATASIZE*(al.dataPacketIndex-1));
 
 					printf("numBytes = %i\n", numBytes);
 					
-					if (numBytes > 128)
-						numBytes = 128;
+					if (numBytes > DATASIZE)
+						numBytes = DATASIZE;
 
-					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // C (1 - data) 
+					packageArray[al.dataPacketIndex][1 + packageSize++] = 1; // C (1 - data)
 					packageArray[al.dataPacketIndex][1 + packageSize++] = (al.dataPacketIndex-1) % 255; // Sequence number
 					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes / 256; // The 8 most significant bits in the packageSize.
 					packageArray[al.dataPacketIndex][1 + packageSize++] = numBytes % 256;
 
-					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], buffer+(al.dataPacketIndex-1)*128, numBytes);
+					memcpy(&packageArray[al.dataPacketIndex][1 + packageSize], buffer+(al.dataPacketIndex-1)*DATASIZE, numBytes);
 
 					packageSize += numBytes;
 				}
@@ -106,32 +120,56 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 			alarm(TIMEOUT);
 			
-			read(al.fileDescriptor, received, 5);
+			int bytes = read(al.fileDescriptor, received, 5);
 
 			alarm(0);
-
-			int control = messageCheck(received);
-
-			if (control == REJ_C)
+			
+			if (bytes != -1)
 			{
-				printf("Corrupt frame sent, sending same frame again!\n\n");
-				al.dataPacketIndex--;
-			}
-			else if (control == RR_C)
-			{
-				printf("Frame sent sucessfully\n\n");
+				unsigned char control = messageCheck(received);
+				int sequenceNumber = (control & 0x80) >> 7;
+
+				if (sequenceNumber == al.dataPacketIndex)
+				{
+					printf("Sendig previous packet");
+					al.dataPacketIndex--;
+				}
+				
+				
+				if (control == ((ll.sequenceNumber << 7) | REJ_C))
+				{
+					printf("Corrupt frame sent, sending same frame again!\n\n");
+					// al.dataPacketIndex--;
+				}
+				else if (control == ((((ll.sequenceNumber+1)%2) << 7) | RR_C))
+				{
+					printf("Frame sent sucessfully\n\n");
+				}
+				else
+				{
+					if (control == (control & RR_C))
+					{
+						printf("Received RR_C for package number %u\n", (control & 0x80) >> 7);
+					}
+					else if (control == (control & REJ_C))
+					{
+						printf("Received RR_C for package number %u\n", (control & 0x80) >> 7);
+					}
+
+					// al.dataPacketIndex--;
+				}
+				
 			}
 			else
-			{
-				printf("Unknown answer\n");
-			}
+				printf("horta\n");
 
 			al.dataPacketIndex++;
+			ll.sequenceNumber = al.dataPacketIndex % 2;
 
-			if (al.dataPacketIndex > (size/128 + 1 + 1))
+			if (al.dataPacketIndex > (size/DATASIZE + 1 + 1))
 			{
 				int j;
-				for (j = 0; j < (size/128 + 1) + 2; j++)
+				for (j = 0; j < (size/DATASIZE + 1) + 2; j++)
 				{
 					free(packageArray[j]);
 				}
@@ -155,6 +193,19 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 int sendFile(char* filename, char* device)
 {	
+	struct sigaction sigalrmaction;
+
+	sigalrmaction.sa_handler = sigalrm_handler;
+	sigemptyset(&sigalrmaction.sa_mask);
+	sigalrmaction.sa_flags = 0;
+
+	if (sigaction(SIGALRM, &sigalrmaction, NULL) < 0)
+	{
+		fprintf(stderr,"Unable to install SIGALRM handler\n");
+		return 1;
+	}
+	
+
 	int fd = open(filename, O_RDONLY);
 
 	struct stat st;
@@ -196,7 +247,9 @@ int llwrite(int fd, char * buffer, int length)
 
 	package[0] = FLAG;
 	package[1] = ADDR;
-	package[2] = 0;
+	package[2] = ll.sequenceNumber << 6;
+	printf("al.dataPacketIndex = %u\n", al.dataPacketIndex);
+
 	package[3] = package[1] ^ package[2];
 	
 	int packageLength = length;
@@ -243,9 +296,25 @@ int llwrite(int fd, char * buffer, int length)
 	package[packageSize-1] = FLAG;
 
 	// printArray(package, packageSize);
+	
+	/*	
+	char foo = 3;
+	if (al.dataPacketIndex == 5 && flag)
+	{
+		swap(&foo, &package[10]);
+	}
+	*/
 
 	int written = write(fd, package, packageSize);
 	
+	/*
+	if (al.dataPacketIndex == 5 && flag)
+	{
+		swap(&foo, &package[10]);
+		flag = 0;
+	}
+	*/
+
 	if (written < 0)
 	{
 		printf("Error in transmission\n");

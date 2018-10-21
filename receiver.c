@@ -55,7 +55,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 	al->flag = RECEIVER;
 	al->dataPacketIndex = 0;
 	
-	char* dataRead = malloc(128*2 + 6);
+	char* dataRead = malloc(DATASIZE*2 + 6);
 	int packetSize;
 	int fd;
 
@@ -136,7 +136,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 int llread(int fd, char * buffer)
 {
 	int i, j, numBytes = 1, receivedSize = 0;
-	char temp[128*2 + 6];
+	char temp[DATASIZE*2 + 6];
 	
 	while(1)
 	{
@@ -169,7 +169,7 @@ int llread(int fd, char * buffer)
 
 	int dataPacketsSize = receivedSize - 6;
 
-	if(dataPacketsSize > 128 * 2)
+	if(dataPacketsSize > DATASIZE * 2)
 	{
 		printf("Too much data incoming\n");
 		return -1;
