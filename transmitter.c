@@ -142,6 +142,9 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			
 			if (bytes != -1)
 			{
+				lastMessageTimedOut = 0;
+				ll.numTransmissions = MAX_ATTEMPTS;
+
 				if (gettimeofday(&readTime, NULL) != 0)
 					printf("Error getting time!\n");
 
