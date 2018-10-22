@@ -15,9 +15,18 @@ int flag = 0;
 
 void sigalrm_handlerR(int signal)
 {
-	printf("Message timed out!\n");
-	flag = 1;
 	
+	if(ll.numTransmissions > 0)
+	{
+		printf("Message timed out!\nNew attempt\n");
+		ll.numTransmissions--;		
+		//flag = 1;
+	}
+	else
+	{
+		printf("Maximum number of attempts reached - Exiting\n");
+		exit(1);
+	}
 }
 
 
@@ -29,7 +38,7 @@ int receiveFile(char *device)
 
 	ll.baudRate = BAUDRATE;
 	ll.sequenceNumber = 0;
-	ll.numTransmissions = 0;
+	ll.numTransmissions = MAX_ATTEMPTS;
 
 	struct sigaction sigalrmaction;
 
@@ -144,11 +153,12 @@ int llread(int fd, char * buffer)
 		numBytes = read(fd, &temp[receivedSize++], 1);
 		// alarm(0);
 
+		/*
 		if (flag)
 		{
 			flag= 0;
 			return -3;
-		}
+		} */
 
 		if (receivedSize > 1 && temp[receivedSize-1] == FLAG)
 			break;
@@ -314,7 +324,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 
 			if(N != (app->dataPacketIndex - 1) % 255)
 			{
-				printf("Sequence error\n");
+				printf("Data Packet sequence error\n");
 				return -1;
 			}
 
