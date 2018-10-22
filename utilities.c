@@ -250,8 +250,6 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("DISC sent by Transmitter!\n");
-
 		alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
@@ -271,7 +269,6 @@ int llclose(int fd, int flag)
 			printf("Unknown message\n");
 			return -1;
 		}
-		printf("Received DISC\n");
 
 		buf[2] = UA_C;
 		buf[3] = buf[1] ^ buf[2];
@@ -281,8 +278,6 @@ int llclose(int fd, int flag)
 			printf("Error in transmission\n");
 			return -1;
 		}
-
-		printf("UA sent by Transmitter!\n");
 
 	}
 	else if (flag == RECEIVER)
@@ -345,6 +340,8 @@ int llclose(int fd, int flag)
 	}
 
  	close(fd);
- 	
+
+ 	printf("Connection closed sucessfully!\n");
+
 	return 0;
 }
