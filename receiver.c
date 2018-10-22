@@ -130,11 +130,10 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 					
 		}
 		else if (al->status == 2) // Closing
-		{
-			
+		{	
 			free(dataRead);
 			close(fd);
-
+			llclose(al->fileDescriptor, RECEIVER);
 			break;
 		}
 	}
