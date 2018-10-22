@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int flag = 1;
 int interruptCounter = 0;
 
 void sigalrm_handler(int signal)
@@ -296,24 +295,8 @@ int llwrite(int fd, char * buffer, int length)
 	package[packageSize-1] = FLAG;
 
 	// printArray(package, packageSize);
-	
-	/*	
-	char foo = 3;
-	if (al.dataPacketIndex == 5 && flag)
-	{
-		swap(&foo, &package[10]);
-	}
-	*/
 
 	int written = write(fd, package, packageSize);
-	
-	/*
-	if (al.dataPacketIndex == 5 && flag)
-	{
-		swap(&foo, &package[10]);
-		flag = 0;
-	}
-	*/
 
 	if (written < 0)
 	{
