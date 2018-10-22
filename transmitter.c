@@ -6,27 +6,43 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/stat.h>
+#include <sys/time.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 
+int lastMessageTimedOut = 0;
 int interruptCounter = 0;
+struct timeval writeTime, readTime;
 
 void sigalrm_handler(int signal)
 {
+	lastMessageTimedOut = 1;
+
+	if (ll.numTransmissions > 0)
+	{
+		printf("Message timed out! New attempt\n");
+		ll.numTransmissions--;		
+	}
+	else
+	{
+		printf("Maximum number of attempts reached - Exiting\n");
+		exit(1);
+	}
+
 	printf("Message timed out!\n");
 
-	interruptCounter++;	
-
-	al.dataPacketIndex--;
-	
-	int i;
-	for (i = 0; i < interruptCounter; i++)
+	if (lastMessageTimedOut)
+	{
+		interruptCounter++;	
 		al.dataPacketIndex--;
-
-
-	// exit(0);
+		
+		int i;
+		for (i = 0; i < interruptCounter; i++)
+			al.dataPacketIndex--;
+	}
 }
 
 int stateMachine(char* device, char* buffer, int size, char* filename)
@@ -36,6 +52,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 	al.dataPacketIndex = 0;
 
 	ll.sequenceNumber = 0;
+	ll.numTransmissions = MAX_ATTEMPTS;
 
 	int packageSize = 0, numBytes;
 
@@ -125,6 +142,9 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			
 			if (bytes != -1)
 			{
+				if (gettimeofday(&readTime, NULL) != 0)
+					printf("Error getting time!\n");
+
 				unsigned char control = messageCheck(received);
 				int sequenceNumber = (control & 0x80) >> 7;
 
@@ -152,37 +172,42 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 					}
 					else if (control == (control & REJ_C))
 					{
-						printf("Received RR_C for package number %u\n", (control & 0x80) >> 7);
+						printf("Received REJ_C for package number %u\n", (control & 0x80) >> 7);
 					}
 
 					// al.dataPacketIndex--;
 				}
 				
 			}
-			else
-				printf("horta\n");
+
+			double deltaTime = (double)(readTime.tv_sec - writeTime.tv_sec) + (double)(readTime.tv_usec - writeTime.tv_usec)/1000/1000; // In seconds 
+
+			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
 
 			al.dataPacketIndex++;
 			ll.sequenceNumber = al.dataPacketIndex % 2;
 
 			if (al.dataPacketIndex > (size/DATASIZE + 1 + 1))
 			{
-				int j;
-				for (j = 0; j < (size/DATASIZE + 1) + 2; j++)
-				{
-					free(packageArray[j]);
-				}
-
-				free(packageArray);
-
-				free(buffer);
-
 				al.status = 2;
 			}
 		}
 		else if (al.status == 2) // Closing
 		{
-			
+			// Frees buffers from file transfer
+			int j;
+			for (j = 0; j < (size/DATASIZE + 1) + 2; j++)
+			{
+				free(packageArray[j]);
+			}
+
+			free(packageArray);
+
+			if (llclose(al.fileDescriptor, al.flag) != 0)
+			{
+				printf("Error in llclose");
+			}
+
 			break;
 		}
 	}
@@ -211,7 +236,7 @@ int sendFile(char* filename, char* device)
 
 	if (stat(filename, &st) != 0)
 	{
-		printf("Failed to get file size!\n");
+		printf("Missing file!\n");
 		return 1;
 	}
 
@@ -235,7 +260,11 @@ int sendFile(char* filename, char* device)
 	}
 	close(fd);
 
-	return stateMachine(device, buffer, size, filename);
+	int ret = stateMachine(device, buffer, size, filename);
+
+	free(buffer);
+
+	return ret;
 }
 
 
@@ -295,6 +324,9 @@ int llwrite(int fd, char * buffer, int length)
 	package[packageSize-1] = FLAG;
 
 	// printArray(package, packageSize);
+
+	if (gettimeofday(&writeTime, NULL) != 0)
+		printf("Error getting time!\n");
 
 	int written = write(fd, package, packageSize);
 

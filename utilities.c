@@ -338,6 +338,13 @@ int llclose(int fd, int flag)
 		}
 	}
 
-	return fd;
-	close(fd);
+	if (tcsetattr(fd,TCSANOW,&oldtio) == -1)
+	{
+		perror("tcsetattr");
+		exit(-1);
+	}
+
+ 	close(fd);
+ 	
+	return 0;
 }

@@ -17,7 +17,7 @@
 #define ESCAPE 0x7d
 #define TRANSMITTER 0
 #define RECEIVER 1
-
+#define MAX_ATTEMPTS 3
 #define TIMEOUT 3
 #define DATASIZE 128
 #define MAX_FILE_SIZE 100000 //100 KB
