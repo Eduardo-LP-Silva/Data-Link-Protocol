@@ -323,7 +323,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 
 			if(N != (app->dataPacketIndex - 1) % 255)
 			{
-				printf("Data Packet sequence error\n");
+				printf("Data Packet sequence error\nData Packet Index = %u\n", app->dataPacketIndex);
 				return -1;
 			}
 
