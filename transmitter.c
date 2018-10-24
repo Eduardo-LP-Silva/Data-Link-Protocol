@@ -40,8 +40,9 @@ void sigalrm_handler(int signal)
 		al.dataPacketIndex--;
 		
 		int i;
+/*
 		for (i = 0; i < interruptCounter; i++)
-			al.dataPacketIndex--;
+			al.dataPacketIndex--; */
 	}
 }
 
@@ -161,7 +162,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 				if (control == ((ll.sequenceNumber << 7) | REJ_C))
 				{
 					printf("Corrupt frame sent, sending same frame again!\n\n");
-					// al.dataPacketIndex--;
+					al.dataPacketIndex--;
 				}
 				else if (control == ((((ll.sequenceNumber+1)%2) << 7) | RR_C))
 				{
@@ -176,6 +177,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 					else if (control == (control & REJ_C))
 					{
 						printf("Received REJ_C for package number %u\n", (control & 0x80) >> 7);
+						al.dataPacketIndex--;
 					}
 
 					// al.dataPacketIndex--;
