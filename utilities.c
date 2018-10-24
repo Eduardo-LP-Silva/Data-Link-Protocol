@@ -236,6 +236,8 @@ int llclose(int fd, int flag)
 	char buf[5];
 	int received;
 
+	tcflush(fd, TCIFLUSH);
+
 	if (flag == TRANSMITTER)
 	{
 		buf[0] = FLAG;

@@ -90,14 +90,14 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 
 			printf("packetSize = %i\n", packetSize);
 
-			if(packetSize == -1)
+			if(packetSize == -1) // Error in data package
 			{
 				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
 				printf("Error in llread\n");
 				continue;
 			}
 			else
-			if(packetSize == -2)
+			if(packetSize == -2) // Received same package
 			{
 				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
 				//printf("Error in llread\n");
@@ -127,7 +127,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 				ll.sequenceNumber = 0;
 
 			sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
-					
+
 		}
 		else if (al->status == 2) // Closing
 		{	
@@ -172,6 +172,12 @@ int llread(int fd, char * buffer)
 	if(error < 0)
 	{
 		printf("Error on header\n");
+		
+		int i;
+		for (i = 0; i < receivedSize; i++)
+			printf("%i, ", temp[i]);
+		
+		printf("\n");
 		return error;
 	}
 		
@@ -191,6 +197,13 @@ int llread(int fd, char * buffer)
 	if(trailerCheck(temp + 4, dataPacketsSize + 2) < 0)
 	{
 		printf("Error in Trailer\n");
+		
+		int i;
+		for (i = 0; i < receivedSize; i++)
+			printf("%i, ", temp[i]);
+		
+		printf("\n");
+
 		return -1;
 	}
 
@@ -274,11 +287,11 @@ char headerCheck(char received[])
 		bcc1 = received[3];
 		// printf("BCC1: %d\n", bcc1);
 
-		if (bcc1 != received[1] ^ control)
-			return -1;
+		if (bcc1 == received[1] ^ control)
+			return control;
 	}
 
-	return control;
+	return -1;
 }
 
 int sendAnswer(int fd, char control)
@@ -319,7 +332,8 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			unsigned char N = buffer[i + 1];
 			unsigned char L2 = buffer[i + 2], L1 = buffer[i + 3];
 
-			printf("N: %u\nL1: %u\nL2: %u\n", N, L1, L2);
+			printf("N: %u\n", N);
+			printf("al.dataPacketIndex-1 = %i\n", (app->dataPacketIndex-1) % 255);
 
 			if(N != (app->dataPacketIndex - 1) % 255)
 			{
@@ -328,7 +342,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			}
 
 			int K = 256 * L2 + L1;
-			printf("K: %d\n", K);
+			// printf("K: %d\n", K);
 
 			if(K <= 0)
 			{
