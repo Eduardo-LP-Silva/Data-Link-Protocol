@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -33,13 +34,14 @@ void sigalrm_handlerR(int signal)
 int receiveFile(char *device)
 {
 	char filename[100];
-	char fileSize[10];
+	int fileSize;
 	applicationLayer al;
 
 	ll.baudRate = BAUDRATE;
 	ll.sequenceNumber = 0;
 	ll.numTransmissions = MAX_ATTEMPTS;
 
+	/*
 	struct sigaction sigalrmaction;
 
 	sigalrmaction.sa_handler = sigalrm_handlerR;
@@ -51,9 +53,10 @@ int receiveFile(char *device)
 		fprintf(stderr,"Unable to install SIGALRM handler\n");
 		return 1;
 	}
+	*/
 
 	//Ciclo
-	stateMachineReceiver(&al, device, fileSize, filename);
+	stateMachineReceiver(&al, device, &fileSize, filename);
 
 	return 0;	
 }
@@ -65,17 +68,16 @@ void printPercentage(double percentage)
 	int i, length = 15 /* length of the percentage bar */;
 	for (i = 0; i < length; i++)
 	{
-		if (i/length < percentage)
+		if ((double)i/length < percentage)
 			printf("|");
 		else
 			printf(" ");
 	}
-	printf("\n", ((float)DATASIZE / deltaTime)/1024);
 
-	printf(">\n");	
+	printf(">%f.1\n", percentage*100);
 }
 
-int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, char *filename)
+int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char *filename)
 {
 	al->status = 0;
 	al->flag = RECEIVER;
@@ -151,10 +153,12 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 			if (gettimeofday(&writeTime2, NULL) != 0)
 				printf("Error getting time!\n");
 
-			double deltaTime = (double)(readTime.tv_sec - writeTime.tv_sec) + (double)(readTime.tv_usec - writeTime.tv_usec)/1000/1000; // In seconds 
+			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds 
 			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
 
-			printPercentage();
+			printPercentage((al->dataPacketIndex-2)*DATASIZE / (double)*fileSize);
+
+			printf("fileSize = %i\n", *fileSize);
 		}
 		else if (al->status == 2) // Closing
 		{	
@@ -338,7 +342,7 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename, char *fileSize, int packetSize)
+int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename, int *fileSize, int packetSize)
 {	
 	int i = 0;
 	char controlByte = buffer[i];
@@ -400,7 +404,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 	return 0;
 }
 
-int checkControlDataPacket2(int i, char *buffer, char *filename, char *fileSize, int packetSize)
+int checkControlDataPacket2(int i, char *buffer, char *filename, int *fileSize, int packetSize)
 {
 	int j;
 	char T, L;
