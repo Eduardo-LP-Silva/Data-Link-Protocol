@@ -58,6 +58,23 @@ int receiveFile(char *device)
 	return 0;	
 }
 
+void printPercentage(double percentage)
+{
+	printf("<");
+
+	int i, length = 15 /* length of the percentage bar */;
+	for (i = 0; i < length; i++)
+	{
+		if (i/length < percentage)
+			printf("|");
+		else
+			printf(" ");
+	}
+	printf("\n", ((float)DATASIZE / deltaTime)/1024);
+
+	printf(">\n");	
+}
+
 int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, char *filename)
 {
 	al->status = 0;
@@ -86,6 +103,9 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 		}
 		else if (al->status == 1) // Transfering
 		{
+			if (gettimeofday(&readTime2, NULL) != 0)
+				printf("Error getting time!\n");
+
 			packetSize = llread(al->fileDescriptor, dataRead);
 
 			printf("packetSize = %i\n", packetSize);
@@ -128,6 +148,13 @@ int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, cha
 
 			sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
 
+			if (gettimeofday(&writeTime2, NULL) != 0)
+				printf("Error getting time!\n");
+
+			double deltaTime = (double)(readTime.tv_sec - writeTime.tv_sec) + (double)(readTime.tv_usec - writeTime.tv_usec)/1000/1000; // In seconds 
+			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+
+			printPercentage();
 		}
 		else if (al->status == 2) // Closing
 		{	
@@ -181,7 +208,6 @@ int llread(int fd, char * buffer)
 		return error;
 	}
 		
-
 	int dataPacketsSize = receivedSize - 6;
 
 	if(dataPacketsSize > DATASIZE * 2)
@@ -344,7 +370,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			int K = 256 * L2 + L1;
 			// printf("K: %d\n", K);
 
-			if(K <= 0)
+			if(K < 0)
 			{
 				printf("Error in packet size\n");
 				return -1;

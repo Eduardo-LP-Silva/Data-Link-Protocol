@@ -4,6 +4,7 @@
 #include "utilities.h"
 
 linkLayer ll;
+struct timeval writeTime2, readTime2;
 
 int stateMachineReceiver(applicationLayer *al, char* device, char *fileSize, char *filename);
 int receiveFile(char *device);
