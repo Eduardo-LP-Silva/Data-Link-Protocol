@@ -2,6 +2,7 @@
 #define RECEIVER_H
 
 #include "utilities.h"
+#include <sys/time.h>
 
 linkLayer ll;
 struct timeval writeTime2, readTime2;
