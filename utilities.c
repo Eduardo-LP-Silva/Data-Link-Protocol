@@ -8,6 +8,7 @@
 #include <strings.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <termios.h>
 
 void swap(char* a, char*b)
 {
@@ -72,7 +73,7 @@ void printArray(char* arr, int length)
 
 int messageCheck(char received[])
 {
-	char control, bcc1, bcc2;
+	unsigned char control, bcc1, bcc2;
 	int i;
 
 	if (received[0] == FLAG && received[1] == ADDR && received[4] == FLAG)
@@ -236,12 +237,10 @@ int llclose(int fd, int flag)
 	char buf[5];
 	int received;
 
-	sleep(1);
-
-	tcflush(fd, TCIFLUSH);
-
 	if (flag == TRANSMITTER)
 	{
+		tcflush(fd, TCIFLUSH);
+
 		buf[0] = FLAG;
 		buf[1] = ADDR;
 		buf[2] = DISC_C;
@@ -267,11 +266,11 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		int status = messageCheck(buf);
+		unsigned char status = messageCheck(buf);
 
 		if (status != DISC_C)
 		{
-			printf("Unknown message\n");
+			printf("Unknown message : %u\n", status);
 			return -1;
 		}
 		else
@@ -304,11 +303,11 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		int status = messageCheck(buf);
+		unsigned char status = messageCheck(buf);
 
 		if (status != DISC_C)
 		{
-			printf("Unknown message\n");
+			printf("Unknown message : %u\n", status);
 			return -1;
 		}
 		else
