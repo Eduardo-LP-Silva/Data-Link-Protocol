@@ -1,0 +1,3997 @@
+New termios structure set
+Message sent!
+Open for connection
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 21
+C: 2
+T: 0
+L: 4
+i = 1
+File Size: 47892
+T: 1
+L: 12
+i = 7
+File Name: pinguim.jpg
+Received Packet
+Transfer rate : 11.7 KB/s
+<               >-0.267268.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 0
+al.dataPacketIndex-1 = 0
+Received Packet
+Transfer rate : 3.2 KB/s
+<               >0.000000.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 1
+al.dataPacketIndex-1 = 1
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >0.267268.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 2
+al.dataPacketIndex-1 = 2
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >0.534536.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 3
+al.dataPacketIndex-1 = 3
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >0.801804.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 4
+al.dataPacketIndex-1 = 4
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >1.069072.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 5
+al.dataPacketIndex-1 = 5
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >1.336340.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 6
+al.dataPacketIndex-1 = 6
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >1.603608.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 7
+al.dataPacketIndex-1 = 7
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >1.870876.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 8
+al.dataPacketIndex-1 = 8
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >2.138144.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 9
+al.dataPacketIndex-1 = 9
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >2.405412.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 10
+al.dataPacketIndex-1 = 10
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >2.672680.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 11
+al.dataPacketIndex-1 = 11
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >2.939948.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 12
+al.dataPacketIndex-1 = 12
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >3.207216.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 13
+al.dataPacketIndex-1 = 13
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >3.474484.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 14
+al.dataPacketIndex-1 = 14
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >3.741752.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 15
+al.dataPacketIndex-1 = 15
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >4.009020.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 16
+al.dataPacketIndex-1 = 16
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >4.276288.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 17
+al.dataPacketIndex-1 = 17
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >4.543556.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 18
+al.dataPacketIndex-1 = 18
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >4.810824.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 19
+al.dataPacketIndex-1 = 19
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >5.078092.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 20
+al.dataPacketIndex-1 = 20
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >5.345360.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 21
+al.dataPacketIndex-1 = 21
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >5.612628.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 22
+al.dataPacketIndex-1 = 22
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >5.879896.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 23
+al.dataPacketIndex-1 = 23
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >6.147164.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 24
+al.dataPacketIndex-1 = 24
+Received Packet
+Transfer rate : 3.2 KB/s
+<|              >6.414432.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 25
+al.dataPacketIndex-1 = 25
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >6.681700.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 26
+al.dataPacketIndex-1 = 26
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >6.948969.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 27
+al.dataPacketIndex-1 = 27
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >7.216237.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 28
+al.dataPacketIndex-1 = 28
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >7.483505.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 29
+al.dataPacketIndex-1 = 29
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >7.750773.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 30
+al.dataPacketIndex-1 = 30
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >8.018041.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 31
+al.dataPacketIndex-1 = 31
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >8.285309.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 32
+al.dataPacketIndex-1 = 32
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >8.552577.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 33
+al.dataPacketIndex-1 = 33
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >8.819845.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 34
+al.dataPacketIndex-1 = 34
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >9.087113.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 35
+al.dataPacketIndex-1 = 35
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >9.354381.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 36
+al.dataPacketIndex-1 = 36
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >9.621649.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 37
+al.dataPacketIndex-1 = 37
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >9.888917.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 38
+al.dataPacketIndex-1 = 38
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >10.156185.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 39
+al.dataPacketIndex-1 = 39
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >10.423453.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 40
+al.dataPacketIndex-1 = 40
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >10.690721.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 41
+al.dataPacketIndex-1 = 41
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >10.957989.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 42
+al.dataPacketIndex-1 = 42
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >11.225257.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 43
+al.dataPacketIndex-1 = 43
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >11.492525.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 44
+al.dataPacketIndex-1 = 44
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >11.759793.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 45
+al.dataPacketIndex-1 = 45
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >12.027061.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 46
+al.dataPacketIndex-1 = 46
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >12.294329.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 47
+al.dataPacketIndex-1 = 47
+Received Packet
+Transfer rate : 3.1 KB/s
+<||             >12.561597.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 48
+al.dataPacketIndex-1 = 48
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >12.828865.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 49
+al.dataPacketIndex-1 = 49
+Received Packet
+Transfer rate : 3.2 KB/s
+<||             >13.096133.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 50
+al.dataPacketIndex-1 = 50
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >13.363401.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 51
+al.dataPacketIndex-1 = 51
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >13.630669.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 52
+al.dataPacketIndex-1 = 52
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >13.897937.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 53
+al.dataPacketIndex-1 = 53
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >14.165205.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 54
+al.dataPacketIndex-1 = 54
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >14.432473.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 55
+al.dataPacketIndex-1 = 55
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >14.699741.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 56
+al.dataPacketIndex-1 = 56
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >14.967009.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 57
+al.dataPacketIndex-1 = 57
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >15.234277.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 58
+al.dataPacketIndex-1 = 58
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >15.501545.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 59
+al.dataPacketIndex-1 = 59
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >15.768813.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 60
+al.dataPacketIndex-1 = 60
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >16.036081.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 61
+al.dataPacketIndex-1 = 61
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >16.303349.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 62
+al.dataPacketIndex-1 = 62
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >16.570617.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 63
+al.dataPacketIndex-1 = 63
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >16.837885.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 64
+al.dataPacketIndex-1 = 64
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >17.105153.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 65
+al.dataPacketIndex-1 = 65
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >17.372421.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 66
+al.dataPacketIndex-1 = 66
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >17.639689.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 67
+al.dataPacketIndex-1 = 67
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >17.906957.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 68
+al.dataPacketIndex-1 = 68
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >18.174225.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 69
+al.dataPacketIndex-1 = 69
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >18.441493.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 70
+al.dataPacketIndex-1 = 70
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >18.708761.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 71
+al.dataPacketIndex-1 = 71
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >18.976029.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 72
+al.dataPacketIndex-1 = 72
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >19.243297.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 73
+al.dataPacketIndex-1 = 73
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||            >19.510565.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 74
+al.dataPacketIndex-1 = 74
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||            >19.777833.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 75
+al.dataPacketIndex-1 = 75
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >20.045101.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 76
+al.dataPacketIndex-1 = 76
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >20.312369.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 77
+al.dataPacketIndex-1 = 77
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >20.579638.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 78
+al.dataPacketIndex-1 = 78
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >20.846906.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 79
+al.dataPacketIndex-1 = 79
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >21.114174.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 80
+al.dataPacketIndex-1 = 80
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >21.381442.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 81
+al.dataPacketIndex-1 = 81
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >21.648710.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 82
+al.dataPacketIndex-1 = 82
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >21.915978.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 83
+al.dataPacketIndex-1 = 83
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >22.183246.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 84
+al.dataPacketIndex-1 = 84
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >22.450514.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 85
+al.dataPacketIndex-1 = 85
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >22.717782.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 86
+al.dataPacketIndex-1 = 86
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >22.985050.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 87
+al.dataPacketIndex-1 = 87
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >23.252318.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 88
+al.dataPacketIndex-1 = 88
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >23.519586.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 89
+al.dataPacketIndex-1 = 89
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >23.786854.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 90
+al.dataPacketIndex-1 = 90
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >24.054122.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 91
+al.dataPacketIndex-1 = 91
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >24.321390.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 92
+al.dataPacketIndex-1 = 92
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >24.588658.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 93
+al.dataPacketIndex-1 = 93
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >24.855926.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 94
+al.dataPacketIndex-1 = 94
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >25.123194.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 95
+al.dataPacketIndex-1 = 95
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >25.390462.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 96
+al.dataPacketIndex-1 = 96
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >25.657730.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 97
+al.dataPacketIndex-1 = 97
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >25.924998.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 98
+al.dataPacketIndex-1 = 98
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||           >26.192266.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 99
+al.dataPacketIndex-1 = 99
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||           >26.459534.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 100
+al.dataPacketIndex-1 = 100
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >26.726802.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 101
+al.dataPacketIndex-1 = 101
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >26.994070.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 102
+al.dataPacketIndex-1 = 102
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >27.261338.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 103
+al.dataPacketIndex-1 = 103
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||||          >27.528606.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 104
+al.dataPacketIndex-1 = 104
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||||          >27.795874.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 105
+al.dataPacketIndex-1 = 105
+Received Packet
+Transfer rate : 3.1 KB/s
+<|||||          >28.063142.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 106
+al.dataPacketIndex-1 = 106
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >28.330410.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 107
+al.dataPacketIndex-1 = 107
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >28.597678.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 108
+al.dataPacketIndex-1 = 108
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >28.864946.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 109
+al.dataPacketIndex-1 = 109
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >29.132214.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 110
+al.dataPacketIndex-1 = 110
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >29.399482.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 111
+al.dataPacketIndex-1 = 111
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >29.666750.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 112
+al.dataPacketIndex-1 = 112
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >29.934018.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 113
+al.dataPacketIndex-1 = 113
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >30.201286.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 114
+al.dataPacketIndex-1 = 114
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >30.468554.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 115
+al.dataPacketIndex-1 = 115
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >30.735822.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 116
+al.dataPacketIndex-1 = 116
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >31.003090.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 117
+al.dataPacketIndex-1 = 117
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >31.270358.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 118
+al.dataPacketIndex-1 = 118
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >31.537626.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 119
+al.dataPacketIndex-1 = 119
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >31.804894.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 120
+al.dataPacketIndex-1 = 120
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >32.072162.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 121
+al.dataPacketIndex-1 = 121
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >32.339430.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 122
+al.dataPacketIndex-1 = 122
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >32.606698.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 123
+al.dataPacketIndex-1 = 123
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >32.873966.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 124
+al.dataPacketIndex-1 = 124
+Received Packet
+Transfer rate : 3.2 KB/s
+<|||||          >33.141234.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 125
+al.dataPacketIndex-1 = 125
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||||         >33.408502.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 126
+al.dataPacketIndex-1 = 126
+Received Packet
+Transfer rate : 3.1 KB/s
+<||||||         >33.675770.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 127
+al.dataPacketIndex-1 = 127
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >33.943039.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 128
+al.dataPacketIndex-1 = 128
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >34.210307.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 129
+al.dataPacketIndex-1 = 129
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >34.477575.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 130
+al.dataPacketIndex-1 = 130
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >34.744843.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 131
+al.dataPacketIndex-1 = 131
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >35.012111.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 132
+al.dataPacketIndex-1 = 132
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >35.279379.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 133
+al.dataPacketIndex-1 = 133
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >35.546647.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 134
+al.dataPacketIndex-1 = 134
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >35.813915.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 135
+al.dataPacketIndex-1 = 135
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >36.081183.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 136
+al.dataPacketIndex-1 = 136
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >36.348451.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 137
+al.dataPacketIndex-1 = 137
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >36.615719.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 138
+al.dataPacketIndex-1 = 138
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >36.882987.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 139
+al.dataPacketIndex-1 = 139
+Received Packet
+Transfer rate : 3.2 KB/s
+<||||||         >37.150255.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+Error in Trailer
+126, 3, 64, 67, 1, -116, 0, -128, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, -16, 126, 
+packetSize = -1
+Error in llread
+------------------------------------------------------------
+Error on header
+3, 64, 67, 1, -116, 0, -128, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 39, 126, 
+packetSize = -1
+Error in llread
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 140
+al.dataPacketIndex-1 = 140
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >37.417523.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+Sequence error
+Error on header
+126, 3, 64, 67, 1, -116, 0, -128, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 39, 126, 
+packetSize = -2
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 141
+al.dataPacketIndex-1 = 141
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >37.684791.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 142
+al.dataPacketIndex-1 = 142
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||         >37.952059.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 143
+al.dataPacketIndex-1 = 143
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >38.219327.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 144
+al.dataPacketIndex-1 = 144
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >38.486595.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 145
+al.dataPacketIndex-1 = 145
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >38.753863.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 146
+al.dataPacketIndex-1 = 146
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||         >39.021131.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 147
+al.dataPacketIndex-1 = 147
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >39.288399.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 148
+al.dataPacketIndex-1 = 148
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >39.555667.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 149
+al.dataPacketIndex-1 = 149
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||         >39.822935.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 150
+al.dataPacketIndex-1 = 150
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >40.090203.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 151
+al.dataPacketIndex-1 = 151
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >40.357471.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 152
+al.dataPacketIndex-1 = 152
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >40.624739.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 153
+al.dataPacketIndex-1 = 153
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >40.892007.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 154
+al.dataPacketIndex-1 = 154
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >41.159275.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 155
+al.dataPacketIndex-1 = 155
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >41.426543.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 156
+al.dataPacketIndex-1 = 156
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >41.693811.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 157
+al.dataPacketIndex-1 = 157
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >41.961079.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 158
+al.dataPacketIndex-1 = 158
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >42.228347.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 159
+al.dataPacketIndex-1 = 159
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >42.495615.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 160
+al.dataPacketIndex-1 = 160
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >42.762883.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 161
+al.dataPacketIndex-1 = 161
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >43.030151.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 162
+al.dataPacketIndex-1 = 162
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >43.297419.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 163
+al.dataPacketIndex-1 = 163
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >43.564687.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 164
+al.dataPacketIndex-1 = 164
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >43.831955.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 165
+al.dataPacketIndex-1 = 165
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >44.099223.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 166
+al.dataPacketIndex-1 = 166
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >44.366491.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 167
+al.dataPacketIndex-1 = 167
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >44.633759.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 168
+al.dataPacketIndex-1 = 168
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >44.901027.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 169
+al.dataPacketIndex-1 = 169
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >45.168295.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 170
+al.dataPacketIndex-1 = 170
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >45.435563.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 171
+al.dataPacketIndex-1 = 171
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||        >45.702831.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 172
+al.dataPacketIndex-1 = 172
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >45.970099.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 173
+al.dataPacketIndex-1 = 173
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >46.237367.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 174
+al.dataPacketIndex-1 = 174
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||        >46.504635.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 175
+al.dataPacketIndex-1 = 175
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >46.771903.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 176
+al.dataPacketIndex-1 = 176
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >47.039171.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 177
+al.dataPacketIndex-1 = 177
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >47.306439.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 178
+al.dataPacketIndex-1 = 178
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >47.573708.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 179
+al.dataPacketIndex-1 = 179
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >47.840976.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 180
+al.dataPacketIndex-1 = 180
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >48.108244.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 181
+al.dataPacketIndex-1 = 181
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >48.375512.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 182
+al.dataPacketIndex-1 = 182
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >48.642780.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 183
+al.dataPacketIndex-1 = 183
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >48.910048.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 184
+al.dataPacketIndex-1 = 184
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >49.177316.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 185
+al.dataPacketIndex-1 = 185
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >49.444584.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 186
+al.dataPacketIndex-1 = 186
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >49.711852.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 187
+al.dataPacketIndex-1 = 187
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >49.979120.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 188
+al.dataPacketIndex-1 = 188
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >50.246388.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 189
+al.dataPacketIndex-1 = 189
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >50.513656.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 190
+al.dataPacketIndex-1 = 190
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >50.780924.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 191
+al.dataPacketIndex-1 = 191
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >51.048192.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 192
+al.dataPacketIndex-1 = 192
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >51.315460.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 193
+al.dataPacketIndex-1 = 193
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >51.582728.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 194
+al.dataPacketIndex-1 = 194
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >51.849996.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 195
+al.dataPacketIndex-1 = 195
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >52.117264.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 196
+al.dataPacketIndex-1 = 196
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >52.384532.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 197
+al.dataPacketIndex-1 = 197
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||       >52.651800.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 198
+al.dataPacketIndex-1 = 198
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >52.919068.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 199
+al.dataPacketIndex-1 = 199
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||       >53.186336.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 200
+al.dataPacketIndex-1 = 200
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >53.453604.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 201
+al.dataPacketIndex-1 = 201
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >53.720872.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 202
+al.dataPacketIndex-1 = 202
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >53.988140.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 203
+al.dataPacketIndex-1 = 203
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >54.255408.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 204
+al.dataPacketIndex-1 = 204
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >54.522676.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 205
+al.dataPacketIndex-1 = 205
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >54.789944.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 206
+al.dataPacketIndex-1 = 206
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >55.057212.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 207
+al.dataPacketIndex-1 = 207
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >55.324480.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 208
+al.dataPacketIndex-1 = 208
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >55.591748.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 209
+al.dataPacketIndex-1 = 209
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >55.859016.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 210
+al.dataPacketIndex-1 = 210
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >56.126284.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 211
+al.dataPacketIndex-1 = 211
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >56.393552.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 212
+al.dataPacketIndex-1 = 212
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >56.660820.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 213
+al.dataPacketIndex-1 = 213
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >56.928088.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 214
+al.dataPacketIndex-1 = 214
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >57.195356.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 215
+al.dataPacketIndex-1 = 215
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >57.462624.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 216
+al.dataPacketIndex-1 = 216
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >57.729892.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 217
+al.dataPacketIndex-1 = 217
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >57.997160.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 218
+al.dataPacketIndex-1 = 218
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >58.264428.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 219
+al.dataPacketIndex-1 = 219
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >58.531696.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 220
+al.dataPacketIndex-1 = 220
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >58.798964.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 221
+al.dataPacketIndex-1 = 221
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >59.066232.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 222
+al.dataPacketIndex-1 = 222
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >59.333500.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 223
+al.dataPacketIndex-1 = 223
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||      >59.600768.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 224
+al.dataPacketIndex-1 = 224
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||      >59.868036.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 225
+al.dataPacketIndex-1 = 225
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >60.135304.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 226
+al.dataPacketIndex-1 = 226
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >60.402572.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 227
+al.dataPacketIndex-1 = 227
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >60.669840.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 228
+al.dataPacketIndex-1 = 228
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >60.937108.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 229
+al.dataPacketIndex-1 = 229
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >61.204377.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 230
+al.dataPacketIndex-1 = 230
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >61.471645.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 231
+al.dataPacketIndex-1 = 231
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >61.738913.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 232
+al.dataPacketIndex-1 = 232
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >62.006181.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 233
+al.dataPacketIndex-1 = 233
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >62.273449.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 234
+al.dataPacketIndex-1 = 234
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >62.540717.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 235
+al.dataPacketIndex-1 = 235
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >62.807985.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 236
+al.dataPacketIndex-1 = 236
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >63.075253.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 237
+al.dataPacketIndex-1 = 237
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >63.342521.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 238
+al.dataPacketIndex-1 = 238
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >63.609789.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 239
+al.dataPacketIndex-1 = 239
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >63.877057.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 240
+al.dataPacketIndex-1 = 240
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >64.144325.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 241
+al.dataPacketIndex-1 = 241
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >64.411593.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 242
+al.dataPacketIndex-1 = 242
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >64.678861.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 243
+al.dataPacketIndex-1 = 243
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >64.946129.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 244
+al.dataPacketIndex-1 = 244
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >65.213397.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 245
+al.dataPacketIndex-1 = 245
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >65.480665.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 246
+al.dataPacketIndex-1 = 246
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >65.747933.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 247
+al.dataPacketIndex-1 = 247
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >66.015201.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 248
+al.dataPacketIndex-1 = 248
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||     >66.282469.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 249
+al.dataPacketIndex-1 = 249
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||     >66.549737.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 250
+al.dataPacketIndex-1 = 250
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >66.817005.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 251
+al.dataPacketIndex-1 = 251
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >67.084273.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 252
+al.dataPacketIndex-1 = 252
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >67.351541.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 253
+al.dataPacketIndex-1 = 253
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >67.618809.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 254
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >67.886077.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 0
+al.dataPacketIndex-1 = 0
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >68.153345.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 1
+al.dataPacketIndex-1 = 1
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >68.420613.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 2
+al.dataPacketIndex-1 = 2
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >68.687881.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 3
+al.dataPacketIndex-1 = 3
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >68.955149.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 4
+al.dataPacketIndex-1 = 4
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >69.222417.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 5
+al.dataPacketIndex-1 = 5
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >69.489685.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 6
+al.dataPacketIndex-1 = 6
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >69.756953.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 7
+al.dataPacketIndex-1 = 7
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >70.024221.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 8
+al.dataPacketIndex-1 = 8
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >70.291489.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 9
+al.dataPacketIndex-1 = 9
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >70.558757.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 10
+al.dataPacketIndex-1 = 10
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >70.826025.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 11
+al.dataPacketIndex-1 = 11
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >71.093293.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 12
+al.dataPacketIndex-1 = 12
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >71.360561.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 13
+al.dataPacketIndex-1 = 13
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >71.627829.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 14
+al.dataPacketIndex-1 = 14
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >71.895097.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 15
+al.dataPacketIndex-1 = 15
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >72.162365.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 16
+al.dataPacketIndex-1 = 16
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >72.429633.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 17
+al.dataPacketIndex-1 = 17
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >72.696901.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 18
+al.dataPacketIndex-1 = 18
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||    >72.964169.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 19
+al.dataPacketIndex-1 = 19
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||    >73.231437.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 20
+al.dataPacketIndex-1 = 20
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >73.498705.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 21
+al.dataPacketIndex-1 = 21
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >73.765973.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 22
+al.dataPacketIndex-1 = 22
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >74.033241.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 23
+al.dataPacketIndex-1 = 23
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >74.300509.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 24
+al.dataPacketIndex-1 = 24
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >74.567777.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 25
+al.dataPacketIndex-1 = 25
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >74.835046.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 26
+al.dataPacketIndex-1 = 26
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >75.102314.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 27
+al.dataPacketIndex-1 = 27
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >75.369582.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 28
+al.dataPacketIndex-1 = 28
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >75.636850.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 29
+al.dataPacketIndex-1 = 29
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >75.904118.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 30
+al.dataPacketIndex-1 = 30
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >76.171386.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 31
+al.dataPacketIndex-1 = 31
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >76.438654.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 32
+al.dataPacketIndex-1 = 32
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >76.705922.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 33
+al.dataPacketIndex-1 = 33
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >76.973190.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 34
+al.dataPacketIndex-1 = 34
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >77.240458.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 35
+al.dataPacketIndex-1 = 35
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >77.507726.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 36
+al.dataPacketIndex-1 = 36
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >77.774994.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 37
+al.dataPacketIndex-1 = 37
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >78.042262.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 38
+al.dataPacketIndex-1 = 38
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >78.309530.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 39
+al.dataPacketIndex-1 = 39
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >78.576798.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 40
+al.dataPacketIndex-1 = 40
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >78.844066.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 41
+al.dataPacketIndex-1 = 41
+Received Packet
+Transfer rate : 3.3 KB/s
+<||||||||||||   >79.111334.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 42
+al.dataPacketIndex-1 = 42
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >79.378602.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 43
+al.dataPacketIndex-1 = 43
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >79.645870.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 44
+al.dataPacketIndex-1 = 44
+Received Packet
+Transfer rate : 3.5 KB/s
+<||||||||||||   >79.913138.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 45
+al.dataPacketIndex-1 = 45
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >80.180406.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 46
+al.dataPacketIndex-1 = 46
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >80.447674.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 47
+al.dataPacketIndex-1 = 47
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >80.714942.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 48
+al.dataPacketIndex-1 = 48
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >80.982210.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 49
+al.dataPacketIndex-1 = 49
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >81.249478.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 50
+al.dataPacketIndex-1 = 50
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >81.516746.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 51
+al.dataPacketIndex-1 = 51
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >81.784014.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 52
+al.dataPacketIndex-1 = 52
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >82.051282.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 53
+al.dataPacketIndex-1 = 53
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >82.318550.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 54
+al.dataPacketIndex-1 = 54
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >82.585818.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 55
+al.dataPacketIndex-1 = 55
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >82.853086.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 56
+al.dataPacketIndex-1 = 56
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >83.120354.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 57
+al.dataPacketIndex-1 = 57
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >83.387622.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 58
+al.dataPacketIndex-1 = 58
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >83.654890.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 59
+al.dataPacketIndex-1 = 59
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >83.922158.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 60
+al.dataPacketIndex-1 = 60
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >84.189426.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 61
+al.dataPacketIndex-1 = 61
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >84.456694.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 62
+al.dataPacketIndex-1 = 62
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >84.723962.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 63
+al.dataPacketIndex-1 = 63
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >84.991230.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 64
+al.dataPacketIndex-1 = 64
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >85.258498.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 65
+al.dataPacketIndex-1 = 65
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >85.525766.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 66
+al.dataPacketIndex-1 = 66
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >85.793034.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 67
+al.dataPacketIndex-1 = 67
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >86.060302.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 68
+al.dataPacketIndex-1 = 68
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||  >86.327570.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 69
+al.dataPacketIndex-1 = 69
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||  >86.594838.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 70
+al.dataPacketIndex-1 = 70
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >86.862106.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 71
+al.dataPacketIndex-1 = 71
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >87.129374.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 72
+al.dataPacketIndex-1 = 72
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >87.396642.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 73
+al.dataPacketIndex-1 = 73
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >87.663910.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 74
+al.dataPacketIndex-1 = 74
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >87.931178.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 75
+al.dataPacketIndex-1 = 75
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >88.198447.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 76
+al.dataPacketIndex-1 = 76
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >88.465715.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 77
+al.dataPacketIndex-1 = 77
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >88.732983.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 78
+al.dataPacketIndex-1 = 78
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >89.000251.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 79
+al.dataPacketIndex-1 = 79
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >89.267519.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 80
+al.dataPacketIndex-1 = 80
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >89.534787.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 81
+al.dataPacketIndex-1 = 81
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >89.802055.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 82
+al.dataPacketIndex-1 = 82
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >90.069323.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 83
+al.dataPacketIndex-1 = 83
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >90.336591.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 84
+al.dataPacketIndex-1 = 84
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >90.603859.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 85
+al.dataPacketIndex-1 = 85
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >90.871127.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 86
+al.dataPacketIndex-1 = 86
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >91.138395.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 87
+al.dataPacketIndex-1 = 87
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >91.405663.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 88
+al.dataPacketIndex-1 = 88
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >91.672931.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 89
+al.dataPacketIndex-1 = 89
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >91.940199.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 90
+al.dataPacketIndex-1 = 90
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >92.207467.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 91
+al.dataPacketIndex-1 = 91
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >92.474735.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 92
+al.dataPacketIndex-1 = 92
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >92.742003.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 93
+al.dataPacketIndex-1 = 93
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||| >93.009271.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 94
+al.dataPacketIndex-1 = 94
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||| >93.276539.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 95
+al.dataPacketIndex-1 = 95
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>93.543807.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 96
+al.dataPacketIndex-1 = 96
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>93.811075.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 97
+al.dataPacketIndex-1 = 97
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||||>94.078343.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 98
+al.dataPacketIndex-1 = 98
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>94.345611.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 99
+al.dataPacketIndex-1 = 99
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>94.612879.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 100
+al.dataPacketIndex-1 = 100
+Received Packet
+Transfer rate : 3.3 KB/s
+<|||||||||||||||>94.880147.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 101
+al.dataPacketIndex-1 = 101
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>95.147415.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 102
+al.dataPacketIndex-1 = 102
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>95.414683.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 103
+al.dataPacketIndex-1 = 103
+Received Packet
+Transfer rate : 3.5 KB/s
+<|||||||||||||||>95.681951.1
+fileSize = 47892
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 104
+al.dataPacketIndex-1 = 104
+Received Packet
+Transfer r

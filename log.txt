@@ -1,0 +1,3781 @@
+New termios structure set
+Message sent!
+Open for connection
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 21
+C: 2
+T: 0
+L: 4
+i = 1
+File Size: 47892
+T: 1
+L: 12
+i = 7
+File Name: pinguim.jpg
+Received Packet
+<               >-0.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 0
+al.dataPacketIndex-1 = 0
+Received Packet
+<               >0.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 1
+al.dataPacketIndex-1 = 1
+Received Packet
+<|              >0.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 2
+al.dataPacketIndex-1 = 2
+Received Packet
+<|              >0.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 3
+al.dataPacketIndex-1 = 3
+Received Packet
+<|              >0.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 4
+al.dataPacketIndex-1 = 4
+Received Packet
+<|              >1.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 5
+al.dataPacketIndex-1 = 5
+Received Packet
+<|              >1.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 6
+al.dataPacketIndex-1 = 6
+Received Packet
+<|              >1.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 7
+al.dataPacketIndex-1 = 7
+Received Packet
+<|              >1.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 8
+al.dataPacketIndex-1 = 8
+Received Packet
+<|              >2.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 9
+al.dataPacketIndex-1 = 9
+Received Packet
+<|              >2.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 10
+al.dataPacketIndex-1 = 10
+Received Packet
+<|              >2.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 11
+al.dataPacketIndex-1 = 11
+Received Packet
+<|              >2.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 12
+al.dataPacketIndex-1 = 12
+Received Packet
+<|              >3.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 13
+al.dataPacketIndex-1 = 13
+Received Packet
+<|              >3.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 14
+al.dataPacketIndex-1 = 14
+Received Packet
+<|              >3.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 15
+al.dataPacketIndex-1 = 15
+Received Packet
+<|              >4.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 16
+al.dataPacketIndex-1 = 16
+Received Packet
+<|              >4.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 17
+al.dataPacketIndex-1 = 17
+Received Packet
+<|              >4.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 18
+al.dataPacketIndex-1 = 18
+Received Packet
+<|              >4.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 19
+al.dataPacketIndex-1 = 19
+Received Packet
+<|              >5.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 20
+al.dataPacketIndex-1 = 20
+Received Packet
+<|              >5.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 21
+al.dataPacketIndex-1 = 21
+Received Packet
+<|              >5.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 22
+al.dataPacketIndex-1 = 22
+Received Packet
+<|              >5.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 23
+al.dataPacketIndex-1 = 23
+Received Packet
+<|              >6.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 24
+al.dataPacketIndex-1 = 24
+Received Packet
+<|              >6.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 25
+al.dataPacketIndex-1 = 25
+Received Packet
+<||             >6.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 26
+al.dataPacketIndex-1 = 26
+Received Packet
+<||             >6.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 27
+al.dataPacketIndex-1 = 27
+Received Packet
+<||             >7.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 28
+al.dataPacketIndex-1 = 28
+Received Packet
+<||             >7.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 29
+al.dataPacketIndex-1 = 29
+Received Packet
+<||             >7.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 30
+al.dataPacketIndex-1 = 30
+Received Packet
+<||             >8.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 31
+al.dataPacketIndex-1 = 31
+Received Packet
+<||             >8.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 32
+al.dataPacketIndex-1 = 32
+Received Packet
+<||             >8.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 33
+al.dataPacketIndex-1 = 33
+Received Packet
+<||             >8.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 34
+al.dataPacketIndex-1 = 34
+Received Packet
+<||             >9.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 35
+al.dataPacketIndex-1 = 35
+Received Packet
+<||             >9.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 36
+al.dataPacketIndex-1 = 36
+Received Packet
+<||             >9.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 37
+al.dataPacketIndex-1 = 37
+Received Packet
+<||             >9.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 38
+al.dataPacketIndex-1 = 38
+Received Packet
+<||             >10.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 39
+al.dataPacketIndex-1 = 39
+Received Packet
+<||             >10.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 40
+al.dataPacketIndex-1 = 40
+Received Packet
+<||             >10.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 41
+al.dataPacketIndex-1 = 41
+Received Packet
+<||             >11.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 42
+al.dataPacketIndex-1 = 42
+Received Packet
+<||             >11.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 43
+al.dataPacketIndex-1 = 43
+Received Packet
+<||             >11.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 44
+al.dataPacketIndex-1 = 44
+Received Packet
+<||             >11.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 45
+al.dataPacketIndex-1 = 45
+Received Packet
+<||             >12.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 46
+al.dataPacketIndex-1 = 46
+Received Packet
+<||             >12.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 47
+al.dataPacketIndex-1 = 47
+Received Packet
+<||             >12.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 48
+al.dataPacketIndex-1 = 48
+Received Packet
+<||             >12.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 49
+al.dataPacketIndex-1 = 49
+Received Packet
+<||             >13.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 50
+al.dataPacketIndex-1 = 50
+Received Packet
+<|||            >13.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 51
+al.dataPacketIndex-1 = 51
+Received Packet
+<|||            >13.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 52
+al.dataPacketIndex-1 = 52
+Received Packet
+<|||            >13.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 53
+al.dataPacketIndex-1 = 53
+Received Packet
+<|||            >14.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 54
+al.dataPacketIndex-1 = 54
+Received Packet
+<|||            >14.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 55
+al.dataPacketIndex-1 = 55
+Received Packet
+<|||            >14.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 56
+al.dataPacketIndex-1 = 56
+Received Packet
+<|||            >15.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 57
+al.dataPacketIndex-1 = 57
+Received Packet
+<|||            >15.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 58
+al.dataPacketIndex-1 = 58
+Received Packet
+<|||            >15.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 59
+al.dataPacketIndex-1 = 59
+Received Packet
+<|||            >15.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 60
+al.dataPacketIndex-1 = 60
+Received Packet
+<|||            >16.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 61
+al.dataPacketIndex-1 = 61
+Received Packet
+<|||            >16.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 62
+al.dataPacketIndex-1 = 62
+Received Packet
+<|||            >16.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 63
+al.dataPacketIndex-1 = 63
+Received Packet
+<|||            >16.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 64
+al.dataPacketIndex-1 = 64
+Received Packet
+<|||            >17.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 65
+al.dataPacketIndex-1 = 65
+Received Packet
+<|||            >17.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 66
+al.dataPacketIndex-1 = 66
+Received Packet
+<|||            >17.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 67
+al.dataPacketIndex-1 = 67
+Received Packet
+<|||            >17.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 68
+al.dataPacketIndex-1 = 68
+Received Packet
+<|||            >18.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 69
+al.dataPacketIndex-1 = 69
+Received Packet
+<|||            >18.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 70
+al.dataPacketIndex-1 = 70
+Received Packet
+<|||            >18.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 71
+al.dataPacketIndex-1 = 71
+Received Packet
+<|||            >19.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 72
+al.dataPacketIndex-1 = 72
+Received Packet
+<|||            >19.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 73
+al.dataPacketIndex-1 = 73
+Received Packet
+<|||            >19.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 74
+al.dataPacketIndex-1 = 74
+Received Packet
+<|||            >19.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 75
+al.dataPacketIndex-1 = 75
+Received Packet
+<||||           >20.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 76
+al.dataPacketIndex-1 = 76
+Received Packet
+<||||           >20.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 77
+al.dataPacketIndex-1 = 77
+Received Packet
+<||||           >20.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 78
+al.dataPacketIndex-1 = 78
+Received Packet
+<||||           >20.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 79
+al.dataPacketIndex-1 = 79
+Received Packet
+<||||           >21.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 80
+al.dataPacketIndex-1 = 80
+Received Packet
+<||||           >21.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 81
+al.dataPacketIndex-1 = 81
+Received Packet
+<||||           >21.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 82
+al.dataPacketIndex-1 = 82
+Received Packet
+<||||           >21.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 83
+al.dataPacketIndex-1 = 83
+Received Packet
+<||||           >22.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 84
+al.dataPacketIndex-1 = 84
+Received Packet
+<||||           >22.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 85
+al.dataPacketIndex-1 = 85
+Received Packet
+<||||           >22.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 86
+al.dataPacketIndex-1 = 86
+Received Packet
+<||||           >23.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 87
+al.dataPacketIndex-1 = 87
+Received Packet
+<||||           >23.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 87
+al.dataPacketIndex-1 = 88
+Received Packet
+<||||           >23.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 88
+al.dataPacketIndex-1 = 89
+Received Packet
+<||||           >23.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 89
+al.dataPacketIndex-1 = 90
+Received Packet
+<||||           >24.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 90
+al.dataPacketIndex-1 = 91
+Received Packet
+<||||           >24.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 91
+al.dataPacketIndex-1 = 92
+Received Packet
+<||||           >24.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 92
+al.dataPacketIndex-1 = 93
+Received Packet
+<||||           >24.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 93
+al.dataPacketIndex-1 = 94
+Received Packet
+<||||           >25.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 94
+al.dataPacketIndex-1 = 95
+Received Packet
+<||||           >25.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 95
+al.dataPacketIndex-1 = 96
+Received Packet
+<||||           >25.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 96
+al.dataPacketIndex-1 = 97
+Received Packet
+<||||           >25.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 97
+al.dataPacketIndex-1 = 98
+Received Packet
+<||||           >26.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 98
+al.dataPacketIndex-1 = 99
+Received Packet
+<||||           >26.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 99
+al.dataPacketIndex-1 = 100
+Received Packet
+<|||||          >26.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 100
+al.dataPacketIndex-1 = 101
+Received Packet
+<|||||          >27.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 101
+al.dataPacketIndex-1 = 102
+Received Packet
+<|||||          >27.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 102
+al.dataPacketIndex-1 = 103
+Received Packet
+<|||||          >27.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 103
+al.dataPacketIndex-1 = 104
+Received Packet
+<|||||          >27.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 104
+al.dataPacketIndex-1 = 105
+Received Packet
+<|||||          >28.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 105
+al.dataPacketIndex-1 = 106
+Received Packet
+<|||||          >28.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 106
+al.dataPacketIndex-1 = 107
+Received Packet
+<|||||          >28.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 107
+al.dataPacketIndex-1 = 108
+Received Packet
+<|||||          >28.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 108
+al.dataPacketIndex-1 = 109
+Received Packet
+<|||||          >29.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 109
+al.dataPacketIndex-1 = 110
+Received Packet
+<|||||          >29.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 110
+al.dataPacketIndex-1 = 111
+Received Packet
+<|||||          >29.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 111
+al.dataPacketIndex-1 = 112
+Received Packet
+<|||||          >29.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 112
+al.dataPacketIndex-1 = 113
+Received Packet
+<|||||          >30.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 113
+al.dataPacketIndex-1 = 114
+Received Packet
+<|||||          >30.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 114
+al.dataPacketIndex-1 = 115
+Received Packet
+<|||||          >30.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 115
+al.dataPacketIndex-1 = 116
+Received Packet
+<|||||          >31.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 116
+al.dataPacketIndex-1 = 117
+Received Packet
+<|||||          >31.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 117
+al.dataPacketIndex-1 = 118
+Received Packet
+<|||||          >31.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 118
+al.dataPacketIndex-1 = 119
+Received Packet
+<|||||          >31.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 119
+al.dataPacketIndex-1 = 120
+Received Packet
+<|||||          >32.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 120
+al.dataPacketIndex-1 = 121
+Received Packet
+<|||||          >32.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 121
+al.dataPacketIndex-1 = 122
+Received Packet
+<|||||          >32.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 122
+al.dataPacketIndex-1 = 123
+Received Packet
+<|||||          >32.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 123
+al.dataPacketIndex-1 = 124
+Received Packet
+<|||||          >33.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 124
+al.dataPacketIndex-1 = 125
+Received Packet
+<||||||         >33.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 125
+al.dataPacketIndex-1 = 126
+Received Packet
+<||||||         >33.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 126
+al.dataPacketIndex-1 = 127
+Received Packet
+<||||||         >33.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 127
+al.dataPacketIndex-1 = 128
+Received Packet
+<||||||         >34.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 128
+al.dataPacketIndex-1 = 129
+Received Packet
+<||||||         >34.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 129
+al.dataPacketIndex-1 = 130
+Received Packet
+<||||||         >34.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 130
+al.dataPacketIndex-1 = 131
+Received Packet
+<||||||         >35.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 131
+al.dataPacketIndex-1 = 132
+Received Packet
+<||||||         >35.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 132
+al.dataPacketIndex-1 = 133
+Received Packet
+<||||||         >35.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 133
+al.dataPacketIndex-1 = 134
+Received Packet
+<||||||         >35.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 134
+al.dataPacketIndex-1 = 135
+Received Packet
+<||||||         >36.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 135
+al.dataPacketIndex-1 = 136
+Received Packet
+<||||||         >36.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 136
+al.dataPacketIndex-1 = 137
+Received Packet
+<||||||         >36.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 137
+al.dataPacketIndex-1 = 138
+Received Packet
+<||||||         >36.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 138
+al.dataPacketIndex-1 = 139
+Received Packet
+<||||||         >37.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 139
+al.dataPacketIndex-1 = 140
+Received Packet
+<||||||         >37.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 140
+al.dataPacketIndex-1 = 141
+Received Packet
+<||||||         >37.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 141
+al.dataPacketIndex-1 = 142
+Received Packet
+<||||||         >38.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 142
+al.dataPacketIndex-1 = 143
+Received Packet
+<||||||         >38.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 143
+al.dataPacketIndex-1 = 144
+Received Packet
+<||||||         >38.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 144
+al.dataPacketIndex-1 = 145
+Received Packet
+<||||||         >38.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 145
+al.dataPacketIndex-1 = 146
+Received Packet
+<||||||         >39.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 146
+al.dataPacketIndex-1 = 147
+Received Packet
+<||||||         >39.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 147
+al.dataPacketIndex-1 = 148
+Received Packet
+<||||||         >39.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 148
+al.dataPacketIndex-1 = 149
+Received Packet
+<||||||         >39.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 149
+al.dataPacketIndex-1 = 150
+Received Packet
+<|||||||        >40.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 150
+al.dataPacketIndex-1 = 151
+Received Packet
+<|||||||        >40.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 151
+al.dataPacketIndex-1 = 152
+Received Packet
+<|||||||        >40.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 152
+al.dataPacketIndex-1 = 153
+Received Packet
+<|||||||        >40.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 153
+al.dataPacketIndex-1 = 154
+Received Packet
+<|||||||        >41.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 154
+al.dataPacketIndex-1 = 155
+Received Packet
+<|||||||        >41.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 155
+al.dataPacketIndex-1 = 156
+Received Packet
+<|||||||        >41.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 156
+al.dataPacketIndex-1 = 157
+Received Packet
+<|||||||        >42.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 157
+al.dataPacketIndex-1 = 158
+Received Packet
+<|||||||        >42.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 158
+al.dataPacketIndex-1 = 159
+Received Packet
+<|||||||        >42.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 159
+al.dataPacketIndex-1 = 160
+Received Packet
+<|||||||        >42.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+Error in Trailer
+126, 3, 64, 67, 1, -96, 0, -128, -17, 83, -90, -89, -2, -41, -21, 92, 114, -22, 30, -11, 34, -22, 94, -12, -71, 7, -52, 118, -79, -22, -121, -5, -43, 42, -22, -98, -11, -59, -82, -90, 127, -67, 82, -82, -88, 127, -67, 83, -56, 95, 57, -39, -115, 83, -34, -125, -86, 123, -41, 32, -70, -81, -67, 59, -5, 83, -33, -11, -87, -28, 31, 57, -43, -99, 75, -34, -104, 117, 42, -27, -65, -75, 61, -23, 83, 82, -36, 122, -47, -56, 28, -25, 84, -73, -69, -70, -102, -103, 110, -121, -9, -85, -104, 91, -18, -100, -44, -117, -88, 126, 
+packetSize = -1
+Error in llread
+------------------------------------------------------------
+Error on header
+3, 64, 67, 1, -96, 0, -128, -17, 83, -90, -89, -2, -41, -21, 92, 114, -22, 30, -11, 34, -22, 94, -12, -71, 7, -52, 118, -79, -22, -121, -5, -43, 42, -22, -98, -11, -59, -82, -90, 127, -67, 82, -82, -88, 127, -67, 83, -56, 95, 57, -39, -115, 83, -34, -125, -86, 123, -41, 32, -70, -81, -67, 59, -5, 83, -33, -11, -87, -28, 31, 57, -43, -99, 75, -34, -104, 117, 42, -27, -65, -75, 61, -23, 83, 82, -36, 122, -47, -56, 28, -25, 84, -73, -69, -70, -102, -103, 110, -121, -9, -85, -104, 91, -18, -100, -44, -117, -88, 123, -44, -40, 124, -57, 75, -10, -113, 67, 72, 111, 61, -21, 1, 117, 15, -10, -87, -81, -88, 127, -75, 83, 98, -71, -114, -128, 121, 126, 
+packetSize = -1
+Error in llread
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 160
+al.dataPacketIndex-1 = 161
+Received Packet
+<|||||||        >43.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 160
+al.dataPacketIndex-1 = 162
+Received Packet
+<|||||||        >43.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 161
+al.dataPacketIndex-1 = 163
+Received Packet
+<|||||||        >43.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 162
+al.dataPacketIndex-1 = 164
+Received Packet
+<|||||||        >43.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 163
+al.dataPacketIndex-1 = 165
+Received Packet
+<|||||||        >44.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 164
+al.dataPacketIndex-1 = 166
+Received Packet
+<|||||||        >44.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 165
+al.dataPacketIndex-1 = 167
+Received Packet
+<|||||||        >44.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 166
+al.dataPacketIndex-1 = 168
+Received Packet
+<|||||||        >44.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 167
+al.dataPacketIndex-1 = 169
+Received Packet
+<|||||||        >45.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 168
+al.dataPacketIndex-1 = 170
+Received Packet
+<|||||||        >45.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 169
+al.dataPacketIndex-1 = 171
+Received Packet
+<|||||||        >45.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 170
+al.dataPacketIndex-1 = 172
+Received Packet
+<|||||||        >46.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 171
+al.dataPacketIndex-1 = 173
+Received Packet
+<|||||||        >46.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 172
+al.dataPacketIndex-1 = 174
+Received Packet
+<|||||||        >46.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 173
+al.dataPacketIndex-1 = 175
+Received Packet
+<||||||||       >46.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 174
+al.dataPacketIndex-1 = 176
+Received Packet
+<||||||||       >47.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 175
+al.dataPacketIndex-1 = 177
+Received Packet
+<||||||||       >47.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 176
+al.dataPacketIndex-1 = 178
+Received Packet
+<||||||||       >47.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 177
+al.dataPacketIndex-1 = 179
+Received Packet
+<||||||||       >47.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 178
+al.dataPacketIndex-1 = 180
+Received Packet
+<||||||||       >48.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 179
+al.dataPacketIndex-1 = 181
+Received Packet
+<||||||||       >48.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 180
+al.dataPacketIndex-1 = 182
+Received Packet
+<||||||||       >48.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 181
+al.dataPacketIndex-1 = 183
+Received Packet
+<||||||||       >48.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 182
+al.dataPacketIndex-1 = 184
+Received Packet
+<||||||||       >49.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 183
+al.dataPacketIndex-1 = 185
+Received Packet
+<||||||||       >49.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 184
+al.dataPacketIndex-1 = 186
+Received Packet
+<||||||||       >49.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 185
+al.dataPacketIndex-1 = 187
+Received Packet
+<||||||||       >50.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 186
+al.dataPacketIndex-1 = 188
+Received Packet
+<||||||||       >50.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 187
+al.dataPacketIndex-1 = 189
+Received Packet
+<||||||||       >50.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 188
+al.dataPacketIndex-1 = 190
+Received Packet
+<||||||||       >50.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 189
+al.dataPacketIndex-1 = 191
+Received Packet
+<||||||||       >51.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 190
+al.dataPacketIndex-1 = 192
+Received Packet
+<||||||||       >51.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 191
+al.dataPacketIndex-1 = 193
+Received Packet
+<||||||||       >51.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 192
+al.dataPacketIndex-1 = 194
+Received Packet
+<||||||||       >51.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 193
+al.dataPacketIndex-1 = 195
+Received Packet
+<||||||||       >52.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 194
+al.dataPacketIndex-1 = 196
+Received Packet
+<||||||||       >52.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 195
+al.dataPacketIndex-1 = 197
+Received Packet
+<||||||||       >52.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 196
+al.dataPacketIndex-1 = 198
+Received Packet
+<||||||||       >52.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 197
+al.dataPacketIndex-1 = 199
+Received Packet
+<||||||||       >53.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 198
+al.dataPacketIndex-1 = 200
+Received Packet
+<|||||||||      >53.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 199
+al.dataPacketIndex-1 = 201
+Received Packet
+<|||||||||      >53.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 200
+al.dataPacketIndex-1 = 202
+Received Packet
+<|||||||||      >54.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 201
+al.dataPacketIndex-1 = 203
+Received Packet
+<|||||||||      >54.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 202
+al.dataPacketIndex-1 = 204
+Received Packet
+<|||||||||      >54.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 203
+al.dataPacketIndex-1 = 205
+Received Packet
+<|||||||||      >54.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 204
+al.dataPacketIndex-1 = 206
+Received Packet
+<|||||||||      >55.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 205
+al.dataPacketIndex-1 = 207
+Received Packet
+<|||||||||      >55.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 206
+al.dataPacketIndex-1 = 208
+Received Packet
+<|||||||||      >55.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 207
+al.dataPacketIndex-1 = 209
+Received Packet
+<|||||||||      >55.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 208
+al.dataPacketIndex-1 = 210
+Received Packet
+<|||||||||      >56.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 209
+al.dataPacketIndex-1 = 211
+Received Packet
+<|||||||||      >56.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 210
+al.dataPacketIndex-1 = 212
+Received Packet
+<|||||||||      >56.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 211
+al.dataPacketIndex-1 = 213
+Received Packet
+<|||||||||      >56.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 212
+al.dataPacketIndex-1 = 214
+Received Packet
+<|||||||||      >57.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 213
+al.dataPacketIndex-1 = 215
+Received Packet
+<|||||||||      >57.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 214
+al.dataPacketIndex-1 = 216
+Received Packet
+<|||||||||      >57.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 215
+al.dataPacketIndex-1 = 217
+Received Packet
+<|||||||||      >58.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 216
+al.dataPacketIndex-1 = 218
+Received Packet
+<|||||||||      >58.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 217
+al.dataPacketIndex-1 = 219
+Received Packet
+<|||||||||      >58.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 218
+al.dataPacketIndex-1 = 220
+Received Packet
+<|||||||||      >58.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 219
+al.dataPacketIndex-1 = 221
+Received Packet
+<|||||||||      >59.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 220
+al.dataPacketIndex-1 = 222
+Received Packet
+<|||||||||      >59.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 221
+al.dataPacketIndex-1 = 223
+Received Packet
+<|||||||||      >59.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 222
+al.dataPacketIndex-1 = 224
+Received Packet
+<|||||||||      >59.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 223
+al.dataPacketIndex-1 = 225
+Received Packet
+<||||||||||     >60.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 224
+al.dataPacketIndex-1 = 226
+Received Packet
+<||||||||||     >60.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 225
+al.dataPacketIndex-1 = 227
+Received Packet
+<||||||||||     >60.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 226
+al.dataPacketIndex-1 = 228
+Received Packet
+<||||||||||     >60.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 227
+al.dataPacketIndex-1 = 229
+Received Packet
+<||||||||||     >61.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 228
+al.dataPacketIndex-1 = 230
+Received Packet
+<||||||||||     >61.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 229
+al.dataPacketIndex-1 = 231
+Received Packet
+<||||||||||     >61.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 230
+al.dataPacketIndex-1 = 232
+Received Packet
+<||||||||||     >62.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 231
+al.dataPacketIndex-1 = 233
+Received Packet
+<||||||||||     >62.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 232
+al.dataPacketIndex-1 = 234
+Received Packet
+<||||||||||     >62.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 233
+al.dataPacketIndex-1 = 235
+Received Packet
+<||||||||||     >62.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 234
+al.dataPacketIndex-1 = 236
+Received Packet
+<||||||||||     >63.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 235
+al.dataPacketIndex-1 = 237
+Received Packet
+<||||||||||     >63.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 236
+al.dataPacketIndex-1 = 238
+Received Packet
+<||||||||||     >63.6%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 237
+al.dataPacketIndex-1 = 239
+Received Packet
+<||||||||||     >63.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 238
+al.dataPacketIndex-1 = 240
+Received Packet
+<||||||||||     >64.1%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 239
+al.dataPacketIndex-1 = 241
+Received Packet
+<||||||||||     >64.4%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 240
+al.dataPacketIndex-1 = 242
+Received Packet
+<||||||||||     >64.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 241
+al.dataPacketIndex-1 = 243
+Received Packet
+<||||||||||     >64.9%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 242
+al.dataPacketIndex-1 = 244
+Received Packet
+<||||||||||     >65.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 243
+al.dataPacketIndex-1 = 245
+Received Packet
+<||||||||||     >65.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 244
+al.dataPacketIndex-1 = 246
+Received Packet
+<||||||||||     >65.7%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 245
+al.dataPacketIndex-1 = 247
+Received Packet
+<||||||||||     >66.0%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 246
+al.dataPacketIndex-1 = 248
+Received Packet
+<||||||||||     >66.3%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 247
+al.dataPacketIndex-1 = 249
+Received Packet
+<||||||||||     >66.5%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 248
+al.dataPacketIndex-1 = 250
+Received Packet
+<|||||||||||    >66.8%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 249
+al.dataPacketIndex-1 = 251
+Received Packet
+<|||||||||||    >67.1%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 250
+al.dataPacketIndex-1 = 252
+Received Packet
+<|||||||||||    >67.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 251
+al.dataPacketIndex-1 = 253
+Received Packet
+<|||||||||||    >67.6%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 252
+al.dataPacketIndex-1 = 254
+Received Packet
+<|||||||||||    >67.9%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 253
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+Error in Trailer
+126, 3, 64, 67, 1, -2, 0, -128, 82, -57, 7, -99, 32, 20, -122, 101, -22, -41, 31, -39, -6, 93, -59, -36, -100, 36, 106, 79, -44, -10, 21, -30, 90, -85, 29, 75, 88, 70, 108, -113, -89, 92, -6, 126, -75, -23, -65, 24, 53, 81, 103, 107, 105, -91, -88, 95, -34, 17, 44, -116, 123, 1, -48, 87, -111, 77, 116, 97, -104, 42, -71, -111, -53, 110, 12, -35, -78, 120, 24, -12, -59, 92, -60, 126, 125, 
+packetSize = -1
+Error in llread
+------------------------------------------------------------
+Error on header
+3, 64, 67, 1, -2, 0, -128, 82, -57, 7, -99, 32, 20, -122, 101, -22, -41, 31, -39, -6, 93, -59, -36, -100, 36, 106, 79, -44, -10, 21, -30, 90, -85, 29, 75, 88, 70, 108, -113, -89, 92, -6, 125, 94, -75, -23, -65, 24, 53, 81, 103, 107, 105, -91, -88, 95, -34, 17, 44, -116, 123, 1, -48, 87, -111, 77, 116, 97, -104, 42, -71, -111, -53, 110, 12, -35, -78, 120, 24, -12, -59, 92, 68, -55, 60, 73, 120, -38, 125, 93, -118, 90, -4, -55, 21, -51, -60, 123, 83, -5, -37, 3, -74, 15, -73, 74, -20, -65, 102, -81, 3, -65, -60, 15, -117, -70, 45, -69, 91, 27, -117, 104, 102, 18, -54, -40, -54, -58, -93, -112, 79, -29, -48, 122, -41, -103, 120, 60, 126, 
+packetSize = -1
+Error in llread
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 1
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 254
+al.dataPacketIndex-1 = 0
+Transmitter ahead of receiver
+Error in Data Packet
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 0
+al.dataPacketIndex-1 = 0
+Received Packet
+<|||||||||||    >68.2%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 0
+al.dataPacketIndex-1 = 1
+Received Packet
+<|||||||||||    >68.4%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 0
+al.dataPacketIndex-1 = 2
+Received Packet
+<|||||||||||    >68.7%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 1
+al.dataPacketIndex-1 = 3
+Received Packet
+<|||||||||||    >69.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 2
+al.dataPacketIndex-1 = 4
+Received Packet
+<|||||||||||    >69.2%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 3
+al.dataPacketIndex-1 = 5
+Received Packet
+<|||||||||||    >69.5%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 4
+al.dataPacketIndex-1 = 6
+Received Packet
+<|||||||||||    >69.8%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize = 132
+C: 1
+N: 5
+al.dataPacketIndex-1 = 7
+Received Packet
+<|||||||||||    >70.0%
+------------------------------------------------------------
+Control: 0
+Sequence Number: 0 
+packetSize = 132
+C: 1
+N: 6
+al.dataPacketIndex-1 = 8
+Received Packet
+<|||||||||||    >70.3%
+------------------------------------------------------------
+Control: 1
+Sequence Number: 1 
+packetSize

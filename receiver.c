@@ -74,7 +74,7 @@ void printPercentage(double percentage)
 			printf(" ");
 	}
 
-	printf(">%f.1\n", percentage*100);
+	printf(">%.1f\%\n", percentage*100);
 }
 
 int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char *filename)
@@ -129,8 +129,9 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 			if(packetSize == -3)
 				continue;
 			
-
-			if(readDataPacket2(&fd, al, dataRead, filename, fileSize, packetSize) < 0)
+			int ret = readDataPacket2(&fd, al, dataRead, filename, fileSize, packetSize);
+			
+			if (ret < 0)
 			{
 				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
 				printf("Error in Data Packet\n");
@@ -154,11 +155,10 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 				printf("Error getting time!\n");
 
 			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds 
-			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+			// printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
 
 			printPercentage((al->dataPacketIndex-2)*DATASIZE / (double)*fileSize);
 
-			printf("fileSize = %i\n", *fileSize);
 		}
 		else if (al->status == 2) // Closing
 		{	
@@ -306,13 +306,14 @@ char headerCheck(char received[])
 
 		printf("Control: %d\n", control);
 		printf("Sequence Number: %u \n", ll.sequenceNumber);
-
+		
+		/*
 		if(control != ll.sequenceNumber)
 		{
 			printf("Sequence error\n");			
 			return -2;
 		}
-			
+		*/	
 
 		bcc1 = received[3];
 		// printf("BCC1: %d\n", bcc1);
@@ -365,22 +366,24 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			printf("N: %u\n", N);
 			printf("al.dataPacketIndex-1 = %i\n", (app->dataPacketIndex-1) % 255);
 
-			if(N != (app->dataPacketIndex - 1) % 255)
+			if(N > ((app->dataPacketIndex - 1) % 255))
 			{
-				printf("Data Packet sequence error\nData Packet Index = %u\n", app->dataPacketIndex);
-				return -1;
+				printf("Transmitter ahead of receiver\n");
+				return -2;
+			}
+			else if (N > ((app->dataPacketIndex - 1) % 255)
+			{
+				printf("Transmitter ahead of receiver\n");
+				return -2;				
 			}
 
 			int K = 256 * L2 + L1;
-			// printf("K: %d\n", K);
 
 			if(K < 0)
 			{
 				printf("Error in packet size\n");
 				return -1;
 			}
-			// else
-				//memcpy(buffer, buffer + i + 4, K);
 
 			
 			if(write(*fd, buffer+4, K) < 0)
@@ -388,9 +391,6 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 				printf("Error in writting to local file\n");
 				return -1;
 			}
-
-			//printf("--------- Data Packets Read ---------------\n");
-			//printArray(buffer, K);
 
 		}
 		else 
