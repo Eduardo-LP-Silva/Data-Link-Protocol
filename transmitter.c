@@ -15,6 +15,7 @@
 
 int lastMessageTimedOut = 0;
 int interruptCounter = 0;
+int consecutiveTries = 0;
 struct timeval writeTime, readTime;
 
 void sigalrm_handler(int signal)
@@ -32,17 +33,17 @@ void sigalrm_handler(int signal)
 		exit(1);
 	}
 
-	printf("Message timed out!\n");
-
 	if (lastMessageTimedOut)
 	{
 		interruptCounter++;	
 		al.dataPacketIndex--;
 		
 		int i;
-/*
+
+		// al.dataPacketIndex--;
+
 		for (i = 0; i < interruptCounter; i++)
-			al.dataPacketIndex--; */
+			al.dataPacketIndex--;
 	}
 }
 
@@ -141,7 +142,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 			alarm(0);
 			
-			if (bytes != -1)
+			if (bytes == 5)
 			{
 				lastMessageTimedOut = 0;
 				ll.numTransmissions = MAX_ATTEMPTS;
@@ -152,37 +153,65 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 				unsigned char control = messageCheck(received);
 				int sequenceNumber = (control & 0x80) >> 7;
 
+				/*
 				if (sequenceNumber == al.dataPacketIndex)
 				{
 					printf("Sendig previous packet");
 					al.dataPacketIndex--;
 				}
-				
+				*/
 				
 				if (control == ((ll.sequenceNumber << 7) | REJ_C))
 				{
 					printf("Corrupt frame sent, sending same frame again!\n\n");
 					al.dataPacketIndex--;
+
+					consecutiveTries++;
+
+					if (consecutiveTries > 3)
+					{
+						printf("\nRetrocedendo!!!\n");
+						al.dataPacketIndex--;
+						al.dataPacketIndex--;
+					}
+
 				}
 				else if (control == ((((ll.sequenceNumber+1)%2) << 7) | RR_C))
 				{
 					printf("Frame sent sucessfully\n\n");
+
+					consecutiveTries = 0;
 				}
 				else
 				{
+
 					if (control == (control & RR_C))
 					{
 						printf("Received RR_C for package number %u\n", (control & 0x80) >> 7);
+
+						consecutiveTries = 0;
 					}
 					else if (control == (control & REJ_C))
 					{
 						printf("Received REJ_C for package number %u\n", (control & 0x80) >> 7);
 						al.dataPacketIndex--;
+
+						consecutiveTries++;
+
+						if (consecutiveTries > 3)
+						{
+							printf("\nRetrocedendo!!!\n");
+							al.dataPacketIndex--;
+							al.dataPacketIndex--;
+						}
 					}
 
 					// al.dataPacketIndex--;
 				}
-				
+			}
+			else
+			{
+				// al.dataPacketIndex--;
 			}
 
 			double deltaTime = (double)(readTime.tv_sec - writeTime.tv_sec) + (double)(readTime.tv_usec - writeTime.tv_usec)/1000/1000; // In seconds 
