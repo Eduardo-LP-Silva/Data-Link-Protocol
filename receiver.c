@@ -74,8 +74,8 @@ void printPercentage(double percentage)
 		else
 			printf(" ");
 	}
-
-	printf(">%.1f\%\n", percentage*100);
+	printf("<");
+	printf("%.1f%%\n", percentage*100);
 }
 
 int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char *filename)
@@ -382,7 +382,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 
 			if(N != (app->dataPacketIndex - 1) % 255)
 			{
-				printf("Data Packet sequence error\n", app->dataPacketIndex);
+				printf("Data Packet sequence error\n");
 				return -1;
 			}
 
