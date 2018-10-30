@@ -45,6 +45,7 @@ void sigalrm_handler(int signal)
 		for (i = 0; i < interruptCounter; i++)
 			al.dataPacketIndex--;
 	}
+
 }
 
 int stateMachine(char* device, char* buffer, int size, char* filename)
@@ -228,6 +229,11 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 		}
 		else if (al.status == 2) // Closing
 		{
+			if (llclose(al.fileDescriptor, al.flag) != 0)
+			{
+				printf("Error in llclose");
+			}
+
 			// Frees buffers from file transfer
 			int j;
 			for (j = 0; j < (size/DATASIZE + 1) + 2; j++)
@@ -237,11 +243,7 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 			free(packageArray);
 
-			if (llclose(al.fileDescriptor, al.flag) != 0)
-			{
-				printf("Error in llclose");
-			}
-
+			
 			break;
 		}
 	}
