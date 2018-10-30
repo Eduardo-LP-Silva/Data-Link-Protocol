@@ -252,11 +252,11 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		alarm(TIMEOUT);
+		// alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		alarm(0);
+		// alarm(0);
 
 		if(received < 0)
 		{
@@ -284,11 +284,11 @@ int llclose(int fd, int flag)
 	}
 	else if (flag == RECEIVER)
 	{
-		alarm(TIMEOUT);
+		// alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		alarm(0);
+		// alarm(0);
 
 		if(received < 0)
 		{
@@ -320,11 +320,11 @@ int llclose(int fd, int flag)
 
 		printf("DISC sent by receiver!\n");
 
-		alarm(TIMEOUT);
+		// alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		alarm(0);
+		// alarm(0);
 
 		status = messageCheck(buf);
 
