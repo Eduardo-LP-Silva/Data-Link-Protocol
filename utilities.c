@@ -236,6 +236,8 @@ int llclose(int fd, int flag)
 	char buf[5];
 	int received;
 
+	sleep(1);
+
 	tcflush(fd, TCIFLUSH);
 
 	if (flag == TRANSMITTER)
@@ -252,12 +254,13 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
+		printf("Sent DISC\n");
+
 		// alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
 		// alarm(0);
-
 		if(received < 0)
 		{
 			printf("Error in receiving end\n");
@@ -271,6 +274,10 @@ int llclose(int fd, int flag)
 			printf("Unknown message\n");
 			return -1;
 		}
+		else
+		{
+			printf("Received DISC\n");
+		}
 
 		buf[2] = UA_C;
 		buf[3] = buf[1] ^ buf[2];
@@ -281,6 +288,7 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
+		printf("Sent UA\n");
 	}
 	else if (flag == RECEIVER)
 	{
@@ -303,8 +311,10 @@ int llclose(int fd, int flag)
 			printf("Unknown message\n");
 			return -1;
 		}
-
-		printf("DISC received\n");
+		else
+		{
+			printf("Received DISC\n");
+		}
 
 		buf[0] = FLAG;
 		buf[1] = ADDR;
@@ -318,7 +328,7 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("DISC sent by receiver!\n");
+		printf("Sent DISC!\n");
 
 		// alarm(TIMEOUT);
 
@@ -332,6 +342,10 @@ int llclose(int fd, int flag)
 		{
 			printf("Unknown message\n");
 			return -1;
+		}
+		else
+		{
+			printf("Received UA\n");
 		}
 	}
 
