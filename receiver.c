@@ -74,8 +74,8 @@ void printPercentage(double percentage)
 		else
 			printf(" ");
 	}
-	printf("<");
-	printf("%.1f%%\n", percentage*100);
+
+	printf(">%.1f%%\n", percentage*100);
 }
 
 int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char *filename)
@@ -171,9 +171,9 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 		}
 		else if (al->status == 2) // Closing
 		{	
-			free(dataRead);
-			close(fd);
 			llclose(al->fileDescriptor, RECEIVER);
+			free(dataRead);			
+			close(fd);
 			break;
 		}
 	}
