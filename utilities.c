@@ -276,7 +276,7 @@ int llclose(int fd, int flag)
 
 		if(received < 0)
 		{
-			printf("Error in receiving end\n");
+			printf("Error in receiving end in llclose\n");
 			return -1;
 		}
 
@@ -284,7 +284,7 @@ int llclose(int fd, int flag)
 
 		if (status != DISC_C)
 		{
-			printf("Unknown message\n");
+			printf("DISC_C not received\n");
 			return -1;
 		}
 
@@ -293,7 +293,7 @@ int llclose(int fd, int flag)
 
 		if(write(fd, buf, 5) < 0)
 		{
-			printf("Error in transmission\n");
+			printf("Error in second llclose transmission\n");
 			return -1;
 		}
 
@@ -308,7 +308,7 @@ int llclose(int fd, int flag)
 
 		if(received < 0)
 		{
-			printf("Error in receiving end\n");
+			printf("Error in llclose receiving end\n");
 			return -1;
 		}
 
@@ -316,7 +316,7 @@ int llclose(int fd, int flag)
 
 		if (status != DISC_C)
 		{
-			printf("Unknown message\n");
+			printf("DISC_C not received\n");
 			return -1;
 		}
 
@@ -330,7 +330,7 @@ int llclose(int fd, int flag)
 
 		if(write(fd, buf, 5) < 0)
 		{
-			printf("Error in transmission\n");
+			printf("Error in llclose transmission\n");
 			return -1;
 		}
 
@@ -346,7 +346,7 @@ int llclose(int fd, int flag)
 
 		if (status != UA_C)
 		{
-			printf("Unknown message\n");
+			printf("Didn't receive UA\n");
 			return -1;
 		}
 	}
