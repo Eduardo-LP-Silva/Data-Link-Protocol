@@ -232,10 +232,11 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 			free(packageArray);
 
-			if (llclose(al.fileDescriptor, al.flag) != 0)
+			do
 			{
-				printf("Error in llclose");
+				error = llclose(al->fileDescriptor, RECEIVER);
 			}
+			while(error != 0);
 
 			break;
 		}

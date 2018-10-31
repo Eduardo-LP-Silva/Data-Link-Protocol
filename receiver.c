@@ -105,12 +105,12 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 
 				case -2:
 					sendAnswer(al->fileDescriptor, (((ll.sequenceNumber + 1) % 2) << 7) | RR_C);
-					//printf("Sender behind receiver\n");
+					//printf("Receiver behind transmitter\n");
 					continue;
 					
 				case -3:
 					sendAnswer(al->fileDescriptor, (((ll.sequenceNumber + 1) % 2) << 7) | REJ_C);
-					//printf("Sender ahead of receiver\n");
+					//printf("Transmitter ahead of receiver\n");
 					continue;
 				
 			}
@@ -342,9 +342,9 @@ int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename,
 
 			if(sequence_error_flag)
 			{
-				if(N >  (app->dataPacketIndex) % 255)
+				if(N >  (app->dataPacketIndex) % 255) // Transmitter ahead of receiver
 					return -3;
-				else if(N < (app->dataPacketIndex) % 255)
+				else if(N < (app->dataPacketIndex) % 255) // Receiver ahead of transmitter
 					return -2;
 					else
 						printf("Sequence error but data packet index is still the same\n");					
@@ -352,9 +352,9 @@ int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename,
 			else
 			if(N != (app->dataPacketIndex) % 255)
 			{
-				if(N >  (app->dataPacketIndex) % 255)
+				if(N >  (app->dataPacketIndex) % 255) // Transmitter ahead of receiver
 					return -3;
-				else if(N < (app->dataPacketIndex) % 255)
+				else if(N < (app->dataPacketIndex) % 255) // Receiver ahead of transmitter
 					return -2;
 			} 
 
