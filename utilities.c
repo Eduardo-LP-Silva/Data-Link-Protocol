@@ -8,7 +8,6 @@
 #include <strings.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <termios.h>
 
 void swap(char* a, char*b)
 {
@@ -22,6 +21,22 @@ int abs(int a)
 	if (a < 0)
 		return -a;
 	return a;
+}
+
+void printPercentage(double percentage)
+{
+	printf("<");
+
+	int i, length = 15 /* length of the percentage bar */;
+	for (i = 0; i < length; i++)
+	{
+		if ((double)i/length < percentage)
+			printf("|");
+		else
+			printf(" ");
+	}
+
+	printf(">%.1f%%\n", percentage*100);
 }
 
 void shiftRight(char* buffer, int size, int position, int shift)
@@ -73,7 +88,7 @@ void printArray(char* arr, int length)
 
 int messageCheck(char received[])
 {
-	unsigned char control, bcc1, bcc2;
+	char control, bcc1, bcc2;
 	int i;
 
 	if (received[0] == FLAG && received[1] == ADDR && received[4] == FLAG)
@@ -237,10 +252,10 @@ int llclose(int fd, int flag)
 	char buf[5];
 	int received;
 
+	tcflush(fd, TCIFLUSH);
+
 	if (flag == TRANSMITTER)
 	{
-		tcflush(fd, TCIFLUSH);
-
 		buf[0] = FLAG;
 		buf[1] = ADDR;
 		buf[2] = DISC_C;
@@ -249,33 +264,28 @@ int llclose(int fd, int flag)
 
 		if(write(fd, buf, 5) < 0)
 		{
-			printf("Error in transmission\n");
+			printf("Error in llclose transmission\n");
 			return -1;
 		}
 
-		printf("Sent DISC\n");
-
-		// alarm(TIMEOUT);
+		alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		// alarm(0);
+		alarm(0);
+
 		if(received < 0)
 		{
 			printf("Error in receiving end\n");
 			return -1;
 		}
 
-		unsigned char status = messageCheck(buf);
+		int status = messageCheck(buf);
 
 		if (status != DISC_C)
 		{
-			printf("Unknown message : %u\n", status);
+			printf("Unknown message\n");
 			return -1;
-		}
-		else
-		{
-			printf("Received DISC\n");
 		}
 
 		buf[2] = UA_C;
@@ -287,15 +297,14 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("Sent UA\n");
 	}
 	else if (flag == RECEIVER)
 	{
-		// alarm(TIMEOUT);
+		alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		// alarm(0);
+		alarm(0);
 
 		if(received < 0)
 		{
@@ -303,17 +312,15 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		unsigned char status = messageCheck(buf);
+		int status = messageCheck(buf);
 
 		if (status != DISC_C)
 		{
-			printf("Unknown message : %u\n", status);
+			printf("Unknown message\n");
 			return -1;
 		}
-		else
-		{
-			printf("Received DISC\n");
-		}
+
+		printf("DISC received\n");
 
 		buf[0] = FLAG;
 		buf[1] = ADDR;
@@ -327,13 +334,13 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("Sent DISC!\n");
+		printf("DISC sent by receiver!\n");
 
-		// alarm(TIMEOUT);
+		alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		// alarm(0);
+		alarm(0);
 
 		status = messageCheck(buf);
 
@@ -341,10 +348,6 @@ int llclose(int fd, int flag)
 		{
 			printf("Unknown message\n");
 			return -1;
-		}
-		else
-		{
-			printf("Received UA\n");
 		}
 	}
 

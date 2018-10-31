@@ -13,7 +13,7 @@
 #include <signal.h>
 
 int flag = 0;
-unsigned int bytesReceived = 0;
+int sequence_error_flag = 0;
 
 void sigalrm_handlerR(int signal)
 {
@@ -42,40 +42,10 @@ int receiveFile(char *device)
 	ll.sequenceNumber = 0;
 	ll.numTransmissions = MAX_ATTEMPTS;
 
-	/*
-	struct sigaction sigalrmaction;
-
-	sigalrmaction.sa_handler = sigalrm_handlerR;
-	sigemptyset(&sigalrmaction.sa_mask);
-	sigalrmaction.sa_flags = 0;
-
-	if (sigaction(SIGALRM, &sigalrmaction, NULL) < 0)
-	{
-		fprintf(stderr,"Unable to install SIGALRM handler\n");
-		return 1;
-	}
-	*/
-
 	//Ciclo
 	stateMachineReceiver(&al, device, &fileSize, filename);
 
 	return 0;	
-}
-
-void printPercentage(double percentage)
-{
-	printf("<");
-
-	int i, length = 15 /* length of the percentage bar */;
-	for (i = 0; i < length; i++)
-	{
-		if ((double)i/length < percentage)
-			printf("|");
-		else
-			printf(" ");
-	}
-
-	printf(">%.1f%%\n", percentage*100);
 }
 
 int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char *filename)
@@ -87,6 +57,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 	char* dataRead = malloc(DATASIZE*2 + 6);
 	int packetSize;
 	int fd;
+	int error;
 
 	while (1)
 	{
@@ -106,74 +77,71 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 		}
 		else if (al->status == 1) // Transfering
 		{
+			sequence_error_flag = 0;
+
 			if (gettimeofday(&readTime2, NULL) != 0)
 				printf("Error getting time!\n");
 
 			packetSize = llread(al->fileDescriptor, dataRead);
 
-			printf("packetSize = %i\n", packetSize);
+			//printf("packetSize = %i\n", packetSize);
 
 			if(packetSize == -1) // Error in data package
 			{
 				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
-				printf("Error in llread\n");
-				continue;
-			}
-			else
-			if(packetSize == -2) // Received same package
-			{
-				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
 				//printf("Error in llread\n");
 				continue;
-
 			}
-			else
-			if(packetSize == -3)
-				continue;
+		
+			error = readDataPacket(&fd, al, dataRead, filename, fileSize, packetSize);
 			
-			int ret = readDataPacket2(&fd, al, dataRead, filename, fileSize, packetSize);
 
-			if (ret == -2)
+			switch(error)
 			{
-				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
-				printf("Error in Data Packet\n");
-				continue;
-			}
+				case -1:
+					sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
+					//printf("Error in Data Packet\n");
+					continue;
 
-			if(ret == -1)
-			{
-				sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | REJ_C);
-				printf("Error in Data Packet\n");
-				continue;
+				case -2:
+					sendAnswer(al->fileDescriptor, (((ll.sequenceNumber + 1) % 2) << 7) | RR_C);
+					//printf("Sender behind receiver\n");
+					continue;
+					
+				case -3:
+					sendAnswer(al->fileDescriptor, (((ll.sequenceNumber + 1) % 2) << 7) | REJ_C);
+					//printf("Sender ahead of receiver\n");
+					continue;
+				
 			}
-
+	
 			al->dataPacketIndex++;
 			
 			packetSize = 0; // Clears dataRead array
 
-			printf("Received Packet\n");
+			//printf("Received Packet\n");
 
-			if(ll.sequenceNumber == 0)
-				ll.sequenceNumber = 1;
-			else
-				ll.sequenceNumber = 0;
+			ll.sequenceNumber = (ll.sequenceNumber + 1) % 2;
 
 			sendAnswer(al->fileDescriptor, (ll.sequenceNumber << 7) | RR_C);
 
 			if (gettimeofday(&writeTime2, NULL) != 0)
 				printf("Error getting time!\n");
 
+			system("clear");
+
 			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds 
-			// printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+			printPercentage((al->dataPacketIndex-2)*DATASIZE / (double)*fileSize);
+			
 
-			printPercentage(bytesReceived / (double)*fileSize);
-
+			//printf("fileSize = %i\n", *fileSize);
 		}
 		else if (al->status == 2) // Closing
 		{	
-			llclose(al->fileDescriptor, RECEIVER);
-			free(dataRead);			
+			free(dataRead);
 			close(fd);
+			llclose(al->fileDescriptor, RECEIVER);
 			break;
 		}
 	}
@@ -192,20 +160,13 @@ int llread(int fd, char * buffer)
 		numBytes = read(fd, &temp[receivedSize++], 1);
 		// alarm(0);
 
-		/*
-		if (flag)
-		{
-			flag= 0;
-			return -3;
-		} */
-
 		if (receivedSize > 1 && temp[receivedSize-1] == FLAG)
 			break;
 	}
 
 	//printf("--------------- What was literally read -------------------\n");
 	//printArray(buffer, receivedSize);
-	printf("------------------------------------------------------------\n");
+	//printf("------------------------------------------------------------\n");
 
 	int error = headerCheck(temp);
 
@@ -313,14 +274,14 @@ char headerCheck(char received[])
 	
 		control = control >> 6;
 
-		printf("Control: %d\n", control);
-		printf("Sequence Number: %u \n", ll.sequenceNumber);
+		//printf("Control: %d\n", control);
+		//printf("Sequence Number: %u \n", ll.sequenceNumber);
 
-		/*if(control != ll.sequenceNumber)
+		if(control != ll.sequenceNumber)
 		{
 			printf("Sequence error\n");			
-			return -1;
-		}*/
+			sequence_error_flag = 1;
+		}
 			
 
 		bcc1 = received[3];
@@ -351,16 +312,16 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename, int *fileSize, int packetSize)
+int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename, int *fileSize, int packetSize)
 {	
 	int i = 0;
 	char controlByte = buffer[i];
 
-	printf("C: %d\n", controlByte);
+	//printf("C: %d\n", controlByte);
 
 	if (controlByte == 2) // Start
 	{
-		checkControlDataPacket2(1, buffer, filename, fileSize, packetSize);
+		checkControlDataPacket(1, buffer, filename, fileSize, packetSize);
 
 		*fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 
@@ -371,20 +332,26 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 			unsigned char N = buffer[i + 1];
 			unsigned char L2 = buffer[i + 2], L1 = buffer[i + 3];
 
-			printf("N: %u\n", N);
-			printf("al.dataPacketIndex-1 = %i\n", (app->dataPacketIndex-1) % 255);
+			//printf("N: %u\n", N);
+			//printf("al.dataPacketIndex-1 = %i\n", (app->dataPacketIndex-1) % 255);
 
-			if (N < (app->dataPacketIndex - 1) % 255)
+			if(sequence_error_flag)
 			{
-				printf("Receiver ahead of Transmitter\n");
-				return -2;
+				if(N >  (app->dataPacketIndex) % 255)
+					return -3;
+				else if(N < (app->dataPacketIndex) % 255)
+					return -2;
+					else
+						printf("Sequence error but data packet index is still the same\n");					
 			}
-
-			if(N != (app->dataPacketIndex - 1) % 255)
+			else
+			if(N != (app->dataPacketIndex) % 255)
 			{
-				printf("Data Packet sequence error\n");
-				return -1;
-			}
+				if(N >  (app->dataPacketIndex) % 255)
+					return -3;
+				else if(N < (app->dataPacketIndex) % 255)
+					return -2;
+			} 
 
 			int K = 256 * L2 + L1;
 			// printf("K: %d\n", K);
@@ -394,23 +361,21 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 				printf("Error in packet size\n");
 				return -1;
 			}
-			// else
-				//memcpy(buffer, buffer + i + 4, K);
 
-			
 			if(write(*fd, buffer+4, K) < 0)
 			{
 				printf("Error in writting to local file\n");
 				return -1;
 			}
 
-			bytesReceived += K;
+			//printf("--------- Data Packets Read ---------------\n");
+			//printArray(buffer, K);
 
 		}
 		else 
 			if (controlByte == 3) // End
 			{
-				checkControlDataPacket2(packetSize - 3, buffer, filename, fileSize, packetSize);
+				checkControlDataPacket(packetSize - 3, buffer, filename, fileSize, packetSize);
 
 				app->status = 2;
 			}
@@ -418,7 +383,7 @@ int readDataPacket2(int *fd, applicationLayer *app, char *buffer, char *filename
 	return 0;
 }
 
-int checkControlDataPacket2(int i, char *buffer, char *filename, int *fileSize, int packetSize)
+int checkControlDataPacket(int i, char *buffer, char *filename, int *fileSize, int packetSize)
 {
 	int j;
 	char T, L;
@@ -428,9 +393,10 @@ int checkControlDataPacket2(int i, char *buffer, char *filename, int *fileSize, 
 		T = buffer[i];
 		L = buffer[i + 1];
 
+		/*
 		printf("T: %d\n", T);
 		printf("L: %d\n", L);
-		printf("i = %d\n", i);
+		printf("i = %d\n", i); */
 
 		
 		if(T == 0)

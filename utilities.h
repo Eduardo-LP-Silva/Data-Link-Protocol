@@ -25,6 +25,7 @@ typedef struct
 struct termios oldtio,newtio;
 
 void swap(char* a, char*b);
+void printPercentage(double percentage);
 int abs(int a);
 void shiftRight(char* buffer, int size, int position, int shift);
 void shiftLeft(char* buffer, int size, int position, int shift);
