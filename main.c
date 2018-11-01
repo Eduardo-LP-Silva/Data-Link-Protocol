@@ -15,10 +15,20 @@ int main(int argc, char** argv)
 	  printf("Usage:\tnserial SerialPort\n\tex: nserial /dev/ttyS1\n");
 	  exit(1);
 	}
+	
 
 	if (strcmp(argv[2], "transmitter") == 0)
 	{
-		return sendFile("pinguim.jpg", argv[1]);
+	  char filename[100], *newLine;
+	  
+	  printf("Filename: ");
+	
+	  fgets(filename, 100, stdin);
+	  
+	  if ((newLine = strchr(filename, '\n')) != NULL) 
+      *newLine = '\0';
+    	  
+		return sendFile(filename, argv[1]);
 
 		// sendFile("heli.jpg", "file2");
 	}
