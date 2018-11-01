@@ -232,11 +232,14 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 			free(packageArray);
 
+      int error;
+      
 			do
 			{
-				error = llclose(al->fileDescriptor, RECEIVER);
+				error = llclose(al.fileDescriptor, RECEIVER);
+				ll.numTransmissions--;
 			}
-			while(error != 0);
+			while(error != 0 && ll.numTransmissions > 0);
 
 			break;
 		}
