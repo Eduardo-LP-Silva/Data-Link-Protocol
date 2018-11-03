@@ -13,7 +13,6 @@
 #include <signal.h>
 
 int flag = 0;
-int sequence_error_flag = 0;
 
 void sigalrm_handlerR(int signal)
 {
@@ -77,8 +76,6 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 		}
 		else if (al->status == 1) // Transfering
 		{
-			sequence_error_flag = 0;
-
 			if (gettimeofday(&readTime2, NULL) != 0)
 				printf("Error getting time!\n");
 
@@ -285,7 +282,6 @@ char headerCheck(char received[])
 		if(control != ll.sequenceNumber)
 		{
 			printf("Sequence error\n");			
-			sequence_error_flag = 1;
 		}
 			
 
@@ -340,24 +336,12 @@ int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename,
 			//printf("N: %u\n", N);
 			//printf("al.dataPacketIndex-1 = %i\n", (app->dataPacketIndex-1) % 255);
 
-			if(sequence_error_flag)
-			{
-				if(N >  (app->dataPacketIndex) % 255) // Transmitter ahead of receiver
-					return -3;
-				else if(N < (app->dataPacketIndex) % 255) // Receiver ahead of transmitter
-					return -2;
-					else
-						printf("Sequence error but data packet index is still the same\n");					
-			}
-			else
-			if(N != (app->dataPacketIndex) % 255)
-			{
-				if(N >  (app->dataPacketIndex) % 255) // Transmitter ahead of receiver
-					return -3;
-				else if(N < (app->dataPacketIndex) % 255) // Receiver ahead of transmitter
-					return -2;
-			} 
-
+		
+			if(N >  (app->dataPacketIndex) % 255) // Transmitter ahead of receiver
+				return -3;
+			else if(N < (app->dataPacketIndex) % 255) // Receiver ahead of transmitter
+				return -2;
+		
 			int K = 256 * L2 + L1;
 			// printf("K: %d\n", K);
 
