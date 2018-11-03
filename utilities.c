@@ -186,11 +186,11 @@ int llopen(int fd, int flag)
 		printf("SET sent!\n");
 
 
-		// alarm(TIMEOUT);
+		alarm(TIMEOUT);
 
 		received = read(fd, buf, 5);
 
-		// alarm(0);
+		alarm(0);
 
 		if(received < 0)
 		{
@@ -320,7 +320,7 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("DISC received\n");
+		//printf("DISC received\n");
 
 		buf[0] = FLAG;
 		buf[1] = ADDR;
@@ -334,7 +334,7 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		printf("DISC sent by receiver!\n");
+		//printf("DISC sent by receiver!\n");
 
 		alarm(TIMEOUT);
 
