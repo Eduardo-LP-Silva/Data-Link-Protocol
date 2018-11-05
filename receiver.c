@@ -137,11 +137,8 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 		{	
 			free(dataRead);
 			close(fd);
-			do
-			{
-				error = llclose(al->fileDescriptor, RECEIVER);
-			}
-			while(error != 0);
+
+			error = llclose(al->fileDescriptor, RECEIVER);
 			
 			break;
 		}

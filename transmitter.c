@@ -192,14 +192,9 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			free(packageArray);
 			ll.numTransmissions = MAX_ATTEMPTS;
 
-      int error;
-      
-			do
-			{
-				error = llclose(al.fileDescriptor, TRANSMITTER);
-				ll.numTransmissions--;
-			}
-			while(error != 0 && ll.numTransmissions > 0);
+     	 	int error;
+
+			error = llclose(al.fileDescriptor, TRANSMITTER);
 
 			break;
 		}

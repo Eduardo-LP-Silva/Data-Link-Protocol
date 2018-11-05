@@ -252,7 +252,7 @@ int llclose(int fd, int flag)
 	char buf[5];
 	int received;
 
-	tcflush(fd, TCIFLUSH);
+	// tcflush(fd, TCIFLUSH);
 
 	if (flag == TRANSMITTER)
 	{
@@ -268,25 +268,27 @@ int llclose(int fd, int flag)
 			return -1;
 		}
 
-		alarm(TIMEOUT);
-
-		received = read(fd, buf, 5);
-
-		alarm(0);
-
-		if(received < 0)
+		while (1)
 		{
-			printf("Error in receiving end in llclose\n");
-			return -1;
-		}
+			received = read(fd, buf, 5);
 
-		int status = messageCheck(buf);
+			if (received < 0)
+			{
+				printf("Error in receiving end in llclose\n");
+				continue;
+			}
 
-		if (status != DISC_C)
-		{
-			printf("DISC_C not received\n");
-			return -1;
+			int status = messageCheck(buf);
+
+			if (status != DISC_C)
+			{
+				printf("DISC_C not received, trying again\n");
+				continue;
+			}
+
+			break;
 		}
+		
 
 		buf[2] = UA_C;
 		buf[3] = buf[1] ^ buf[2];
@@ -300,24 +302,25 @@ int llclose(int fd, int flag)
 	}
 	else if (flag == RECEIVER)
 	{
-		alarm(TIMEOUT);
-
-		received = read(fd, buf, 5);
-
-		alarm(0);
-
-		if(received < 0)
+		while (1)
 		{
-			printf("Error in llclose receiving end\n");
-			return -1;
-		}
+			received = read(fd, buf, 5);
 
-		int status = messageCheck(buf);
+			if (received < 0)
+			{
+				printf("Error in receiving end in llclose\n");
+				continue;
+			}
 
-		if (status != DISC_C)
-		{
-			printf("DISC_C not received\n");
-			return -1;
+			int status = messageCheck(buf);
+
+			if (status != DISC_C)
+			{
+				printf("DISC_C not received, trying again\n");
+				continue;
+			}
+
+			break;
 		}
 
 		//printf("DISC received\n");
@@ -328,7 +331,7 @@ int llclose(int fd, int flag)
 		buf[3] = buf[1] ^ buf[2];
 		buf[4] = FLAG;
 
-		if(write(fd, buf, 5) < 0)
+		if (write(fd, buf, 5) < 0)
 		{
 			printf("Error in llclose transmission\n");
 			return -1;
@@ -336,18 +339,25 @@ int llclose(int fd, int flag)
 
 		//printf("DISC sent by receiver!\n");
 
-		alarm(TIMEOUT);
-
-		received = read(fd, buf, 5);
-
-		alarm(0);
-
-		status = messageCheck(buf);
-
-		if (status != UA_C)
+		while (1)
 		{
-			printf("Didn't receive UA\n");
-			return -1;
+			received = read(fd, buf, 5);
+
+			if (received < 0)
+			{
+				printf("Error in receiving end in llclose\n");
+				continue;
+			}
+
+			int status = messageCheck(buf);
+
+			if (status != UA_C)
+			{
+				printf("UA_C not received, trying again\n");
+				continue;
+			}
+
+			break;
 		}
 	}
 
