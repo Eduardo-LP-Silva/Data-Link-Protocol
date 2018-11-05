@@ -127,8 +127,12 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 			system("clear");
 
 			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds 
-			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
-			printPercentage(bytesReceived / (double)*fileSize);
+			
+			if (((float)DATASIZE / deltaTime)/1024 >= 0)
+				printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+
+			if (bytesReceived / (double)*fileSize >= 0 && bytesReceived / (double)*fileSize <= 1)
+				printPercentage(bytesReceived / (double)*fileSize);
 			
 
 			//printf("fileSize = %i\n", *fileSize);

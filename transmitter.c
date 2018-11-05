@@ -172,7 +172,8 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 
 			double deltaTime = (double)(readTime.tv_sec - writeTime.tv_sec) + (double)(readTime.tv_usec - writeTime.tv_usec)/1000/1000; // In seconds 
 
-			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+			if (((float)DATASIZE / deltaTime)/1024 > 0)
+				printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
 
 
 			if (al.dataPacketIndex > (size/DATASIZE + 1 + 1))
