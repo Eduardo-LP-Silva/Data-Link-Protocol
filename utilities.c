@@ -278,11 +278,11 @@ int llclose(int fd, int flag)
 				continue;
 			}
 
-			int status = messageCheck(buf);
+			unsigned char status = messageCheck(buf);
 
 			if (status != DISC_C)
 			{
-				printf("DISC_C not received, trying again\n");
+				// printf("DISC_C not received, received: %u\n", status);
 				continue;
 			}
 
@@ -293,7 +293,7 @@ int llclose(int fd, int flag)
 		buf[2] = UA_C;
 		buf[3] = buf[1] ^ buf[2];
 
-		if(write(fd, buf, 5) < 0)
+		if (write(fd, buf, 5) < 0)
 		{
 			printf("Error in second llclose transmission\n");
 			return -1;
@@ -312,11 +312,11 @@ int llclose(int fd, int flag)
 				continue;
 			}
 
-			int status = messageCheck(buf);
+			unsigned char status = messageCheck(buf);
 
 			if (status != DISC_C)
 			{
-				printf("DISC_C not received, trying again\n");
+				// printf("DISC_C not received, trying again\n");
 				continue;
 			}
 
@@ -349,11 +349,11 @@ int llclose(int fd, int flag)
 				continue;
 			}
 
-			int status = messageCheck(buf);
+			unsigned char status = messageCheck(buf);
 
 			if (status != UA_C)
 			{
-				printf("UA_C not received, trying again\n");
+				// printf("UA_C not received, trying again\n");
 				continue;
 			}
 
