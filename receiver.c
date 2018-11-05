@@ -90,10 +90,8 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 				continue;
 			}
 		
-			error = readDataPacket(&fd, al, dataRead, filename, fileSize, packetSize);
+			error = readDataPacket(&fd, al, dataRead, filename, fileSize, packetSize, &bytesReceived);
 			
-			bytesReceived += packetSize;
-
 			switch(error)
 			{
 				case -1:
@@ -103,7 +101,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 
 				case -2:
 					sendAnswer(al->fileDescriptor, (((ll.sequenceNumber + 1) % 2) << 7) | RR_C);
-					//printf("Receiver behind transmitter\n");
+					//printf("Receiver ahead of transmitter\n");
 					continue;
 					
 				case -3:
@@ -314,7 +312,7 @@ int sendAnswer(int fd, char control)
 	return written;
 }
 
-int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename, int *fileSize, int packetSize)
+int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename, int *fileSize, int packetSize, int* bytesReceived)
 {	
 	int i = 0;
 	char controlByte = buffer[i];
@@ -357,6 +355,8 @@ int readDataPacket(int *fd, applicationLayer *app, char *buffer, char *filename,
 				printf("Error in writting to local file\n");
 				return -1;
 			}
+
+			*bytesReceived += K;
 
 			//printf("--------- Data Packets Read ---------------\n");
 			//printArray(buffer, K);
