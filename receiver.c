@@ -21,7 +21,6 @@ void sigalrm_handlerR(int signal)
 	{
 		printf("Message timed out!\nNew attempt\n");
 		ll.numTransmissions--;		
-		//flag = 1;
 	}
 	else
 	{
@@ -57,6 +56,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 	int packetSize;
 	int fd;
 	int error;
+	unsigned int bytesReceived = 0;
 
 	while (1)
 	{
@@ -92,6 +92,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 		
 			error = readDataPacket(&fd, al, dataRead, filename, fileSize, packetSize);
 			
+			bytesReceived += packetSize;
 
 			switch(error)
 			{
@@ -129,7 +130,7 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 
 			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds 
 			printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
-			printPercentage((al->dataPacketIndex-2)*DATASIZE / (double)*fileSize);
+			printPercentage(bytesReceived / (double)*fileSize);
 			
 
 			//printf("fileSize = %i\n", *fileSize);

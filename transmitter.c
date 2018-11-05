@@ -13,14 +13,10 @@
 #include <unistd.h>
 #include <time.h>
 
-int lastMessageTimedOut = 0;
-int interruptCounter = 0;
 struct timeval writeTime, readTime;
 
 void sigalrm_handler(int signal)
 {
-	lastMessageTimedOut = 1;
-
 	if (ll.numTransmissions > 0)
 	{
 		printf("Message timed out! New attempt\n");
@@ -33,17 +29,6 @@ void sigalrm_handler(int signal)
 	}
 
 	printf("Message timed out!\n");
-
-	if (lastMessageTimedOut)
-	{
-		interruptCounter++;
-		//al.dataPacketIndex--;
-		
-		int i;
-/*
-		for (i = 0; i < interruptCounter; i++)
-			al.dataPacketIndex--; */
-	}
 }
 
 int stateMachine(char* device, char* buffer, int size, char* filename)
@@ -143,7 +128,6 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 			
 			if (bytes > 0)
 			{
-				lastMessageTimedOut = 0;
 				ll.numTransmissions = MAX_ATTEMPTS;
 
 				if (gettimeofday(&readTime, NULL) != 0)
@@ -183,31 +167,6 @@ int stateMachine(char* device, char* buffer, int size, char* filename)
 				}
 				else
 					printf("Unknown message\n");
-				
-				/*
-				if (control == ((ll.sequenceNumber << 7) | REJ_C))
-				{
-					printf("Corrupt frame sent, sending same frame again!\n\n");
-					al.dataPacketIndex--;
-				}
-				else if (control == ((((ll.sequenceNumber+1)%2) << 7) | RR_C))
-				{
-					printf("Frame sent sucessfully\n\n");
-				}
-				else
-				{
-					if (control == (control & RR_C))
-					{
-						printf("Received RR_C for package number %u\n", (control & 0x80) >> 7);
-					}
-					else if (control == (control & REJ_C))
-					{
-						printf("Received REJ_C for package number %u\n", (control & 0x80) >> 7);
-						al.dataPacketIndex--;
-					}
-						
-				}*/ 
-
 							
 			}
 
