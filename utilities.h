@@ -3,6 +3,7 @@
 
 #include <sys/types.h>
 #include <termios.h>
+#include "constants.h"
 
 typedef struct
 {
@@ -19,7 +20,7 @@ typedef struct
 	unsigned int sequenceNumber;
 	unsigned int timeout;
 	unsigned int numTransmissions;
-	char frame[128 * 2 + 6];
+	char frame[DATASIZE * 2 + 6];
 } linkLayer;
 
 struct termios oldtio,newtio;
