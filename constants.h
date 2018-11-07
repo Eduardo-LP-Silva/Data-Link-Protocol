@@ -19,7 +19,7 @@
 #define RECEIVER 1
 #define MAX_ATTEMPTS 3
 #define TIMEOUT 3
-#define DATASIZE 128 //Max frame size
+#define DATASIZE 160 //Max frame size
 #define MAX_FILE_SIZE 100000 //100 KB
 
 

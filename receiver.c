@@ -57,6 +57,8 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 	int fd;
 	int error;
 	unsigned int bytesReceived = 0;
+	int logfd = open("log", O_WRONLY | O_TRUNC | O_CREAT, 0777), log2fd = open("log2", O_WRONLY | O_TRUNC | O_CREAT, 0777);
+	double timeSum = 0;
 
 	while (1)
 	{
@@ -112,10 +114,6 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 			}
 	
 			al->dataPacketIndex++;
-			
-			packetSize = 0; // Clears dataRead array
-
-			//printf("Received Packet\n");
 
 			ll.sequenceNumber = (ll.sequenceNumber + 1) % 2;
 
@@ -126,16 +124,35 @@ int stateMachineReceiver(applicationLayer *al, char* device, int *fileSize, char
 
 			system("clear");
 
-			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds 
-			
-			if (((float)DATASIZE / deltaTime)/1024 >= 0)
-				printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+			double deltaTime = (double)(writeTime2.tv_sec - readTime2.tv_sec) + (double)(writeTime2.tv_usec - readTime2.tv_usec)/1000/1000; // In seconds
+			timeSum += deltaTime;
+			int bytesExpected = 38400/8*deltaTime;
 
-			if (bytesReceived / (double)*fileSize >= 0 && bytesReceived / (double)*fileSize <= 1)
-				printPercentage(bytesReceived / (double)*fileSize);
+			double efficiency = (double)DATASIZE/bytesExpected;
 			
+			
+			if (packetSize > DATASIZE)
+			{
+				char logLine[100], logLine2[100];
 
-			//printf("fileSize = %i\n", *fileSize);
+				sprintf(logLine, "%f, %u\n", timeSum, bytesReceived);
+				sprintf(logLine2, "%f, %f\n", timeSum, efficiency);
+			
+				write(logfd, logLine, strlen(logLine));
+				write(log2fd, logLine2, strlen(logLine2));
+
+				printf("Baudrate = %u\n", BAUDRATE);
+			
+				if (((float)DATASIZE / deltaTime)/1024 >= 0)
+					printf("Transfer rate : %.1f KB/s\n", ((float)DATASIZE / deltaTime)/1024);
+
+				if (bytesReceived / (double)*fileSize >= 0 && bytesReceived / (double)*fileSize <= 1)
+					printPercentage(bytesReceived / (double)*fileSize);
+			}
+
+
+			packetSize = 0; // Clears dataRead array			
+		
 		}
 		else if (al->status == 2) // Closing
 		{	
